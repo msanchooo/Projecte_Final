@@ -16,6 +16,15 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('matricula');
+            $table->string('marca');
+            $table->string('model');
+            $table->integer('tipus');
+
+            // Foreign key de client id
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 

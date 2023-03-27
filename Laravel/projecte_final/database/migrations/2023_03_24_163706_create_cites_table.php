@@ -16,6 +16,14 @@ return new class extends Migration
         Schema::create('cites', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->double('preu');
+            $table->integer('duradaCita');
+            
+
+            // Foreign key de client id
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 

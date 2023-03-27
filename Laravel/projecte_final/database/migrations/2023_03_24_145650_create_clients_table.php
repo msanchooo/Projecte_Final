@@ -13,9 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('usuaris', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('nom');
+            $table->string('cognoms');
+            $table->string('NIF');
+
+            // Foreign key d'usuari id
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 
@@ -26,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuaris');
+        Schema::dropIfExists('clients');
     }
 };

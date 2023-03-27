@@ -16,6 +16,14 @@ return new class extends Migration
         Schema::create('treballadors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('nom');
+            $table->string('cognoms');
+            $table->string('NIF');
+
+            // Foreign key d'usuari id
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 
