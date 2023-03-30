@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Servei;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,10 +17,9 @@ class CitaController extends BaseController
 
     /// Cites
 
-    function getCites()
+    function getCitas()
     {
-        //return Cita::all();
-        return Cita::with('cita')->get();
+        return Cita::all();
     }
 
     function getCita($id)
@@ -27,19 +27,36 @@ class CitaController extends BaseController
         return Cita::find($id);
     }
 
-    function updateCita(Request $request, $id)
+    function insertCita(Request $request)
     {
-        // cal posar en la peticio PUT el Header field:
-        // Content-Type = application/x-www-form-urlencoded
-        $cita = Cita::find($id);
-        $cita->update($request->all());
 
+        $duradaTotal = 0;
+        foreach ($request->serveis as $servei) {
+            $duradaTotal += Servei::find($servei)->durada;
+        }
+
+        $cita = Cita::create(['data' => $request->data, 'client_id' => $request->client_id, 'duradaTotal' => $duradaTotal]);
+
+        $cita->serveis()->sync($request->serveis);
         return $cita;
     }
 
-    function insertCita(Request $request)
+    function updateCita(Request $request)
     {
-        return Cita::create($request->all());
+
+        $duradaTotal = 0;
+        foreach ($request->serveis as $servei) {
+            $duradaTotal += Servei::find($servei)->durada;
+        }
+
+        $cita = Cita::find($request->id);
+
+        $cita->update(['data' => $request->data, 'client_id' => $request->client_id, 'duradaTotal' => $duradaTotal]);
+
+        $cita->serveis()->sync($request->serveis);
+
+        return $cita;
+
     }
 
     function deleteCita($id)

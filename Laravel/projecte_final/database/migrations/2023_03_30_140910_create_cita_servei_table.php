@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('cita_servei', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
+
+            $table->unsignedBigInteger('cita_id');
+            $table->foreign('cita_id')->references('id')->on('citas')->onDelete('cascade');
+
+            $table->unsignedBigInteger('servei_id');
+            $table->foreign('servei_id')->references('id')->on('serveis')->onDelete('cascade');
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('cita_servei');
     }
 };

@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cites', function (Blueprint $table) {
+        Schema::create('serveis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-
+            $table->String('nom');
             $table->double('preu');
-            $table->integer('duradaCita');
-            
+            $table->double('durada');
 
-            // Foreign key de client id
-            $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cites');
+        Schema::dropIfExists('serveis');
     }
 };
