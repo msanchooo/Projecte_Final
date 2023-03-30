@@ -1,0 +1,13 @@
+INSERT INTO `users` (`id`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'nayden', 'nayden1010@gmail.com', NULL, 'P@ssw0rd', NULL, NULL, NULL),
+(3, 'sanchooo', 'sancho@gmail.com', NULL, 'P@ssw0rd', NULL, NULL, NULL);
+
+INSERT INTO `serveis` (`id`, `created_at`, `updated_at`, `nom`, `preu`, `durada`) VALUES
+(1, NULL, NULL, 'Pastillas Delanteras', 50, 5),
+(2, NULL, NULL, 'Pastillas Traseras', 50, 1);
+
+
+INSERT INTO `clients` (`id`, `created_at`, `updated_at`, `nom`, `cognoms`, `NIF`, `users_id`) VALUES
+(2, NULL, NULL, 'Nayden', 'Naydenov', 'Y12345B', 1),
+(3, NULL, NULL, 'Marc', 'Sancho', '12345678A', 3);
+
