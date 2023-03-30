@@ -8,7 +8,7 @@
 
 @section('content')
     <h1>Editar Vehicle</h1>
-    <a href="{{ route('vehicle_list') }}">&laquo; Torna</a>
+    <a href="{{ route('vehicles_list') }}">&laquo; Torna</a>
 	<div style="margin-top: 20px">
         <form method="POST" action="{{ route('vehicle_update', ['id' => $vehicle->id]) }}">
             @csrf

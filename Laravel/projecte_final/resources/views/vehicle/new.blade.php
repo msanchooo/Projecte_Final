@@ -8,7 +8,7 @@
 
 @section('content')
     <h1>Nou Vehicle</h1>
-    <a href="{{ route('vehicle_list') }}">&laquo; Torna</a>
+    <a href="{{ route('vehicles_list') }}">&laquo; Torna</a>
 	<div style="margin-top: 20px">
         <form method="POST" action="{{ route('vehicle_insert') }}">
             @csrf

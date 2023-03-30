@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <h1>Llistat dde vehicles</h1>
+    <h1>Llistat de vehicles</h1>
     <a href="{{ route('vehicle_insert') }}">+ Nou vehicle</a>
 
     @if (session('status'))
