@@ -8,17 +8,17 @@
           href="/"
           class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
         >
-          <img src="../assets/logo.png" />
+          <img src="../assets/img/logo.png" />
         </a>
 
         <ul
           class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small"
         >
           <li>
-            <a href="index.html" class="nav-link text-white"> Inicio </a>
+            <a aria-current="page" [routerLink]="['body']" class="nav-link text-white"> Inicio </a>
           </li>
           <li>
-            <a href="servicios.html" class="nav-link text-white"> Servicios </a>
+            <a aria-current="page" [routerLink]="['servicios']" class="nav-link text-white"> Servicios </a>
           </li>
           <li>
             <a href="#" class="nav-link text-white"> Cita Previa </a>
