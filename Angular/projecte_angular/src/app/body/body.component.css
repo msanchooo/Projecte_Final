@@ -16,7 +16,7 @@
     
   }
   
-  .sect video {
+  /* .sect video {
     position: absolute;
     bottom: 0;
     top: 0;
@@ -27,7 +27,7 @@
     z-index: -1;
     margin-top: 6.5%;
   
-  }
+  } */
   
   #sect1 {
     position: b;
@@ -41,7 +41,7 @@
   .content {
     text-align: center;
     margin: auto;
-    margin-top: 15%;
+    margin-top: -28%;
     color: white;
   }
   
@@ -239,6 +239,7 @@
   }
   
   .amred {
+    margin-top: 10%;
     margin-bottom: 0;
   }
   
