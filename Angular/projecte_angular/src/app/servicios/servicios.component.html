@@ -5,27 +5,25 @@
 
 	<div class="row" style="text-align: center; max-width: 100%;">
 		<div class="col-sm">
-			<a href="#"><img src="../../assets/img/pack1.jpeg" width="400px" height="600px">
-				<button class="option1" onclick="audio.play()">Pack mantenimiento básico</button></a>
+			<a aria-current="page" [routerLink]="['pack1']"><img src="../../assets/img/pack1.jpeg" width="400px" height="600px">
+				<br>
+				<button class="option1">Pack mantenimiento básico</button></a>
 		</div>
 		<div class="col-sm">
-			<a href=""><img src="../../assets/img/pack2.jpeg" width="400px" height="600px">
-
-				<button class="option1" onclick="audio.play()">Pack revisión premium</button>
+			<a aria-current="page" [routerLink]="['pack2']"><img src="../../assets/img/pack2.jpeg" width="400px" height="600px">
+				<br>
+				<button class="option1">Pack revisión premium</button>
 			</a>
 		</div>
 		<div class="col-sm">
-			<a href=""><img src="../../assets/img/pack3.jpeg" width="400px" height="600px">
-
-				<button class="option1" onclick="audio.play()">Revisión previa ITV</button>
+			<a aria-current="page" [routerLink]="['pack3']"><img src="../../assets/img/pack3.jpeg" width="400px" height="600px">
+				<br>
+				<button class="option1">Revisión previa ITV</button>
 			</a>
 
 		</div>
 	</div>
-	<script type="text/javascript">
-		const audio = new Audio();
-		audio.src = "audio.wav";
-	</script>
+
 
 
 
