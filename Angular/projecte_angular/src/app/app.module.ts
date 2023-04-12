@@ -11,6 +11,11 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { Pack1Component } from './pack1/pack1.component';
 import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -22,11 +27,20 @@ import { Pack3Component } from './pack3/pack3.component';
     ContactoComponent,
     Pack1Component,
     Pack2Component,
-    Pack3Component
+    Pack3Component,
+    InicioComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule.forRoot({
+      domain: 'dev-iozfacvvx67ur8w5.us.auth0.com',
+      clientId: 'KucEEziF4NMQ6ggT6RXZfPHDPpJft1l2',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
