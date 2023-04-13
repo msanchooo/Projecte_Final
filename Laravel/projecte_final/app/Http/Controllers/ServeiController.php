@@ -8,19 +8,19 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
-use App\Models\Vehicle;
+use App\Models\Servei;
 
-class VehicleController extends BaseController
+class ServeiController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    /// Vehicles
+    /// Serveis
 
     /**
      * @OA\Get(
-     *      path="/api/vehicles",
-     *      tags={"Vehicles"},
-     *      summary="Veure totes els vehicles.",
+     *      path="/api/serveis",
+     *      tags={"Serveis"},
+     *      summary="Veure totes els serveis.",
      *      @OA\Response(
      *          response=200,
      *          description="Retorna totes les clients."
@@ -30,17 +30,17 @@ class VehicleController extends BaseController
      * )
      */
 
-    function getVehicles()
+    function getServeis()
     {
-        return Vehicle::all();
+        return Servei::all();
 
     }
 
     /**
      * @OA\Get(
-     *      path="/api/vehicle/{id}",
-     *      tags={"Vehicles"},
-     *      summary="Veure totes els vehicles.",
+     *      path="/api/serveis/{id}",
+     *      tags={"Serveis"},
+     *      summary="Veure totes els serveis.",
      * @OA\Parameter(
      *         description="Parameter with mutliple examples",
      *         in="path",
@@ -58,43 +58,37 @@ class VehicleController extends BaseController
      * )
      */
 
-    function getVehicle($id)
+    function getServei($id)
     {
-        return Vehicle::find($id);
+        return Servei::find($id);
     }
 
     /**
      * @OA\Post(
-     *     path="/api/vehicle",
-     *      tags={"Vehicles"},
-     *     summary="Adds a new vehicles",
+     *     path="/api/servei",
+     *      tags={"Serveis"},
+     *     summary="Adds a new serveis",
      *    
      *         @OA\Parameter(
      *         in="query",
-     *         name="matricula",
+     *         name="nom",
      *         required=true,
-     *         example="1456LMH",
+     *         example="Frenos",
      *         @OA\Schema(type="string"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
-     *         name="marca",
-     *         required=true,
-     *         example="BMW",
-     *         @OA\Schema(type="string"),
+     *         name="preu",
+     *         required=false,
+     *         example="150.50",
+     *         @OA\Schema(type="double"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
-     *         name="model",
-     *         required=true,
-     *         example="Serie 1",
-     *         @OA\Schema(type="string"),
-     *     ),
-     *         @OA\Parameter(
-     *         in="query",
-     *         name="client_id",
-     *         required=true,
-     *         @OA\Schema(type="integer"),
+     *         name="durada",
+     *         required=false,
+     *         example="5.5",
+     *         @OA\Schema(type="double"),
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -104,29 +98,27 @@ class VehicleController extends BaseController
      * )
      */
 
-    function insertVehicle(Request $request)
+    function insertServei(Request $request)
     {
 
         $request->validate([
-            'matricula' => ['required', 'max:25'],
-            'marca' => ['required', 'max:25'],
-            'model' => ['required', 'max:25'],
-            'client_id' => ['required'],
+            'nom' => ['required', 'max:25'],
+            'preu' => ['required'],
+            'durada' => ['required']
         ]);
 
-        return Vehicle::create([
-            'matricula' => $request->matricula,
-            'marca' => $request->marca,
-            'model' => $request->model,
-            'client_id' => $request->client_id
+        return Servei::create([
+            'nom' => $request->nom,
+            'preu' => $request->preu,
+            'durada' => $request->durada
         ]);
     }
 
         /**
      * @OA\Put(
-     *     path="/api/vehicle/{id}",
-     *      tags={"Vehicles"},
-     *     summary="Update vehicles",
+     *     path="/api/servei/{id}",
+     *      tags={"Serveis"},
+     *     summary="Update serveis",
      *     @OA\Parameter(
      *         in="path",
      *         name="id",
@@ -135,24 +127,24 @@ class VehicleController extends BaseController
      *     ),
      *         @OA\Parameter(
      *         in="query",
-     *         name="matricula",
+     *         name="nom",
      *         required=true,
-     *         example="1456LMH",
+     *         example="Frenos",
      *         @OA\Schema(type="string"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
-     *         name="marca",
+     *         name="preu",
      *         required=true,
-     *         example="BMW",
-     *         @OA\Schema(type="string"),
+     *         example="150.50",
+     *         @OA\Schema(type="double"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
-     *         name="model",
+     *         name="durada",
      *         required=true,
-     *         example="Serie 1",
-     *         @OA\Schema(type="string"),
+     *         example="5.5",
+     *         @OA\Schema(type="double"),
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -163,34 +155,32 @@ class VehicleController extends BaseController
      */
 
 
-    function updateVehicle(Request $request, $id)
+    function updateServei(Request $request, $id)
     {
 
         $request->validate([
-            'matricula' => ['required', 'max:25'],
-            'marca' => ['required', 'max:25'],
-            'model' => ['required', 'max:25'],
-            'client_id' => ['required'],
+            'nom' => ['required', 'max:25'],
+            'preu' => ['required'],
+            'durada' => ['required']
         ]);
 
-        $vehicle= Vehicle::find($request->id);
+        $servei= Servei::find($request->id);
 
-        $vehicle->update([
-            'matricula' => $request->matricula,
-            'marca' => $request->marca,
-            'model' => $request->model,
-            'client_id' => $request->client_id
+        $servei->update([
+            'nom' => $request->nom,
+            'preu' => $request->preu,
+            'durada' => $request->durada
         ]);
 
-        return $vehicle;
+        return $servei;
     }
 
 
      /**
      * @OA\Delete(
-     *     path="/api/vehicle/{id}",
-     *      tags={"Vehicles"},
-     *     summary="Delete vehicle",
+     *     path="/api/servei/{id}",
+     *      tags={"Serveis"},
+     *     summary="Delete Servei",
      *     @OA\Parameter(
      *         in="path",
      *         name="id",
@@ -211,11 +201,11 @@ class VehicleController extends BaseController
      * )
      */
 
-    function deleteVehicle($id)
+    function deleteServei($id)
     {
-        $vehicle = Vehicle::find($id);
-        $vehicle->delete();
+        $servei = Servei::find($id);
+        $servei->delete();
 
-        return $vehicle;
+        return $servei;
     }
 }
