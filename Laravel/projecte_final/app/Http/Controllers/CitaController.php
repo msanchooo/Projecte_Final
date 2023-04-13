@@ -81,6 +81,7 @@ class CitaController extends BaseController
      *         @OA\Parameter(
      *         in="query",
      *         name="data",
+     *         example="2023-07-20",
      *         required=true,
      *         @OA\Schema(type="string"),
      *     ),
@@ -99,7 +100,7 @@ class CitaController extends BaseController
      *         @OA\Parameter(
      *         in="query",
      *         name="serveis[0]",
-     *         required=true,
+     *         required=false,
      *         @OA\Schema(type="integer"),
      *     ),
      *         @OA\Parameter(
@@ -111,12 +112,22 @@ class CitaController extends BaseController
      *     @OA\Response(
      *         response=200,
      *         description="OK",
+     *         @OA\JsonContent()
      *     )
      * )
      */
 
     function insertCita(Request $request)
     {
+
+
+        $request->validate([
+            'data' => ['required'],
+            'client_id' => ['required'],
+            'vehicle_id' => ['required'],
+            'serveis'=>['required', 'array', 'min:1']
+            ]);
+
 
         $duradaTotal = 0;
         foreach ($request->serveis as $servei) {
@@ -175,6 +186,13 @@ class CitaController extends BaseController
 
     function updateCita(Request $request)
     {
+
+        $request->validate([
+            'data' => ['required'],
+            'client_id' => ['required'],
+            'vehicle_id' => ['required'],
+            'serveis'=>['required', 'array', 'min:1']
+            ]);
 
         $duradaTotal = 0;
         foreach ($request->serveis as $servei) {
