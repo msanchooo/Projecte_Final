@@ -8,6 +8,7 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {path:'body', component: BodyComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'pack2', component: Pack2Component},
   {path:'pack3', component: Pack3Component},
   {path:'contacto', component: ContactoComponent},
+  {path: 'calendar', component: CalendarComponent},
   {path:'', redirectTo:'body', pathMatch: 'full'},
   {path:'**', redirectTo:'body', pathMatch: 'full'}
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},

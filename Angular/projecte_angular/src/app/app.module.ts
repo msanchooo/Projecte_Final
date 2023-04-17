@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -16,6 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,12 @@ import { AuthModule } from '@auth0/auth0-angular';
     Pack2Component,
     Pack3Component,
     InicioComponent,
-    DashboardComponent
+    DashboardComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
+    FullCalendarModule,
     AppRoutingModule,
     AuthModule.forRoot({
       domain: 'dev-iozfacvvx67ur8w5.us.auth0.com',
