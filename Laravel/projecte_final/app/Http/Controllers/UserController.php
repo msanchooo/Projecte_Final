@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,21 +27,23 @@ class UserController extends BaseController
     {
         return User::find($id);
     }
+    function insertClient(Request $request)
+    {
 
+        return User::create($request->all());
+
+
+    }
     function updateUser(Request $request, $id)
     {
-        // cal posar en la peticio PUT el Header field:
-        // Content-Type = application/x-www-form-urlencoded
+
         $user = User::find($id);
         $user->update($request->all());
 
         return $user;
     }
 
-    function insertUser(Request $request)
-    {
-        return User::create($request->all());
-    }
+
 
     function deleteUser($id)
     {

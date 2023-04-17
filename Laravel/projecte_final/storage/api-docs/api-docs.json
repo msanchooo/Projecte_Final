@@ -1,0 +1,1129 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example for response examples value",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/Projecte_Final/Laravel/projecte_final/public/index.php",
+            "description": "L5 Swagger OpenApi Server"
+        }
+    ],
+    "paths": {
+        "/api/citas": {
+            "get": {
+                "tags": [
+                    "Citas"
+                ],
+                "summary": "Veure totes les citas.",
+                "operationId": "0374426aba1a3000617bf1cc8560db4b",
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les citas."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/cita/{id}": {
+            "get": {
+                "tags": [
+                    "Citas"
+                ],
+                "summary": "Veure totes las citas.",
+                "operationId": "2023b6fa50abf54054c2ed6eba24d545",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les citas."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Citas"
+                ],
+                "summary": "Update cita",
+                "operationId": "75664909d0d4baa6cdc439eb4c65b874",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[0]",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[1]",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Citas"
+                ],
+                "summary": "Delete cita",
+                "operationId": "6e40fbefb29fe47faefbd608978257fb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Cita not found"
+                    }
+                }
+            }
+        },
+        "/api/cita": {
+            "post": {
+                "tags": [
+                    "Citas"
+                ],
+                "summary": "Adds a new cita",
+                "operationId": "121ff1c0b65d3bd768389a7422aafbf8",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-07-20"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[0]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[1]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clients": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Veure totes les clients.",
+                "operationId": "0a140f3fb03571bf1c4e5e9360eab526",
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les clients."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client/{id}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Veure totes las clients.",
+                "operationId": "06fa1a3b3beb5ae40b72059694a1c8ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les clients."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Update client",
+                "operationId": "3bb415af112de5c52347cafb67557a70",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "username"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "username"
+                    },
+                    {
+                        "name": "nom",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "cognoms",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "nif",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "12345"
+                    },
+                    {
+                        "name": "tipu_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Delete client",
+                "operationId": "73369112a57e6310cd8bcddffcba9a84",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Cita not found"
+                    }
+                }
+            }
+        },
+        "/api/client": {
+            "post": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Adds a new client",
+                "operationId": "9f8160de9035b77d036ad5ad32645606",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "username"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "username"
+                    },
+                    {
+                        "name": "nom",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "cognoms",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "nif",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "12345"
+                    },
+                    {
+                        "name": "tipu_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/serveis": {
+            "get": {
+                "tags": [
+                    "Serveis"
+                ],
+                "summary": "Veure totes els serveis.",
+                "operationId": "1a0cef6898463526765c304bef93378c",
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les clients."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/serveis/{id}": {
+            "get": {
+                "tags": [
+                    "Serveis"
+                ],
+                "summary": "Veure totes els serveis.",
+                "operationId": "78ea20d87f54070a4a52398887c90aac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les clients."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/servei": {
+            "post": {
+                "tags": [
+                    "Serveis"
+                ],
+                "summary": "Adds a new serveis",
+                "operationId": "057081edd6cf3923821b3c14ff96ae6a",
+                "parameters": [
+                    {
+                        "name": "nom",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Frenos"
+                    },
+                    {
+                        "name": "preu",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "double"
+                        },
+                        "example": "150.50"
+                    },
+                    {
+                        "name": "durada",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "double"
+                        },
+                        "example": "5.5"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/servei/{id}": {
+            "put": {
+                "tags": [
+                    "Serveis"
+                ],
+                "summary": "Update serveis",
+                "operationId": "d245e3c6e6d60600b9262a2b687cc1cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "nom",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Frenos"
+                    },
+                    {
+                        "name": "preu",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "double"
+                        },
+                        "example": "150.50"
+                    },
+                    {
+                        "name": "durada",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "double"
+                        },
+                        "example": "5.5"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Serveis"
+                ],
+                "summary": "Delete Servei",
+                "operationId": "6cf01dbe2c41b99c92a9722790a4f0a2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Cita not found"
+                    }
+                }
+            }
+        },
+        "/api/treballadors": {
+            "get": {
+                "tags": [
+                    "Treballadors"
+                ],
+                "summary": "Veure tots els treballadors.",
+                "operationId": "6f1a7dff10133be3b977a19fd9f9fc24",
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els treballadors."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/treballador/{id}": {
+            "get": {
+                "tags": [
+                    "Treballadors"
+                ],
+                "summary": "Veure totes els treballadors.",
+                "operationId": "eade75e03cdd064534ec5ed5b9b121b9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les treballadorss."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Treballadors"
+                ],
+                "summary": "Update treballador",
+                "operationId": "40a65697328dd46fb98be9b0a996c941",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "nom",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "cognoms",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "nif",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "12345"
+                    },
+                    {
+                        "name": "sou",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "double"
+                        },
+                        "example": "1500.49"
+                    },
+                    {
+                        "name": "carrec",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "String"
+                        },
+                        "example": "treballador"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Treballadors"
+                ],
+                "summary": "Delete treballador",
+                "operationId": "fd2488c6da6337d7ac8cf7d47a373c20",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Cita not found"
+                    }
+                }
+            }
+        },
+        "/api/treballador": {
+            "post": {
+                "tags": [
+                    "Treballadors"
+                ],
+                "summary": "Add a new treballador",
+                "operationId": "c5c5b221d0dfe5cd8e6421ad6a77f906",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "nom",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "cognoms",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "treballador"
+                    },
+                    {
+                        "name": "nif",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "12345"
+                    },
+                    {
+                        "name": "sou",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "double"
+                        },
+                        "example": "1500.49"
+                    },
+                    {
+                        "name": "carrec",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "String"
+                        },
+                        "example": "treballador"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Veure totes els vehicles.",
+                "operationId": "d8ca996263e988889652331c97b190f1",
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les clients."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/vehicle/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Veure totes els vehicles.",
+                "operationId": "42b1174b588a58d6c525f62b951059a3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les clients."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Update vehicles",
+                "operationId": "aa7f78f3ea230f81ee226cef237f662d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "matricula",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1456LMH"
+                    },
+                    {
+                        "name": "marca",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "BMW"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Serie 1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Delete vehicle",
+                "operationId": "0fe754763b180fb8ef61203ae034bcb8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Cita not found"
+                    }
+                }
+            }
+        },
+        "/api/vehicle": {
+            "post": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Adds a new vehicles",
+                "operationId": "316598679acb121a4ac8d31b60e4528e",
+                "parameters": [
+                    {
+                        "name": "matricula",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1456LMH"
+                    },
+                    {
+                        "name": "marca",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "BMW"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Serie 1"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

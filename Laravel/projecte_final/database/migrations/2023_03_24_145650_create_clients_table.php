@@ -16,14 +16,16 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-
-            $table->string('nom');
-            $table->string('cognoms');
-            $table->string('NIF');
-
+            
             // Foreign key d'usuari id
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            //Particular o Empresa
+            $table->unsignedBigInteger('tipu_id');
+            $table->foreign('tipu_id')->references('id')->on('tipus_clients');
+
+
         });
     }
 

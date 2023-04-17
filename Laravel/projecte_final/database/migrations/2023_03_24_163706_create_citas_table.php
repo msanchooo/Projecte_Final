@@ -17,10 +17,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->date('data');
-            $table->integer('duradaTotal');
+            $table->double('duradaTotal');
             // Foreign key de client id
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');
+
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
 
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,36 +17,294 @@ class TreballadorController extends BaseController
 
     /// Treballadors
 
+     /**
+     * @OA\Get(
+     *      path="/api/treballadors",
+     *      tags={"Treballadors"},
+     *      summary="Veure tots els treballadors.",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Retorna tots els treballadors."
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
     function getTreballadors()
     {
-        //return Treballador::all();
-        return Treballador::with('treballador')->get();
+        return Treballador::all();
     }
+
+    /**
+     * @OA\Get(
+     *      path="/api/treballador/{id}",
+     *      tags={"Treballadors"},
+     *      summary="Veure totes els treballadors.",
+     * @OA\Parameter(
+     *         description="Parameter with mutliple examples",
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="string"),
+     *         @OA\Examples(example="int", value="1", summary="An int value."),
+     *     ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Retorna totes les treballadorss."
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
 
     function getTreballador($id)
     {
         return Treballador::find($id);
     }
 
-    function updateTreballador(Request $request, $id)
+        /**
+     * @OA\Post(
+     *     path="/api/treballador",
+     *      tags={"Treballadors"},
+     *     summary="Add a new treballador",
+     *    
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="username",
+     *         required=true,
+     *         example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="email",
+     *         required=true,
+     *         example="treballador@gmail.com",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="password",
+     *         required=true,
+     *          example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="nom",
+     *         required=true,
+     *          example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="cognoms",
+     *         required=false,
+     *           example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="nif",
+     *         required=false,
+     *          example="12345",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="sou",
+     *         required=false,
+     *           example="1500.49",
+     *         @OA\Schema(type="double"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="carrec",
+     *         required=false,
+     *         example="treballador",
+     *         @OA\Schema(type="String"),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent()
+     *     )
+     * )
+     */
+    function insertTreballador(Request $request)
     {
-        // cal posar en la peticio PUT el Header field:
-        // Content-Type = application/x-www-form-urlencoded
-        $treballador = Treballador::find($id);
-        $treballador->update($request->all());
+          $request->validate([
+            'username' => ['required', 'min:6', 'max:12'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:6', 'max:15'],
+            'nom' => ['required', 'max:15'],
+            'cognoms' => ['required', 'max:25'],
+            'nif' => ['required'],
+            'sou' => ['required'],
+            'carrec' => ['required']
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'nom' => $request->nom,
+            'cognoms' => $request->cognoms,
+            'nif' => $request->nif
+        ]);
+
+
+
+        $treballador = Treballador::create([
+            'user_id' => $user->id,
+            'sou' => $request->sou,
+            'carrec'=>$request->carrec
+        ]);
 
         return $treballador;
     }
 
-    function insertTreballador(Request $request)
+           /**
+     * @OA\Put(
+     *     path="/api/treballador/{id}",
+     *      tags={"Treballadors"},
+     *     summary="Update treballador",
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="username",
+     *         required=true,
+     *         example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="email",
+     *         required=true,
+     *         example="treballador@gmail.com",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="password",
+     *         required=true,
+     *          example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="nom",
+     *         required=true,
+     *          example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="cognoms",
+     *         required=false,
+     *           example="treballador",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="nif",
+     *         required=false,
+     *          example="12345",
+     *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="sou",
+     *         required=false,
+     *           example="1500.49",
+     *         @OA\Schema(type="double"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="carrec",
+     *         required=false,
+     *         example="treballador",
+     *         @OA\Schema(type="String"),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent()
+     *     )
+     * )
+     */
+    function updateTreballador(Request $request, $id)
     {
-        return Treballador::create($request->all());
+        $request->validate([
+            'username' => ['required', 'min:6', 'max:12'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:6', 'max:15'],
+            'nom' => ['required', 'max:15'],
+            'cognoms' => ['required', 'max:25'],
+            'nif' => ['required'],
+            'sou' => ['required'],
+            'carrec' => ['required']
+        ]);
+
+        $treballador = Treballador::find($request->id);
+
+        $treballador->update([
+            'sou' => $request->sou,
+            'carrec'=>$request->carrec
+        ]);
+
+        $user = User::find($treballador->user_id);
+
+        $user->update([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'nom' => $request->nom,
+            'cognoms' => $request->cognoms,
+            'nif' => $request->nif
+        ]);
+
+
+        return $treballador;
     }
+
+ /**
+     * @OA\Delete(
+     *     path="/api/treballador/{id}",
+     *      tags={"Treballadors"},
+     *     summary="Delete treballador",
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid ID supplied"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Cita not found"
+     *     ),
+     * )
+     */
 
     function deleteTreballador($id)
     {
         $treballador = Treballador::find($id);
+        $user = User::find($treballador->user_id);
         $treballador->delete();
+        $user->delete();
 
         return $treballador;
     }

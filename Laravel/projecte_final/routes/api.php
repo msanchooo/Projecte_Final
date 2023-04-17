@@ -3,6 +3,16 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\ServeiController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\TreballadorController;
+use App\Http\Controllers\UserController;
+
+
+
+
 use App\Http\Controllers\ApiController;
 
 /*
@@ -16,9 +26,9 @@ use App\Http\Controllers\ApiController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::get('/', [Controller::class, 'home'])->name('home');
 
@@ -42,7 +52,7 @@ Route::get('/client/{id}', [ClientController::class, 'getClient'])->name('client
 
 Route::put('/client/{id}', [ClientController::class, 'updateClient'])->name('client_update');
 
-Route::post('/client', [ClientController::class, 'insertClient'])->name('client_insert');
+Route::post('/client', [ClientController::class, 'insertClient']);
 
 Route::delete('/client/{id}', [ClientController::class, 'deleteClient'])->name('client_delete');
 
@@ -66,7 +76,7 @@ Route::get('/user/{id}', [UserController::class, 'getUser'])->name('user_cerca')
 
 Route::put('/user/{id}', [UserController::class, 'updateUser'])->name('user_update');
 
-Route::post('/user', [UserController::class, 'insertUser'])->name('user_insert');
+Route::post('/user', [UserController::class, 'insertUser']);
 
 Route::delete('/user/{id}', [UserController::class, 'deleteUser'])->name('user_delete');
 
@@ -81,5 +91,18 @@ Route::put('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('
 Route::post('/vehicle', [VehicleController::class, 'insertVehicle'])->name('vehicle_insert');
 
 Route::delete('/vehicle/{id}', [VehicleController::class, 'deleteVehicle'])->name('vehicle_delete');
+
+//// Serveis
+
+Route::get('/serveis', [ServeiController::class, 'getServeis'])->name('serveis_list');
+
+Route::get('/servei/{id}', [ServeiController::class, 'getServei'])->name('servei_cerca');
+
+Route::put('/servei/{id}', [ServeiController::class, 'updateServei'])->name('servei_update');
+
+Route::post('/servei', [ServeiController::class, 'insertServei'])->name('servei_insert');
+
+Route::delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
+
 
 
