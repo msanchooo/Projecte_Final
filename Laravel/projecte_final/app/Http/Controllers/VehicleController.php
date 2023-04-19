@@ -32,7 +32,7 @@ class VehicleController extends BaseController
 
     function getVehicles()
     {
-        return Vehicle::all();
+        return Vehicle::with('client')->get();
 
     }
 

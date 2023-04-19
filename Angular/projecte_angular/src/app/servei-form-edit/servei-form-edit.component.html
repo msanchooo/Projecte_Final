@@ -1,0 +1,18 @@
+<h3>Editar Servicio</h3>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nom">Nombre:</label>
+    <input id="nom" type="text" formControlName="nom">
+  </div>
+  <div>
+    <label for="preu">Precio:</label>
+    <input id="preu" type="number" formControlName="preu">
+  </div>
+  <div>
+    <label for="durada">Duración:</label>
+    <input id="durada" type="number" formControlName="durada">
+  </div>
+
+  <button type="submit">Guardar</button>
+</form>

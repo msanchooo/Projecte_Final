@@ -19,8 +19,8 @@ class UserController extends BaseController
 
     function getUsers()
     {
-        //return User::all();
-        return User::with('user')->get();
+        return User::all();
+        
     }
 
     function getUser($id)

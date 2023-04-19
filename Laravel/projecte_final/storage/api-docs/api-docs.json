@@ -285,31 +285,12 @@
                         }
                     },
                     {
-                        "name": "username",
+                        "name": "user_id",
                         "in": "query",
                         "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "example": "username"
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "user@gmail.com"
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "username"
+                        }
                     },
                     {
                         "name": "nom",
@@ -395,31 +376,12 @@
                 "operationId": "9f8160de9035b77d036ad5ad32645606",
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "user_id",
                         "in": "query",
                         "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "example": "username"
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "user@gmail.com"
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "username"
+                        }
                     },
                     {
                         "name": "nom",

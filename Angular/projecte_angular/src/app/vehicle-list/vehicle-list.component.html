@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      {{titolLlistat}}
+    </div>
+    <!-- caixa de filtrat -->
+    <div class="row">
+      <div class="col-md-2">
+        <h3>Filtrat per:{{listFilter}}</h3>
+      </div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)] = "listFilter">
+      </div>
+    </div>
+    <!-- fi caixa filtrat -->
+    <div *ngIf="vehicles.length==0">
+      <h4>No hi ha vehicles</h4>
+    </div>
+    <div *ngIf="vehicles.length>0" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Matricula</th>
+          <th>Marca</th>
+          <th>Model</th>
+          <th>Client</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of vehicles | vehicleListFilter:listFilter">
+          <td>{{vehicle.id}}</td>
+          <td>{{vehicle.matricula}}</td>
+          <td>{{vehicle.marca}}</td>
+          <td>{{vehicle.model}}</td>
+          <td>{{vehicle.client.nom}} {{vehicle.client.cognoms}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>

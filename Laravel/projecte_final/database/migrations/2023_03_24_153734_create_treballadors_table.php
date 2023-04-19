@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('treballadors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nom');
+            $table->string('cognoms');
+            $table->string('nif');
             $table->double('sou');
             $table->String('carrec');
 
