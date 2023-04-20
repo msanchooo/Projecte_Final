@@ -8,11 +8,17 @@
         <label for="nom" class="form-label">Nom:</label>
         <input id="nom" placeholder="Nom" class="form-control" formControlName="nom">
       </div>
+      <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
+        {{formErrors['nom']}}
+      </div>
       <br>
 
       <div class="form-group">
         <label for="preu" class="form-label">Preu:</label>
         <input id="preu" placeholder="Preu" class="form-control" formControlName="preu">
+      </div>
+      <div *ngIf="formErrors['preu'].length > 0" class="alert alert-danger">
+        {{formErrors['preu']}}
       </div>
       <br>
 
@@ -20,14 +26,16 @@
         <label for="durada" class="form-label">Durada:</label>
         <input id="durada" placeholder="Durada" class="form-control" formControlName="durada">
       </div>
+      <div *ngIf="formErrors['durada'].length > 0" class="alert alert-danger">
+        {{formErrors['durada']}}
+      </div>
       <br>
       <div class="row text-center">
         <div class="col-md-6">
           <button type="submit" class="btn btn-lg btn-success">Crear</button>
         </div>
         <div class="col-md-6">
-          <button [routerLink]="['../servei-list/']" class="btn btn-lg btn-danger">Cancelar</button>
-
+          <button [routerLink]="['../servei-list']" class="btn btn-lg btn-danger">Cancelar</button>
         </div>
       </div>
     </form>

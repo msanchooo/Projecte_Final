@@ -115,7 +115,7 @@ class ServeiController extends BaseController
     }
 
         /**
-     * @OA\Put(
+     * @OA\Post(
      *     path="/api/servei/{id}",
      *      tags={"Serveis"},
      *     summary="Update serveis",
@@ -135,14 +135,12 @@ class ServeiController extends BaseController
      *         @OA\Parameter(
      *         in="query",
      *         name="preu",
-     *         required=true,
      *         example="150.50",
      *         @OA\Schema(type="double"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
      *         name="durada",
-     *         required=true,
      *         example="5.5",
      *         @OA\Schema(type="double"),
      *     ),

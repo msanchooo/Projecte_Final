@@ -166,7 +166,7 @@ class TreballadorController extends BaseController
     }
 
            /**
-     * @OA\Put(
+     * @OA\Post(
      *     path="/api/treballador/{id}",
      *      tags={"Treballadors"},
      *     summary="Update treballador",

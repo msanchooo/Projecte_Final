@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DadesClientsService } from '../datos/dades-clients.service';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
@@ -24,21 +24,67 @@ export class VehicleFormComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      matricula: 'BK300',
-      marca: 'bmw',
-      model:'serie 3',
-      client_id: [null]
+      matricula: ['BK300', [Validators.required, Validators.maxLength(25)]],
+      marca: ['bmw', [Validators.required, Validators.maxLength(25)]],
+      model: ['serie 3', [Validators.required, Validators.maxLength(25)]],
+      client_id: [null, Validators.required]
     });
 
     this.clientService.getDades().subscribe(resp => {
       if (resp.body) this.clients = resp.body;
     });
+
+    this.myForm.valueChanges.subscribe(() => {
+      this.onValueChanged();
+    });
+
+
+
   }
+
   myForm: FormGroup;
   errorMessage: string = '';
+  formErrors: any= {
+    matricula: '',
+    marca: '',
+    model: '',
+    client_id: ''
+  };
   clients: IClient[] = [];
 
+  onValueChanged() {
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      const control = this.myForm.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
+  validationMessages: any = {
+    matricula: {
+      required: 'La matrícula es obligatoria.',
+      maxlength: 'La matrícula no puede ser más larga que 25 caracteres.'
+    },
+    marca: {
+      required: 'La marca es obligatoria.',
+      maxlength: 'La marca no puede ser más larga que 25 caracteres.'
+    },
+    model: {
+      required: 'El modelo es obligatorio.',
+      maxlength: 'El modelo no puede ser más largo que 25 caracteres.'
+    },
+    client_id: {
+      required: 'El cliente es obligatorio.'
+    }
+  };
+
   onSubmit(vehicle: any) {
+    this.onValueChanged();
 
     console.log(vehicle);
 
@@ -50,6 +96,7 @@ export class VehicleFormComponent implements OnInit {
         this.errorMessage = error.message;
       }
     });
+   
 
   }
 }

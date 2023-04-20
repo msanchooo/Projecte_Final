@@ -140,7 +140,7 @@ class ClientController extends BaseController
     }
 
     /**
-     * @OA\Put(
+     * @OA\Post(
      *     path="/api/client/{id}",
      *      tags={"Clients"},
      *     summary="Update client",

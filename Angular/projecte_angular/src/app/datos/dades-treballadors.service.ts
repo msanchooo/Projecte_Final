@@ -2,56 +2,44 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse } 
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IServei } from '../interfaces/IServei';
+import { ITreballador } from '../interfaces/ITreballador';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class DadesServeisService {
+export class DadesTreballadorsService {
 
   constructor(private _http: HttpClient) { }
 
-  public getDades(): Observable<HttpResponse<IServei[]>> {
-    return this._http.get<IServei[]>(environment.apiUrl + '/api/serveis', { observe: 'response' });
+  public getDades(): Observable<HttpResponse<ITreballador[]>> {
+    return this._http.get<ITreballador[]>(environment.apiUrl + '/api/treballadors', { observe: 'response' });
   }
 
-  public getServei(id: any): Observable<IServei> {
-    return this._http.get<IServei>(`${environment.apiUrl}/api/servei/${id}`);
+  public getTreballador(id: any): Observable<ITreballador> {
+    return this._http.get<ITreballador>(`${environment.apiUrl}/api/treballador/${id}`);
   }
 
-  public deleteServei(id: any): Observable<any> {
-    return this._http.delete(`${environment.apiUrl}/api/servei/${id}`);
+  public postTreballador(dada: any): Observable<any> {
+    return this._http.post(environment.apiUrl + '/api/treballador', dada, { observe: 'response' }).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  public putServei(id: any, dada: any): Observable<any> {
+  public putTreballador(id: any, dada: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
       }),
     };
     const options = { params: new HttpParams().set('observe', 'response') }
     console.log(dada);
-    return this._http.post(`${environment.apiUrl}/api/servei/${id}`, dada, {observe: 'response', headers: new HttpHeaders({
+    return this._http.post(`${environment.apiUrl}/api/treballador/${id}`, dada, {observe: 'response', headers: new HttpHeaders({
     })});
 
   }
 
-  public postServei(dada: any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-      }),
-    };
-    const options = { params: new HttpParams().set('observe', 'response') }
-
-    return this._http.post(environment.apiUrl + '/api/servei', dada, {
-      observe: 'response', headers: new HttpHeaders({
-      })
-    });
-
- 
-
-
-
-
+  public deleteTreballador(id: any): Observable<any> {
+    return this._http.delete(`${environment.apiUrl}/api/treballador/${id}`);
   }
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

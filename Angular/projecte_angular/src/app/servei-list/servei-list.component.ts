@@ -8,6 +8,7 @@ import { IServei } from '../interfaces/IServei';
   styleUrls: ['./servei-list.component.css']
 })
 export class ServeiListComponent {
+  router: any;
 
   constructor(private serveiService: DadesServeisService) { }
 
@@ -36,6 +37,7 @@ export class ServeiListComponent {
             console.log(error);
           });
     }
+    this.router.navigate(['servei-list']);
   }
 
 

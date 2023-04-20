@@ -33,6 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
+import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.component';
+import { TreballadorListComponent } from './treballador-list/treballador-list.component';
+import { TreballadorListFilterPipe } from './treballador-list/treballador-list-filter.pipe';
 
 
 @NgModule({
@@ -58,7 +61,10 @@ import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.com
     ServeiListComponent,
     ServeiListFilterPipe,
     ServeiFormComponent,
-    ServeiFormEditComponent
+    ServeiFormEditComponent,
+    VehicleFormEditComponent,
+    TreballadorListComponent,
+    TreballadorListFilterPipe
     ],
   imports: [
     BrowserModule,

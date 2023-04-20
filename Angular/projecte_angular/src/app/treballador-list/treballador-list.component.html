@@ -1,0 +1,48 @@
+<div class="panel panel-primary">
+    <div class="panel-heading text-center">
+      <h1>{{titolLlistat}}</h1>
+    </div>
+    <!-- caixa de filtrat -->
+    <div class="row section text-center">
+      <div class="col-md-6">
+        <label>Filtrat per:</label>
+        <input type="text" [(ngModel)]="listFilter">
+      </div>
+      <div class="col-md-6">
+        <button [routerLink]="['../treballador-form/']" class="btn btn-crear btn-success">Crear</button>
+      </div>
+    </div>
+    <!-- fi caixa filtrat -->
+    <div *ngIf="treballadors.length==0">
+      <h4>No hi ha treballadors</h4>
+    </div>
+    <div *ngIf="treballadors.length>0" class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Cognoms</th>
+            <th>NIF</th>
+            <th>Sou</th>
+            <th>Carrec</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let treballador of treballadors | treballadorListFilter:listFilter">
+            <td>{{treballador.id}}</td>
+            <td>{{treballador.nom}}</td>
+            <td>{{treballador.cognoms}}</td>
+            <td>{{treballador.nif}}</td>
+            <td>{{treballador.sou}}</td>
+            <td>{{treballador.carrec}}</td>
+            <!-- <td><a [routerLink]="['../vehicle-form-edit/'+vehicle.id]">Editar</a></td>
+            <td><a href="" (click)="eliminarTreballador(treballador.id)">Eliminar</a></td> -->
+          
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DadesServeisService } from '../datos/dades-serveis.service';
 
@@ -21,19 +21,54 @@ export class ServeiFormComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      nom: 'Pastillas Traseras',
-      preu: '70',
-      durada:'1'
+      nom: ['Pastillas Traseras', [Validators.required, Validators.maxLength(25)]],
+      preu: ['70', Validators.required],
+      durada: [1, Validators.required]
     });
-
-    // this.clientService.getDades().subscribe(resp => {
-    //   if (resp.body) this.clients = resp.body;
-    // });
+    this.myForm.valueChanges.subscribe(() => {
+      this.onValueChanged();
+    });
   }
   myForm: FormGroup;
   errorMessage: string = '';
+  formErrors: any = {
+    nom: '',
+    marca: '',
+    preu: '',
+    durada: 0
+  };
+
+  onValueChanged() {
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      const control = this.myForm.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
+  validationMessages: any = {
+    nom: {
+      required: 'El nombre es obligatoria.',
+      maxlength: 'El nombre no puede ser más largo que 25 caracteres.'
+    },
+    preu: {
+      required: 'El precio es obligatoria.',
+      maxlength: 'El precio no puede ser más largo que 25 caracteres.'
+    },
+    durada: {
+      required: 'La durada es obligatoria.',
+      maxlength: 'La durada no puede ser más larga que 25 caracteres.'
+    },
+  };
 
   onSubmit(servei: any) {
+
+    this.onValueChanged();
 
     console.log(servei);
 

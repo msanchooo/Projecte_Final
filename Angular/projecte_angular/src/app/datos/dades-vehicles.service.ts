@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { IVehicle } from '../interfaces/IVehicle';
@@ -16,10 +16,30 @@ export class DadesVehiclesService {
     return this._http.get<IVehicle[]>(environment.apiUrl + '/api/vehicles', { observe: 'response' });
   }
 
+  public getVehicle(id: any): Observable<IVehicle> {
+    return this._http.get<IVehicle>(`${environment.apiUrl}/api/vehicle/${id}`);
+  }
+
   public postVehicle(dada: any): Observable<any> {
     return this._http.post(environment.apiUrl + '/api/vehicle', dada, { observe: 'response' }).pipe(
       catchError(this.handleError)
     );
+  }
+
+  public putVehicle(id: any, dada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+      }),
+    };
+    const options = { params: new HttpParams().set('observe', 'response') }
+    console.log(dada);
+    return this._http.post(`${environment.apiUrl}/api/vehicle/${id}`, dada, {observe: 'response', headers: new HttpHeaders({
+    })});
+
+  }
+
+  public deleteVehicle(id: any): Observable<any> {
+    return this._http.delete(`${environment.apiUrl}/api/vehicle/${id}`);
   }
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

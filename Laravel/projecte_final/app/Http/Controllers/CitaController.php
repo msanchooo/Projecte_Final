@@ -141,7 +141,7 @@ class CitaController extends BaseController
     }
 
     /**
-     * @OA\Put(
+     * @OA\Post(
      *     path="/api/cita/{id}",
      *      tags={"Citas"},
      *     summary="Update cita",

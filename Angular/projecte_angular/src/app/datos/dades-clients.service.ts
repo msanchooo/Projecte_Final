@@ -15,4 +15,9 @@ export class DadesClientsService {
   public getDades(): Observable<HttpResponse<IClient[]>> {
     return this._http.get<IClient[]>(environment.apiUrl+'/api/clients',    { observe: 'response' });
   }
+
+  public deleteClient(id: any): Observable<any> {
+    return this._http.delete(`${environment.apiUrl}/api/client/${id}`);
+  }
+
 }

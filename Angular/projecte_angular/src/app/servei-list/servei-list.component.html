@@ -1,25 +1,25 @@
 <div class="panel panel-primary">
-    <div class="panel-heading text-center">
-      <h1>{{titolLlistat}}</h1>
-</div>
+  <div class="panel-heading text-center">
+    <h1>{{titolLlistat}}</h1>
+  </div>
 
-    <!-- caixa de filtrat -->
-    <div class="row section text-center">
-      <div class="col-md-6">
-        <label>Filtrat per:</label>
-        <input type="text" [(ngModel)] = "listFilter">
-      </div>
-      <div class="col-md-6">
-        <button [routerLink]="['../servei-form/']" class="btn btn-crear btn-success">Crear</button>
-      </div>
+  <!-- caixa de filtrat -->
+  <div class="row section text-center">
+    <div class="col-md-6">
+      <label>Filtrat per:</label>
+      <input type="text" [(ngModel)]="listFilter">
     </div>
-    <!-- fi caixa filtrat -->
-
-
-    <div *ngIf="serveis.length==0">
-      <h4>No hi ha serveis</h4>
+    <div class="col-md-6">
+      <button [routerLink]="['../servei-form/']" class="btn btn-crear btn-success">Crear</button>
     </div>
-    <div *ngIf="serveis.length>0" class="table-responsive">
+  </div>
+  <!-- fi caixa filtrat -->
+
+
+  <div *ngIf="serveis.length==0">
+    <h4>No hi ha serveis</h4>
+  </div>
+  <div *ngIf="serveis.length>0" class="table-responsive">
     <table class="table">
       <thead>
         <tr>
@@ -43,5 +43,5 @@
         </tr>
       </tbody>
     </table>
-    </div>
+  </div>
 </div>

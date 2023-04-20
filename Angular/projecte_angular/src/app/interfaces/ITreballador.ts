@@ -1,10 +1,9 @@
 
-export interface IClient {
-
+export interface ITreballador {
         id:number;
         nom:string;
         cognoms:string;
         nif:string;
-        user_id:String;
-        tipu_id:number;
+        sou:number;
+        carrec:string;
 }

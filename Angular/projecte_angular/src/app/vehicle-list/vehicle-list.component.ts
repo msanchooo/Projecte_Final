@@ -8,6 +8,7 @@ import { IVehicle } from '../interfaces/IVehicle';
   styleUrls: ['./vehicle-list.component.css']
 })
 export class VehicleListComponent implements OnInit {
+  router: any;
   constructor(private vehicleService: DadesVehiclesService) { }
   ngOnInit() {
     console.log("Listat de vehicles inicialitzat");
@@ -15,6 +16,25 @@ export class VehicleListComponent implements OnInit {
       if(resp.body) this.vehicles = resp.body;
     });
 
+  }
+
+  confirmarEliminacion(): boolean {
+    return confirm("¿Está seguro de que desea eliminar este vehiculo?");
+  }
+
+  eliminarVehicle(id: any) {
+    if (this.confirmarEliminacion()) {
+      this.vehicleService.deleteVehicle(id)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.ngOnInit();
+          },
+          error => {
+            console.log(error);
+          });
+    }
+    this.router.navigate(['vehicle-list']);
   }
 
   titolLlistat = 'Llistat de vehicles';

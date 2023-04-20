@@ -8,6 +8,7 @@ import { IClient } from '../interfaces/IClient';
   styleUrls: ['./client-list.component.css']
 })
 export class ClientListComponent {
+  router: any;
 
   constructor(private clientService: DadesClientsService) { }
 
@@ -18,6 +19,25 @@ export class ClientListComponent {
       // accedim al body de la resposta HTTP.
       if(resp.body) this.clients = resp.body;
     });
+  }
+
+  confirmarEliminacion(): boolean {
+    return confirm("¿Está seguro de que desea eliminar este cliente?");
+  }
+
+  eliminarClient(id: any) {
+    if (this.confirmarEliminacion()) {
+      this.clientService.deleteClient(id)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.ngOnInit();
+          },
+          error => {
+            console.log(error);
+          });
+    }
+    this.router.navigate(['client-list']);
   }
 
   titolLlistat = 'Llistat de clients';
