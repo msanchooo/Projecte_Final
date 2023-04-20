@@ -9,11 +9,15 @@
     background-color: #212529;
     font-family: "Anton", sans-serif;
   }
-  
+
+  /* .vid{
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+   */
   .sect {
     width: 100%;
     min-height: 100%;
-    
   }
   
   /* .sect video {
