@@ -19,7 +19,7 @@ import {MatMenuModule} from '@angular/material/menu';
 
 
 // Import the module from the SDK
-import { AuthModule } from '@auth0/auth0-angular';
+// import { AuthModule } from '@auth0/auth0-angular';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -42,13 +42,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     FullCalendarModule,
     AppRoutingModule,
-    AuthModule.forRoot({
-      domain: 'dev-iozfacvvx67ur8w5.us.auth0.com',
-      clientId: 'KucEEziF4NMQ6ggT6RXZfPHDPpJft1l2',
-      authorizationParams: {
-        redirect_uri: window.location.origin
-      }
-    }),
+    // AuthModule.forRoot({
+    //   domain: 'dev-iozfacvvx67ur8w5.us.auth0.com',
+    //   clientId: 'KucEEziF4NMQ6ggT6RXZfPHDPpJft1l2',
+    //   authorizationParams: {
+    //     redirect_uri: window.location.origin
+    //   }
+    // }),
     MatMenuModule,
     BrowserAnimationsModule,
   ],
