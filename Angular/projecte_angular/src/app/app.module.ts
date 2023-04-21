@@ -36,6 +36,7 @@ import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.com
 import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.component';
 import { TreballadorListComponent } from './treballador-list/treballador-list.component';
 import { TreballadorListFilterPipe } from './treballador-list/treballador-list-filter.pipe';
+import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { TreballadorListFilterPipe } from './treballador-list/treballador-list-f
     ServeiFormEditComponent,
     VehicleFormEditComponent,
     TreballadorListComponent,
-    TreballadorListFilterPipe
+    TreballadorListFilterPipe,
+    TreballadorFormComponent
     ],
   imports: [
     BrowserModule,

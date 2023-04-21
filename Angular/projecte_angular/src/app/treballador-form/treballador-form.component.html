@@ -1,0 +1,87 @@
+<div class="card">
+    <div class="card-header bg-danger text-white text-center">
+        <h1>Nou treballador</h1>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+            <div class="form-group">
+                <label for="nom" class="form-label">Nom:</label>
+                <input id="nom" placeholder="nom" class="form-control" formControlName="nom">
+            </div>
+            <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
+                {{formErrors['nom']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="cognoms" class="form-label">Cognoms:</label>
+                <input id="cognoms" placeholder="cognoms" class="form-control" formControlName="cognoms">
+            </div>
+            <div *ngIf="formErrors['cognoms'].length > 0" class="alert alert-danger">
+                {{formErrors['cognoms']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="nif" class="form-label">NIF:</label>
+                <input id="nif" placeholder="nif" class="form-control" formControlName="nif">
+            </div>
+            <div *ngIf="formErrors['nif'].length > 0" class="alert alert-danger">
+                {{formErrors['nif']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="email" class="form-label">Email:</label>
+                <input id="email" placeholder="Email" class="form-control" formControlName="email">
+            </div>
+            <div *ngIf="formErrors['email'].length > 0" class="alert alert-danger">
+                {{formErrors['email']}}
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Contraseña:</label>
+                <div class="input-group">
+                    <input id="password" type="{{ mostrarContrasenya ? 'text' : 'password' }}" placeholder="Contraseña"
+                        class="form-control" formControlName="password">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="mostrarOcultarContrasenya()">
+                            {{ mostrarContrasenya ? 'Ocultar' : 'Mostrar' }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="formErrors['password'].length > 0" class="alert alert-danger">
+                {{formErrors['password']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="sou" class="form-label">Sou:</label>
+                <input id="sou" placeholder="Sou" class="form-control" formControlName="sou">
+            </div>
+            <div *ngIf="formErrors['sou'].length > 0" class="alert alert-danger">
+                {{formErrors['sou']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="carrec" class="form-label">Carrec:</label>
+                <input id="carrec" placeholder="Carrec" class="form-control" formControlName="carrec">
+            </div>
+            <div *ngIf="formErrors['carrec'].length > 0" class="alert alert-danger">
+                {{formErrors['carrec']}}
+            </div>
+            <br>
+
+
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-lg btn-success">Crear</button>
+                </div>
+                <div class="col-md-6">
+                    <button [routerLink]="['../treballador-list']" class="btn btn-lg btn-danger">Cancelar</button>
+                </div>
+            </div>
+        </form>
+        <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">
+            {{ errorMessage }}
+        </div>
+    </div>
+</div>

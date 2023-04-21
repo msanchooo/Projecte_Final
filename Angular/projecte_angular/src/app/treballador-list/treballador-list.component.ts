@@ -15,7 +15,10 @@ export class TreballadorListComponent {
     console.log("Listat de treballadors inicialitzat");
     this.treballadorService.getDades().subscribe(resp => {
       if(resp.body) this.treballadors = resp.body;
+      console.log(this.treballadors);
     });
+
+
 
   }
 
@@ -23,7 +26,7 @@ export class TreballadorListComponent {
     return confirm("¿Está seguro de que desea eliminar este vehiculo?");
   }
 
-  eliminarTreballadors(id: any) {
+  eliminarTreballador(id: any) {
     if (this.confirmarEliminacion()) {
       this.treballadorService.deleteTreballador(id)
         .subscribe(
@@ -37,6 +40,12 @@ export class TreballadorListComponent {
     }
     this.router.navigate(['treballador-list']);
   }
+
+  mostrarContrasenya: boolean = false;
+
+    mostrarOcultarContrasenya(treballador: { mostrarContrasenya: boolean; }) {
+      treballador.mostrarContrasenya = !treballador.mostrarContrasenya;
+          }
 
   titolLlistat = 'Llistat de treballadors';
   treballadors:ITreballador[] = [];

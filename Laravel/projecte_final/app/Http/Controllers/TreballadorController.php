@@ -33,7 +33,8 @@ class TreballadorController extends BaseController
 
     function getTreballadors()
     {
-        return Treballador::all();
+        return Treballador::with('user')->get();
+
     }
 
     /**
@@ -60,7 +61,8 @@ class TreballadorController extends BaseController
 
     function getTreballador($id)
     {
-        return Treballador::find($id);
+        return Treballador::with('user')->find($id);
+
     }
 
         /**
@@ -135,7 +137,6 @@ class TreballadorController extends BaseController
     function insertTreballador(Request $request)
     {
           $request->validate([
-            'username' => ['required', 'min:6', 'max:12'],
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6', 'max:15'],
             'nom' => ['required', 'max:15'],
@@ -146,12 +147,9 @@ class TreballadorController extends BaseController
         ]);
 
         $user = User::create([
-            'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password,
-            'nom' => $request->nom,
-            'cognoms' => $request->cognoms,
-            'nif' => $request->nif
+
         ]);
 
 
@@ -159,7 +157,11 @@ class TreballadorController extends BaseController
         $treballador = Treballador::create([
             'user_id' => $user->id,
             'sou' => $request->sou,
-            'carrec'=>$request->carrec
+            'carrec'=>$request->carrec,
+            'nom' => $request->nom,
+            'cognoms' => $request->cognoms,
+            'nif' => $request->nif
+
         ]);
 
         return $treballador;

@@ -18,6 +18,7 @@ import { ServeiFormComponent } from './servei-form/servei-form.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
 import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.component';
 import { TreballadorListComponent } from './treballador-list/treballador-list.component';
+import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
 
 const routes: Routes = [
   {path:'body', component: BodyComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:'servei-form-edit/:id', component: ServeiFormEditComponent},
   {path:'user-list', component: ClientListComponent},
   {path:'treballador-list', component: TreballadorListComponent},
+  {path:'treballador-form', component: TreballadorFormComponent},
   {path:'', redirectTo:'body', pathMatch: 'full'},
   {path:'**', redirectTo:'body', pathMatch: 'full'}
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
