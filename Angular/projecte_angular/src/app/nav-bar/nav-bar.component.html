@@ -1,54 +1,85 @@
 <!-- navbar -->
-<div class="px-3 py-2 text-bg-dark">
-    <div class="container">
-      <div
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-      >
-        <a
-          href="/"
-          class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
-        >
-          <img src="../assets/img/logo.png" />
-        </a>
-
-        <ul
-          class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small"
-        >
-          <li>
-            <a aria-current="page" [routerLink]="['body']" class="nav-link text-white"> Inicio </a>
-          </li>
-          <li>
-            <a aria-current="page" [routerLink]="['servicios']" class="nav-link text-white"> Servicios </a>
-          </li>
-          <li>
-            <a aria-current="page" [routerLink]="['calendar']" class="nav-link text-white"> Cita Previa </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white"> Tienda </a>
-          </li>
-          <li>
-            <a aria-current="page" [routerLink]="['contacto']" class="nav-link text-white"> Contacto </a>
-          </li>
-        </ul>
-          <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
+<div class="navbar px-3 py-5 text-bg-dark">
+  <div class="container">
+    <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+      <img src="../assets/img/logo.png" />
+    </a>
 
 
-          <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-            <section *ngIf="auth.user$ | async as user">
-              <span>Welcome, {{ user.nickname }} </span>
-            </section>
-            &nbsp;
-            <button type="button" (click)="logOut()" class="btn btn-light">LogOut</button>
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+        <li>
+          <a aria-current="page" [routerLink]="['body']" class="nav-link text-white">
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a aria-current="page" [routerLink]="['servicios']" class="nav-link text-white">
+            Servicios
+          </a>
+        </li>
 
-          </ng-container>
+        <li>
+          <a href="#" class="nav-link text-white"> Cita Previa </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-white"> Tienda </a>
+        </li>
+        <li>
+          <a aria-current="page" [routerLink]="['contacto']" class="nav-link text-white">
+            Contacto
+          </a>
+        </li>
+      </ul>
       
-          <ng-template #loggedOut>
-            <button type="button" (click)="login()" class="btn btn-danger">Login / Sign-up</button>
-          </ng-template>
 
+      <!-- Verifica si esta loged -->
+      <section>
+        <!-- <section *ngIf="auth.user$ | async as user; else loggedOut"> -->
+        <!-- Client -->
+        <div class="btn-group">
+          <button class="btn btn-danger btn-primary">NOM USUARI</button>
+          <button mat-button [matMenuTriggerFor]="loged" class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split"
+            mdbDropdownToggle aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
 
-      </div>
+          <mat-menu #loged="matMenu" class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
+            <li><a class="dropdown-item" href="#">Soporte técnico</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <button type="button"  class="btn btn-light dropdown-item">
+                <!-- (click)="logOut()" -->
+                LogOut
+              </button>
+            </li>
+          </mat-menu>
+        </div>
+      </section>
+
+      <ng-template >
+        <!-- #loggedOut -->
+        <button type="button"  class="btn btn-danger">
+          <!-- (click)="login()" -->
+          Login / Sign-up
+        </button>
+      </ng-template>
+
+      <!-- <button mat-raised-button color="primary" (click)="showOptions()">
+        {{ isAdmin ? 'Opciones de Admin' : 'Opciones de Cliente' }}
+      </button> -->
+
+      <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
+
+      <!-- <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        &nbsp;
+        <button type="button" (click)="logOut()" class="btn btn-light">
+          LogOut
+        </button>
+      </ng-container> -->
     </div>
-    <section
-      class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-    >
+  </div>
+</div>
