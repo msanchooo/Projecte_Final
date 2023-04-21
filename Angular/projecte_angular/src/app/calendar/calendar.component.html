@@ -39,40 +39,7 @@
 
 </div>
 
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <div class="modal-header">
-        <h4 class="modal-header"></h4>
-        <button type="button" class="close" (click)="hideForm()" data-dismiss="modal">&times;</button>
-      </div>
-      
-      <div class="modal-body">
-        <form [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label>Nombre del evento</label>
-                <input placeholder="Introduce el nombre del evento" type="text" formControlName="title" class="titleinp form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
-                <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                  <div *ngIf="f.title.errors.required">El título es obligatorio</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label>Fecha del evento: </label>
-                <div class="form-control eventstarttitle"></div>
-              </div>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
