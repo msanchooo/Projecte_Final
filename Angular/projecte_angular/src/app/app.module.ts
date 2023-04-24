@@ -22,6 +22,8 @@ import {MatMenuModule} from '@angular/material/menu';
 // import { AuthModule } from '@auth0/auth0-angular';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Pack3Component,
     InicioComponent,
     DashboardComponent,
-    CalendarComponent
+    CalendarComponent,
+    LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // }),
     MatMenuModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatMenuModule,

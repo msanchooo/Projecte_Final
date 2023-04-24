@@ -31,16 +31,17 @@
           </a>
         </li>
       </ul>
-      
+
 
       <!-- Verifica si esta loged -->
-      <section>
+      <section *ngIf="logged(); else loggedOut">
         <!-- <section *ngIf="auth.user$ | async as user; else loggedOut"> -->
         <!-- Client -->
         <div class="btn-group">
           <button class="btn btn-danger btn-primary">NOM USUARI</button>
-          <button mat-button [matMenuTriggerFor]="loged" class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split"
-            mdbDropdownToggle aria-expanded="false">
+          <button mat-button [matMenuTriggerFor]="loged"
+            class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split" mdbDropdownToggle
+            aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
 
@@ -51,7 +52,7 @@
               <hr class="dropdown-divider" />
             </li>
             <li>
-              <button type="button"  class="btn btn-light dropdown-item">
+              <button type="button" class="btn btn-light dropdown-item">
                 <!-- (click)="logOut()" -->
                 LogOut
               </button>
@@ -60,9 +61,8 @@
         </div>
       </section>
 
-      <ng-template >
-        <!-- #loggedOut -->
-        <button type="button"  class="btn btn-danger">
+      <ng-template #loggedOut>
+        <button type="button" class="btn btn-danger" [routerLink]="['login']">
           <!-- (click)="login()" -->
           Login / Sign-up
         </button>
