@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DadesClientsService } from '../datos/dades-clients.service';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IClient } from '../interfaces/IClient';
+import { Util } from '../utilidades/util';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -35,7 +36,7 @@ export class VehicleFormComponent implements OnInit {
     });
 
     this.myForm.valueChanges.subscribe(() => {
-      this.onValueChanged();
+      Util.onValueChanged(false, this.myForm,this.formErrors,this.validationMessages);
     });
 
 
@@ -52,18 +53,7 @@ export class VehicleFormComponent implements OnInit {
   };
   clients: IClient[] = [];
 
-  onValueChanged() {
-    for (const field in this.formErrors) {
-      this.formErrors[field] = '';
-      const control = this.myForm.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
-  }
+
 
   validationMessages: any = {
     matricula: {
@@ -84,7 +74,8 @@ export class VehicleFormComponent implements OnInit {
   };
 
   onSubmit(vehicle: any) {
-    this.onValueChanged();
+    Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
+
 
     console.log(vehicle);
 

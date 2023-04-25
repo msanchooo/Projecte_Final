@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DadesServeisService } from '../datos/dades-serveis.service';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IVehicle } from '../interfaces/IVehicle';
+import { Util } from '../utilidades/util';
 
 @Component({
   selector: 'app-vehicle-form-edit',
@@ -37,7 +38,7 @@ export class VehicleFormEditComponent {
     this.id = this.ruta.snapshot.paramMap.get('id');
     this.getVehicle(this.id);
     this.myForm.valueChanges.subscribe(() => {
-      this.onValueChanged();
+      Util.onValueChanged(false, this.myForm,this.formErrors,this.validationMessages);
     });
 
   }
@@ -72,18 +73,7 @@ export class VehicleFormEditComponent {
     model: ''
   };
 
-  onValueChanged() {
-    for (const field in this.formErrors) {
-      this.formErrors[field] = '';
-      const control = this.myForm.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
-  }
+
 
   validationMessages: any = {
     matricula: {
@@ -104,7 +94,7 @@ export class VehicleFormEditComponent {
 
   onSubmit(): void {
     
-    this.onValueChanged();
+    Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
 
     const formData = new FormData();
     const matricula = this.myForm.get('matricula')?.value;

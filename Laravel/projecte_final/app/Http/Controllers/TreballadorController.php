@@ -139,11 +139,11 @@ class TreballadorController extends BaseController
           $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6', 'max:15'],
-            'nom' => ['required', 'max:15'],
-            'cognoms' => ['required', 'max:25'],
+            'nom' => ['required', 'max:15','alpha'],
+            'cognoms' => ['required', 'max:25','alpha'],
             'nif' => ['required'],
-            'sou' => ['required'],
-            'carrec' => ['required']
+            'sou' => ['required','regex:/^\d+(\.\d{1,2})?$/'],
+            'carrec' => ['required','alpha']
         ]);
 
         $user = User::create([
@@ -244,32 +244,31 @@ class TreballadorController extends BaseController
     function updateTreballador(Request $request, $id)
     {
         $request->validate([
-            'username' => ['required', 'min:6', 'max:12'],
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6', 'max:15'],
-            'nom' => ['required', 'max:15'],
-            'cognoms' => ['required', 'max:25'],
+            'nom' => ['required', 'max:15','alpha'],
+            'cognoms' => ['required', 'max:25','alpha'],
             'nif' => ['required'],
-            'sou' => ['required'],
-            'carrec' => ['required']
+            'sou' => ['required','regex:/^\d+(\.\d{1,2})?$/'],
+            'carrec' => ['required','alpha']
         ]);
 
         $treballador = Treballador::find($request->id);
 
         $treballador->update([
             'sou' => $request->sou,
-            'carrec'=>$request->carrec
+            'carrec'=>$request->carrec,
+            'nom' => $request->nom,
+            'cognoms' => $request->cognoms,
+            'nif' => $request->nif
         ]);
 
         $user = User::find($treballador->user_id);
 
         $user->update([
-            'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password,
-            'nom' => $request->nom,
-            'cognoms' => $request->cognoms,
-            'nif' => $request->nif
+
         ]);
 
 

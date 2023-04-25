@@ -102,9 +102,9 @@ class ServeiController extends BaseController
     {
 
         $request->validate([
-            'nom' => ['required', 'max:25'],
-            'preu' => ['required'],
-            'durada' => ['required']
+            'nom' => ['required', 'max:25','alpha'],
+            'preu' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'durada' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/']
         ]);
 
         return Servei::create([
@@ -157,9 +157,9 @@ class ServeiController extends BaseController
     {
 
         $request->validate([
-            'nom' => ['required', 'max:25'],
-            'preu' => ['required'],
-            'durada' => ['required']
+            'nom' => ['required', 'max:25','alpha'],
+            'preu' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'durada' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/']
         ]);
 
         $servei= Servei::find($request->id);

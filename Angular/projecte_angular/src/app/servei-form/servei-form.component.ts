@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DadesServeisService } from '../datos/dades-serveis.service';
+import { Util } from '../utilidades/util';
 
 @Component({
   selector: 'app-servei-form',
@@ -21,12 +22,13 @@ export class ServeiFormComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      nom: ['Pastillas Traseras', [Validators.required, Validators.maxLength(25)]],
-      preu: ['70', Validators.required],
-      durada: [1, Validators.required]
+      nom: ['Pastillas', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      preu: ['70', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      durada: [1, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
     });
     this.myForm.valueChanges.subscribe(() => {
-      this.onValueChanged();
+      Util.onValueChanged(false, this.myForm,this.formErrors,this.validationMessages);
+
     });
   }
   myForm: FormGroup;
@@ -38,37 +40,28 @@ export class ServeiFormComponent implements OnInit {
     durada: 0
   };
 
-  onValueChanged() {
-    for (const field in this.formErrors) {
-      this.formErrors[field] = '';
-      const control = this.myForm.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
-  }
-
   validationMessages: any = {
     nom: {
       required: 'El nombre es obligatoria.',
-      maxlength: 'El nombre no puede ser más largo que 25 caracteres.'
+      maxlength: 'El nombre no puede ser más largo que 25 caracteres.',
+      pattern: 'El nombre solo pueden contener letras'
     },
     preu: {
       required: 'El precio es obligatoria.',
-      maxlength: 'El precio no puede ser más largo que 25 caracteres.'
+      maxlength: 'El precio no puede ser más largo que 25 caracteres.',
+      pattern: 'El precio solo pueden contener numeros'
     },
     durada: {
       required: 'La durada es obligatoria.',
-      maxlength: 'La durada no puede ser más larga que 25 caracteres.'
+      maxlength: 'La durada no puede ser más larga que 25 caracteres.',
+      pattern: 'La duracion solo pueden contener letras'
     },
   };
 
   onSubmit(servei: any) {
 
-    this.onValueChanged();
+    Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
+
 
     console.log(servei);
 
@@ -77,7 +70,7 @@ export class ServeiFormComponent implements OnInit {
         this.router.navigate(['servei-list'])
       },
       error: (error) => {
-        this.errorMessage = error.message;
+       // this.errorMessage = error.message;
       }
     });
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DadesServeisService } from '../datos/dades-serveis.service';
 import { IServei } from '../interfaces/IServei';
+import { Util } from '../utilidades/util';
 
 @Component({
   selector: 'app-servei-form-edit',
@@ -33,7 +34,34 @@ export class ServeiFormEditComponent implements OnInit {
     this.createForm();
     this.id = this.ruta.snapshot.paramMap.get('id');
     this.getServei(this.id);
+    this.myForm.valueChanges.subscribe(() => {
+      Util.onValueChanged(false, this.myForm, this.formErrors, this.validationMessages);
+
+    });
   }
+  formErrors: any = {
+    nom: '',
+    marca: '',
+    preu: '',
+    durada: 0
+  };
+  validationMessages: any = {
+    nom: {
+      required: 'El nombre es obligatoria.',
+      maxlength: 'El nombre no puede ser más largo que 25 caracteres.',
+      pattern: 'El nombre solo pueden contener letras'
+    },
+    preu: {
+      required: 'El precio es obligatoria.',
+      maxlength: 'El precio no puede ser más largo que 25 caracteres.',
+      pattern: 'El precio solo pueden contener numeros'
+    },
+    durada: {
+      required: 'La durada es obligatoria.',
+      maxlength: 'La durada no puede ser más larga que 25 caracteres.',
+      pattern: 'La duracion solo pueden contener letras'
+    },
+  };
 
   getServei(id: string | null) {
     this.serveiService.getServei(id).subscribe(data => {
@@ -51,13 +79,15 @@ export class ServeiFormEditComponent implements OnInit {
 
   createForm(): void {
     this.myForm = this.formBuilder.group({
-      nom: [null],
-      preu: [null],
-      durada: [null]
+      nom: ['Pastillas Traseras', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      preu: ['70', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      durada: [1, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
     });
   }
 
   onSubmit(): void {
+    Util.onValueChanged(true, this.myForm, this.formErrors, this.validationMessages);
+
     const formData = new FormData();
     const nom = this.myForm.get('nom')?.value;
     const preu = this.myForm.get('preu')?.value;
@@ -68,18 +98,19 @@ export class ServeiFormEditComponent implements OnInit {
 
     const ps = this.serveiService.putServei(this.id, formData);
     ps.subscribe(
-      (resp) => { 
+      (resp) => {
         this.post = resp;
         if (resp.status == '200') {
           this.confirmacio = 'Servicio actualizado correctamente';
-          this.router.navigate(['list']);
+          this.router.navigate(['servei-list']);
         } else {
-          this.confirmacio = 'ERROR ' + resp.status; 
+          this.confirmacio = 'ERROR ' + resp.status;
         }
       },
-      (error) => {  
-        alert('Error: ' + error.message); // podríamos mostrar el error en html
-      });      
+      (error) => {
+       // alert('Error: ' + error.message); // podríamos mostrar el error en html
+      });
+
   }
 
 
