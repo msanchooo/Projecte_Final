@@ -20,7 +20,10 @@ return new class extends Migration
             // Foreign key d'usuari id
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-
+            $table->string('nom');
+            $table->string('cognoms');
+            $table->string('nif');
+            
             //Particular o Empresa
             $table->unsignedBigInteger('tipu_id');
             $table->foreign('tipu_id')->references('id')->on('tipus_clients');

@@ -38,7 +38,7 @@ Route::get('/citas', [CitaController::class, 'getCitas']);
 
 Route::get('/cita/{id}', [CitaController::class, 'getCita']);
 
-Route::put('/cita/{id}', [CitaController::class, 'updateCita'])->name('cita_update');
+Route::post('/cita/{id}', [CitaController::class, 'updateCita'])->name('cita_update');
 
 Route::post('/cita', [CitaController::class, 'insertCita']);
 
@@ -50,7 +50,7 @@ Route::get('/clients', [ClientController::class, 'getClients'])->name('clients_l
 
 Route::get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
-Route::put('/client/{id}', [ClientController::class, 'updateClient'])->name('client_update');
+Route::post('/client/{id}', [ClientController::class, 'updateClient'])->name('client_update');
 
 Route::post('/client', [ClientController::class, 'insertClient']);
 
@@ -62,7 +62,7 @@ Route::get('/treballadors', [TreballadorController::class, 'getTreballadors'])->
 
 Route::get('/treballador/{id}', [TreballadorController::class, 'getTreballador'])->name('treballador_cerca');
 
-Route::put('/treballador/{id}', [TreballadorController::class, 'updateTreballador'])->name('treballador_update');
+Route::post('/treballador/{id}', [TreballadorController::class, 'updateTreballador'])->name('treballador_update');
 
 Route::post('/treballador', [TreballadorController::class, 'insertTreballador'])->name('treballador_insert');
 
@@ -74,7 +74,7 @@ Route::get('/users', [UserController::class, 'getUsers'])->name('users_list');
 
 Route::get('/user/{id}', [UserController::class, 'getUser'])->name('user_cerca');
 
-Route::put('/user/{id}', [UserController::class, 'updateUser'])->name('user_update');
+Route::post('/user/{id}', [UserController::class, 'updateUser'])->name('user_update');
 
 Route::post('/user', [UserController::class, 'insertUser']);
 
@@ -86,7 +86,7 @@ Route::get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicl
 
 Route::get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
 
-Route::put('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
+Route::post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 
 Route::post('/vehicle', [VehicleController::class, 'insertVehicle'])->name('vehicle_insert');
 
@@ -98,7 +98,7 @@ Route::get('/serveis', [ServeiController::class, 'getServeis'])->name('serveis_l
 
 Route::get('/servei/{id}', [ServeiController::class, 'getServei'])->name('servei_cerca');
 
-Route::put('/servei/{id}', [ServeiController::class, 'updateServei'])->name('servei_update');
+Route::post('/servei/{id}', [ServeiController::class, 'updateServei'])->name('servei_update');
 
 Route::post('/servei', [ServeiController::class, 'insertServei'])->name('servei_insert');
 

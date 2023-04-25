@@ -25,6 +25,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
+import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
+import { VehicleListFilterPipe } from './vehicle-list/vehicle-list-filter.pipe';
+
+import { ClientListComponent } from './client-list/client-list.component';
+import { ClientListFilterPipe } from './client-list/client-list-filter.pipe';
+
+import { ServeiListComponent } from './servei-list/servei-list.component';
+import { ServeiListFilterPipe } from './servei-list/servei-list-filter.pipe';
+import { ServeiFormComponent } from './servei-form/servei-form.component';
+
+import { UserListComponent } from './user-list/user-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
+import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
+import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.component';
+import { TreballadorListComponent } from './treballador-list/treballador-list.component';
+import { TreballadorListFilterPipe } from './treballador-list/treballador-list-filter.pipe';
+import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
+import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,14 +61,44 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Pack3Component,
     InicioComponent,
     DashboardComponent,
+    VehicleListComponent,
+    ClientListComponent,
+    UserListComponent,
+    AdminComponent,
+    ClientListFilterPipe,
+    VehicleListFilterPipe,
+    VehicleFormComponent,
+    ServeiListComponent,
+    ServeiListFilterPipe,
+    ServeiFormComponent,
+    ServeiFormEditComponent,
+    VehicleFormEditComponent,
+    TreballadorListComponent,
+    TreballadorListFilterPipe,
+    TreballadorFormComponent,
+    TreballadorFormEditComponent
+    ],
     CalendarComponent,
     LoginComponent,
     
   ],
+
   imports: [
     BrowserModule,
     FullCalendarModule,
     AppRoutingModule,
+
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-iozfacvvx67ur8w5.us.auth0.com',
+      clientId: 'KucEEziF4NMQ6ggT6RXZfPHDPpJft1l2',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
+
     // AuthModule.forRoot({
     //   domain: 'dev-iozfacvvx67ur8w5.us.auth0.com',
     //   clientId: 'KucEEziF4NMQ6ggT6RXZfPHDPpJft1l2',
@@ -60,6 +113,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     MatMenuModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

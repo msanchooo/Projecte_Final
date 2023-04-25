@@ -1,0 +1,16 @@
+.panel{
+    margin: 50px;
+}
+
+.section{
+    margin: 50px;
+}
+
+.btn-crear{
+    width:175px;
+}
+
+a{
+    color: rgb(255, 0, 0)!important;
+    cursor: pointer;
+}

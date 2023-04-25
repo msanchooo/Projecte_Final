@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      {{titolLlistat}}
+    </div>
+
+    <div *ngIf="users.length==0">
+      <h4>No hi ha users</h4>
+    </div>
+    <div *ngIf="users.length>0" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Username</th>
+          <th>email</th>
+          <th>password</th>
+          <th>nom</th>
+          <th>cognoms</th>
+          <th>nif</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.id}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.password}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+</div>
+
