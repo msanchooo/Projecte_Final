@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,9 +15,15 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {MatMenuModule} from '@angular/material/menu'; 
+
 
 // Import the module from the SDK
-import { AuthModule } from '@auth0/auth0-angular';
+// import { AuthModule } from '@auth0/auth0-angular';
+import { CalendarComponent } from './calendar/calendar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -70,9 +78,16 @@ import { TreballadorFormEditComponent } from './treballador-form-edit/treballado
     TreballadorFormComponent,
     TreballadorFormEditComponent
     ],
+    CalendarComponent,
+    LoginComponent,
+    
+  ],
+
   imports: [
     BrowserModule,
+    FullCalendarModule,
     AppRoutingModule,
+
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -83,8 +98,25 @@ import { TreballadorFormEditComponent } from './treballador-form-edit/treballado
         redirect_uri: window.location.origin
       }
     }),
+
+    // AuthModule.forRoot({
+    //   domain: 'dev-iozfacvvx67ur8w5.us.auth0.com',
+    //   clientId: 'KucEEziF4NMQ6ggT6RXZfPHDPpJft1l2',
+    //   authorizationParams: {
+    //     redirect_uri: window.location.origin
+    //   }
+    // }),
+    MatMenuModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    MatMenuModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

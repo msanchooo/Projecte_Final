@@ -8,6 +8,8 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { LoginComponent } from './login/login.component';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -28,6 +30,7 @@ const routes: Routes = [
   {path:'pack2', component: Pack2Component},
   {path:'pack3', component: Pack3Component},
   {path:'contacto', component: ContactoComponent},
+
   {path:'admin', component: AdminComponent},
   {path:'vehicle-list', component: VehicleListComponent},
   {path:'vehicle-form', component: VehicleFormComponent},
@@ -40,8 +43,11 @@ const routes: Routes = [
   {path:'treballador-list', component: TreballadorListComponent},
   {path:'treballador-form', component: TreballadorFormComponent},
   {path:'treballador-form-edit/:id', component: TreballadorFormEditComponent},
+  {path: 'calendar', component: CalendarComponent},
+  {path: 'login', component: LoginComponent},
+
   {path:'', redirectTo:'body', pathMatch: 'full'},
-  {path:'**', redirectTo:'body', pathMatch: 'full'}
+  {path:'**', redirectTo:'body', pathMatch: 'full'},
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   // { path: 'inicio', component: InicioComponent },
   // { path: 'dashboard', component: DashboardComponent },
