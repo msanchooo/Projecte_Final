@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FullCalendarModule } from '@fullcalendar/angular';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -15,8 +14,8 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {MatMenuModule} from '@angular/material/menu'; 
-
+import { MatMenuModule } from '@angular/material/menu';
+import { ToastrModule } from 'ngx-toastr';
 
 // Import the module from the SDK
 // import { AuthModule } from '@auth0/auth0-angular';
@@ -24,6 +23,12 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './login_material/register/register.component';
+import { UserlistingComponent } from './login_material/userlisting/userlisting.component';
+import { UpdatepopupComponent } from './login_material/updatepopup/updatepopup.component';
+import { LoginMaterialComponent } from './login_material/login-material/login-material.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     CalendarComponent,
     LoginComponent,
-    
+    RegisterComponent,
+    UserlistingComponent,
+    UpdatepopupComponent,
+    LoginMaterialComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,13 +64,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
-  exports: [
-    MatMenuModule,
-  ],
+  exports: [MatMenuModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}
