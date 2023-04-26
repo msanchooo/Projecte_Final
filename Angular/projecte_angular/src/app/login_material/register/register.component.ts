@@ -18,12 +18,13 @@ export class RegisterComponent {
   ) {}
 
   registerForm = this.builder.group({
-    id: this.builder.control('', Validators.compose([Validators.required])),
+    // id: this.builder.control('', Validators.compose([Validators.required])),
     nom: this.builder.control('', Validators.required),
     cognoms: this.builder.control('', Validators.required),
+    nif: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.required),
     password: this.builder.control('', Validators.required),
-    role: this.builder.control('', Validators.required),
+    // rol: this.builder.control('', Validators.required)
   });
 
   proceedregistration() {

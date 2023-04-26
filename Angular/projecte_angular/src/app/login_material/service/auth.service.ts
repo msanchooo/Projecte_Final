@@ -1,42 +1,60 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Environment } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  apiurl = 'http://localhost:4200/user';
+  // apiurl = 'http://localhost:4200/user';
 
   GetAll() {
-    return this.http.get(this.apiurl);
+    return this.http.get(environment.apiUrl);
   }
 
   Getbycode(code: any) {
-    return this.http.get(this.apiurl + '/' + code);
+    return this.http.get(environment.apiUrl + '/' + code);
   }
 
-  Proceedregister(inputdata: any) {
-    return this.http.put(this.apiurl, inputdata);
+  Proceedregister(inputdata: any): Observable<any> {
+    return this.http
+      .post(environment.apiUrl + '/api/client', inputdata, {
+        observe: 'response',
+      })
+      .pipe(catchError(this.handleError));
   }
 
   Updateuser(code: any, inputdata: any) {
-    return this.http.put(this.apiurl + '/' + code, inputdata);
+    return this.http.put(environment.apiUrl + '/' + code, inputdata);
   }
 
-
-  IsloggedIn(){
-    return sessionStorage.getItem('username')!=null;
+  IsloggedIn() {
+    return sessionStorage.getItem('id') != null;
   }
 
-  GetUserrole(){
-    return sessionStorage.getItem('userrole')!=null?sessionStorage.getItem('userrole')?.toString():'';
+  GetUserrole() {
+    return sessionStorage.getItem('userrole') != null
+      ? sessionStorage.getItem('userrole')?.toString()
+      : '';
   }
 
-
-
-
-
-
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
+  }
 }

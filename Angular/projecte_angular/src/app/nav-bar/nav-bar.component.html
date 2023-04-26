@@ -54,31 +54,6 @@
       </ul>
       <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
 
-
-      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-        <section *ngIf="auth.user$ | async as user">
-          <span>Welcome, {{ user.nickname }} </span>
-        </section>
-        &nbsp;
-        <button type="button" (click)="logOut()" class="btn btn-light">LogOut</button>
-
-      </ng-container>
-
-      <ng-template #loggedOut>
-        <button type="button" (click)="login()" class="btn btn-danger">Login / Sign-up</button>
-      </ng-template>
-
-
-    </div>
-  </div>
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-          <a aria-current="page" [routerLink]="['contacto']" class="nav-link text-white">
-            Contacto
-          </a>
-        </li>
-      </ul>
-
-
       <!-- Verifica si esta loged -->
       <section *ngIf="logged(); else loggedOut">
         <!-- <section *ngIf="auth.user$ | async as user; else loggedOut"> -->

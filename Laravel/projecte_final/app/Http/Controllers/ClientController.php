@@ -120,16 +120,22 @@ class ClientController extends BaseController
             'nom' => ['required', 'max:15'],
             'cognoms' => ['required', 'max:25'],
             'nif' => ['required'],
-            'tipu_id' => ['required', 'integer', 'min:1', 'max:2'],
+            // 'tipu_id' => ['required', 'integer', 'min:1', 'max:2'],
             'user_id'=> ['required']
+        ]);
+
+        $user = User::create([
+            'email' => $request->email,
+            'password' => $request->password,
+
         ]);
 
         $client = Client::create([
             'nom' => $request->nom,
             'cognoms' => $request->cognoms,
             'nif' => $request->nif,
-            'tipu_id' => $request->tipu_id,
-            'user_id' => $request->user_id
+            'tipu_id' => 1,
+            'user_id' => $user->id
     
 
         ]);
