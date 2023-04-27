@@ -121,7 +121,7 @@ class ClientController extends BaseController
             'cognoms' => ['required', 'max:25'],
             'nif' => ['required'],
             // 'tipu_id' => ['required', 'integer', 'min:1', 'max:2'],
-            'user_id'=> ['required']
+            //'user_id'=> ['required']
         ]);
 
         $user = User::create([
@@ -129,7 +129,7 @@ class ClientController extends BaseController
             'password' => $request->password,
 
         ]);
-
+        //dd($user);
         $client = Client::create([
             'nom' => $request->nom,
             'cognoms' => $request->cognoms,
