@@ -27,6 +27,7 @@ class UserController extends BaseController
     {
         return User::find($id);
     }
+
     function insertClient(Request $request)
     {
 
@@ -34,6 +35,7 @@ class UserController extends BaseController
 
 
     }
+
     function updateUser(Request $request, $id)
     {
 
@@ -51,5 +53,10 @@ class UserController extends BaseController
         $user->delete();
 
         return $user;
+    }
+
+    function getUserLogin($mail)
+    {
+        return User::where('email', $mail)->first();
     }
 }

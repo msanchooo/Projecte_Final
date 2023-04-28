@@ -29,17 +29,19 @@ export class LoginMaterialComponent {
 
   proceedlogin() {
     if (this.loginform.valid) {
+      this.service.Getbycode(this.loginform.value.email).subscribe((res) => {
+        this.userdata = res;
+        console.log(this.userdata);
+        console.log(this.userdata.body.password);
+        console.log(this.userdata.password);
+        if (this.userdata.body.password === this.loginform.value.password) {
+          sessionStorage.setItem('id', this.userdata.body.id);
+          sessionStorage.setItem('rol', this.userdata.body.rol);
+          this.router.navigate(['']);
+        } else {
+          this.toastr.error('Invalid credentials');
+        }
+      });
     }
-    this.service.Getbycode(this.loginform.value.email).subscribe((res) => {
-      this.userdata = res;
-      console.log(this.userdata);
-      if (this.userdata.password === this.loginform.value.password) {
-        sessionStorage.setItem('email', this.userdata.id);
-        sessionStorage.setItem('userrole', this.userdata.role);
-        this.router.navigate(['']);
-      } else {
-        this.toastr.error('Invalid credentials');
-      }
-    });
   }
 }

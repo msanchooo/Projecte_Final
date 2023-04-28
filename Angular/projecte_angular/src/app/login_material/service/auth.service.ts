@@ -1,7 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { catchError, Observable, throwError } from 'rxjs';
+import { IUser } from '../../interfaces/IUser';
+import { I } from '@fullcalendar/core/internal-common';
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +17,8 @@ export class AuthService {
     return this.http.get(environment.apiUrl);
   }
 
-  Getbycode(code: any) {
-    return this.http.get(environment.apiUrl + '/' + code);
+  Getbycode(code: any): Observable<HttpResponse<IUser>> {
+    return this.http.get<IUser>(environment.apiUrl+'/api/userLogin/' + code,    { observe: 'response' });
   }
 
   Proceedregister(inputdata: any): Observable<any> {

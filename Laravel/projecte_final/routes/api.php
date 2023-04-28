@@ -74,6 +74,11 @@ Route::get('/users', [UserController::class, 'getUsers'])->name('users_list');
 
 Route::get('/user/{id}', [UserController::class, 'getUser'])->name('user_cerca');
 
+
+// Buscar usuario por correo para login (prueba)
+Route::get('/userLogin/{email}', [UserController::class, 'getUserLogin'])->name('user_login');
+
+
 Route::post('/user/{id}', [UserController::class, 'updateUser'])->name('user_update');
 
 Route::post('/user', [UserController::class, 'insertUser']);
