@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ThisReceiver } from '@angular/compiler';
+import { DadesClientsService } from 'src/app/datos/dades-clients.service';
+import { DadesTreballadorsService } from 'src/app/datos/dades-treballadors.service';
 
 @Component({
   selector: 'app-login-material',
@@ -15,7 +17,9 @@ export class LoginMaterialComponent {
     private builder: FormBuilder,
     private toastr: ToastrService,
     private service: AuthService,
-    private router: Router
+    private router: Router,
+    private clientService: DadesClientsService,
+    private treballadorService: DadesTreballadorsService
   ) {
     sessionStorage.clear();
   }
@@ -38,12 +42,14 @@ export class LoginMaterialComponent {
           sessionStorage.setItem('id_user', this.userdata.body.id);
           sessionStorage.setItem('rol', this.userdata.body.rol);
 
-          const rol=this.userdata.body.rol;
+          const rol = this.userdata.body.rol;
 
-          if(rol==1){
-            sessionStorage.setItem('id', );
+          console.log(this.clientService.getClientByUserId('1'));
+          if (rol == 1) {
+            // sessionStorage.setItem('id', this.clientService.getClientByUserId('1').id);
+          } else {
           }
-        
+
           this.router.navigate(['']);
         } else {
           this.toastr.error('Invalid credentials');

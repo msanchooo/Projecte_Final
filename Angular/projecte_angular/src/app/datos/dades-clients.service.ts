@@ -20,4 +20,8 @@ export class DadesClientsService {
     return this._http.delete(`${environment.apiUrl}/api/client/${id}`);
   }
 
+  public getClientByUserId(id: any): Observable<IClient> {
+    return this._http.get<IClient>(`${environment.apiUrl}/api/client-user/${id}`);
+  }
+
 }
