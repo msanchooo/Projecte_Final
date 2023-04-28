@@ -71,6 +71,9 @@ Route::post('/treballador', [TreballadorController::class, 'insertTreballador'])
 
 Route::delete('/treballador/{id}', [TreballadorController::class, 'deleteTreballador'])->name('treballador_delete');
 
+Route::get('/treballador-user/{id}', [TreballadorController::class, 'getTreballadorByUserId'])->name('treballador_user');
+
+
 //// Users
 
 Route::get('/users', [UserController::class, 'getUsers'])->name('users_list');
