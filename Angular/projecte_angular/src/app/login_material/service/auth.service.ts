@@ -10,7 +10,7 @@ import { I } from '@fullcalendar/core/internal-common';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   // apiurl = 'http://localhost:4200/user';
 
   GetAll() {
@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   Getbycode(code: any): Observable<HttpResponse<IUser>> {
-    return this.http.get<IUser>(environment.apiUrl+'/api/userLogin/' + code,    { observe: 'response' });
+    return this.http.get<IUser>(environment.apiUrl + '/api/userLogin/' + code, { observe: 'response' });
   }
 
   Proceedregister(inputdata: any): Observable<any> {
@@ -33,13 +33,17 @@ export class AuthService {
     return this.http.put(environment.apiUrl + '/' + code, inputdata);
   }
 
-  IsloggedIn() {
+  GetIdUser() {
+    return sessionStorage.getItem('id') != null;
+  }
+
+  GetId() {
     return sessionStorage.getItem('id') != null;
   }
 
   GetUserrole() {
-    return sessionStorage.getItem('userrole') != null
-      ? sessionStorage.getItem('userrole')?.toString()
+    return sessionStorage.getItem('rol') != null
+      ? sessionStorage.getItem('rol')?.toString()
       : '';
   }
 
