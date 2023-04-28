@@ -28,7 +28,7 @@ import { TreballadorFormComponent } from './treballador-form/treballador-form.co
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
 
 const routes: Routes = [
-  {path:'body', component: BodyComponent, canActivate:[AuthGuard]},
+  {path:'body', component: BodyComponent},
   {path:'servicios', component: ServiciosComponent},
   {path:'pack1', component: Pack1Component},
   {path:'pack2', component: Pack2Component},
@@ -55,7 +55,7 @@ const routes: Routes = [
   {path: 'login-material', component: LoginMaterialComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'user', component: UserlistingComponent, canActivate:[AuthGuard]},
-  {path:'', redirectTo:'body', pathMatch: 'full'},
+  {path:'', redirectTo:'body', pathMatch: 'full', canActivate:[AuthGuard]},
   {path:'**', redirectTo:'body', pathMatch: 'full'},
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   // { path: 'inicio', component: InicioComponent },

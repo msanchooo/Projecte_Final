@@ -56,6 +56,9 @@ Route::post('/client', [ClientController::class, 'insertClient']);
 
 Route::delete('/client/{id}', [ClientController::class, 'deleteClient'])->name('client_delete');
 
+Route::get('/client-user/{id}', [ClientController::class, 'getClientByUserId'])->name('client_user');
+
+
 //// Treballadors
 
 Route::get('/treballadors', [TreballadorController::class, 'getTreballadors'])->name('treballadors_list');
@@ -75,7 +78,7 @@ Route::get('/users', [UserController::class, 'getUsers'])->name('users_list');
 Route::get('/user/{id}', [UserController::class, 'getUser'])->name('user_cerca');
 
 
-// Buscar usuario por correo para login (prueba)
+// Buscar usuario por correo para login
 Route::get('/userLogin/{email}', [UserController::class, 'getUserLogin'])->name('user_login');
 
 

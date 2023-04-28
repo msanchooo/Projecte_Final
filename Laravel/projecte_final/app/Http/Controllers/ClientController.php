@@ -257,4 +257,11 @@ class ClientController extends BaseController
 
         return $client;
     }
+
+
+    function getClientByUserId($userId)
+    {
+        return Client::where('user_id', $userId)->first();
+    }
+
 }
