@@ -309,4 +309,9 @@ class TreballadorController extends BaseController
 
         return $treballador;
     }
+
+    function getTreballadorByUserId($userId)
+    {
+        return Treballador::where('user_id', $userId)->first();
+    }
 }
