@@ -23,8 +23,8 @@ export class LoginMaterialComponent {
   userdata: any;
 
   loginform = this.builder.group({
-    email: this.builder.control('', Validators.required),
-    password: this.builder.control('', Validators.required),
+    email: this.builder.control('tuku@tuku.com', Validators.required),
+    password: this.builder.control('P@ssw0rd', Validators.required),
   });
 
   proceedlogin() {
@@ -35,8 +35,15 @@ export class LoginMaterialComponent {
         console.log(this.userdata.body.password);
         console.log(this.userdata.password);
         if (this.userdata.body.password === this.loginform.value.password) {
-          sessionStorage.setItem('id', this.userdata.body.id);
+          sessionStorage.setItem('id_user', this.userdata.body.id);
           sessionStorage.setItem('rol', this.userdata.body.rol);
+
+          const rol=this.userdata.body.rol;
+
+          if(rol==1){
+            sessionStorage.setItem('id', );
+          }
+        
           this.router.navigate(['']);
         } else {
           this.toastr.error('Invalid credentials');
