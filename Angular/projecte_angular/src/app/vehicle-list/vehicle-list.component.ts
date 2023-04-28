@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IVehicle } from '../interfaces/IVehicle';
-import { AuthService } from '../login_material/util/authService';
+import { AuthService } from '../login_material/service/auth.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -10,15 +10,18 @@ import { AuthService } from '../login_material/util/authService';
 })
 export class VehicleListComponent implements OnInit {
   router: any;
-  constructor(private vehicleService: DadesVehiclesService,private authService: AuthService) { }
+  constructor(private vehicleService: DadesVehiclesService,private service: AuthService) { }
   ngOnInit() {
 
-    const rol=  GetUserrole();
+   
+    const idClient= this.service.GetId();
 
-    if(rol==1){
 
-    this.vehicleService.getDades().subscribe(resp => {
-      if(resp.body) this.vehicles = resp.body;
+    if(this.service.GetUserrole()=="1"){
+
+    this.vehicleService.getVehicleClient(idClient).subscribe(resp => {
+      console.log(resp);
+      // if(resp.body) this.vehicles = resp.body;
     });
     }else{
 
@@ -26,9 +29,6 @@ export class VehicleListComponent implements OnInit {
       if(resp.body) this.vehicles = resp.body;
     });
   }
-    const userData = this.authService.getUserData();
-    console.log(userData);
-    console.log(userData);
 
   }
 
@@ -57,4 +57,6 @@ export class VehicleListComponent implements OnInit {
 
 
 }
+
+
 

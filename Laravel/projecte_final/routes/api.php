@@ -91,7 +91,7 @@ Route::get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicl
 
 Route::get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
 
-Route::get('/vehicle/{id}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
+Route::get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
 
 Route::post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 

@@ -218,4 +218,13 @@ class VehicleController extends BaseController
 
         return $vehicle;
     }
+
+    function getVehicleClient($idClient){
+
+
+        $vehicles = Vehicle::where('client_id', $idClient);
+
+        return $vehicles;
+
+    }
 }
