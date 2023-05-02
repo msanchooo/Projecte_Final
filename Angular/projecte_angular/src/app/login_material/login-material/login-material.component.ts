@@ -44,7 +44,7 @@ export class LoginMaterialComponent {
 
           const rol = this.userdata.body.rol;
 
-          console.log(this.clientService.getClientByUserId('1'));
+          console.log(this.clientService.getClientByUserId(3));
           if (rol == 1) {
             // sessionStorage.setItem('id', this.clientService.getClientByUserId('1').id);
           } else {

@@ -26,6 +26,7 @@ import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.
 import { TreballadorListComponent } from './treballador-list/treballador-list.component';
 import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
+import { LoginTokenComponent } from './login-token/login-token.component';
 
 const routes: Routes = [
   {path:'body', component: BodyComponent},
@@ -51,11 +52,12 @@ const routes: Routes = [
   {path:'treballador-form-edit/:id', component: TreballadorFormEditComponent},
  
 
+  {path: 'login-token', component: LoginTokenComponent},
 
   {path: 'login-material', component: LoginMaterialComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'user', component: UserlistingComponent, canActivate:[AuthGuard]},
-  {path:'', redirectTo:'body', pathMatch: 'full', canActivate:[AuthGuard]},
+  {path:'', redirectTo:'body', pathMatch: 'full'},
   {path:'**', redirectTo:'body', pathMatch: 'full'},
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   // { path: 'inicio', component: InicioComponent },
