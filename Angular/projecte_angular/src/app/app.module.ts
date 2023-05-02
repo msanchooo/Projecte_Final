@@ -24,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './login_material/register/register.component';
 import { UserlistingComponent } from './login_material/userlisting/userlisting.component';
 import { UpdatepopupComponent } from './login_material/updatepopup/updatepopup.component';
@@ -49,8 +49,12 @@ import { TreballadorListComponent } from './treballador-list/treballador-list.co
 import { TreballadorListFilterPipe } from './treballador-list/treballador-list-filter.pipe';
 import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
-import { LoginTokenComponent } from './login-token/login-token.component';
 
+import { LoginTokenComponent } from './login-token/login-token.component';
+import { fakeBackendProvider } from './login-token/_helpers/fake-backend';
+import { JwtInterceptor } from './login-token/_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
+import { HomeComponent } from './login-token/home/home.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +93,7 @@ import { LoginTokenComponent } from './login-token/login-token.component';
     TreballadorFormComponent,
     TreballadorFormEditComponent,
     LoginTokenComponent,
+    HomeComponent,
   ],
 
   imports: [
@@ -101,10 +106,15 @@ import { LoginTokenComponent } from './login-token/login-token.component';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   exports: [MatMenuModule],
-  providers: [],
+
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

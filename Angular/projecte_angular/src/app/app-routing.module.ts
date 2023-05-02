@@ -13,7 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { LoginMaterialComponent } from './login_material/login-material/login-material.component';
 import { RegisterComponent } from './login_material/register/register.component';
 import { UserlistingComponent } from './login_material/userlisting/userlisting.component';
-import { AuthGuard } from 'src/app/login_material/guard/auth.guard';
+// import { AuthGuard } from 'src/app/login_material/guard/auth.guard';
+import { AuthGuard } from 'src/app/login-token/_helpers/auth.guard';
+import { HomeComponent } from 'src/app/login-token/home/home.component';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -29,36 +31,42 @@ import { TreballadorFormEditComponent } from './treballador-form-edit/treballado
 import { LoginTokenComponent } from './login-token/login-token.component';
 
 const routes: Routes = [
-  {path:'body', component: BodyComponent},
-  {path:'servicios', component: ServiciosComponent},
-  {path:'pack1', component: Pack1Component},
-  {path:'pack2', component: Pack2Component},
-  {path:'pack3', component: Pack3Component},
-  {path:'contacto', component: ContactoComponent},
-  {path: 'calendar', component: CalendarComponent},
-  {path: 'login', component: LoginComponent},
+  { path: 'body', component: BodyComponent },
+  { path: 'servicios', component: ServiciosComponent },
+  { path: 'pack1', component: Pack1Component },
+  { path: 'pack2', component: Pack2Component },
+  { path: 'pack3', component: Pack3Component },
+  { path: 'contacto', component: ContactoComponent },
+  { path: 'calendar', component: CalendarComponent },
+  { path: 'login', component: LoginComponent },
+
+  { path: 'admin', component: AdminComponent },
+  { path: 'vehicle-list', component: VehicleListComponent },
+  { path: 'vehicle-form', component: VehicleFormComponent },
+  { path: 'vehicle-form-edit/:id', component: VehicleFormEditComponent },
+  { path: 'client-list', component: ClientListComponent },
+  { path: 'servei-list', component: ServeiListComponent },
+  { path: 'servei-form', component: ServeiFormComponent },
+  { path: 'servei-form-edit/:id', component: ServeiFormEditComponent },
+  { path: 'user-list', component: ClientListComponent },
+  { path: 'treballador-list', component: TreballadorListComponent },
+  { path: 'treballador-form', component: TreballadorFormComponent },
+  {
+    path: 'treballador-form-edit/:id',
+    component: TreballadorFormEditComponent,
+  },
+
+  { path: 'login-token', component: LoginTokenComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: ''},
+
+  { path: 'login-material', component: LoginMaterialComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'user', component: UserlistingComponent, canActivate: [AuthGuard] },
   
-  {path:'admin', component: AdminComponent},
-  {path:'vehicle-list', component: VehicleListComponent},
-  {path:'vehicle-form', component: VehicleFormComponent},
-  {path:'vehicle-form-edit/:id', component: VehicleFormEditComponent},
-  {path:'client-list', component: ClientListComponent},
-  {path:'servei-list', component: ServeiListComponent},
-  {path:'servei-form', component: ServeiFormComponent},
-  {path:'servei-form-edit/:id', component: ServeiFormEditComponent},
-  {path:'user-list', component: ClientListComponent},
-  {path:'treballador-list', component: TreballadorListComponent},
-  {path:'treballador-form', component: TreballadorFormComponent},
-  {path:'treballador-form-edit/:id', component: TreballadorFormEditComponent},
- 
+  // {path:'', redirectTo:'body', pathMatch: 'full'},
+  // {path:'**', redirectTo:'body', pathMatch: 'full'},
 
-  {path: 'login-token', component: LoginTokenComponent},
-
-  {path: 'login-material', component: LoginMaterialComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'user', component: UserlistingComponent, canActivate:[AuthGuard]},
-  {path:'', redirectTo:'body', pathMatch: 'full'},
-  {path:'**', redirectTo:'body', pathMatch: 'full'},
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   // { path: 'inicio', component: InicioComponent },
   // { path: 'dashboard', component: DashboardComponent },
