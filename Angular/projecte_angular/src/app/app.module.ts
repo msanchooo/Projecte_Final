@@ -49,6 +49,7 @@ import { TreballadorListComponent } from './treballador-list/treballador-list.co
 import { TreballadorListFilterPipe } from './treballador-list/treballador-list-filter.pipe';
 import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
+import { FacturaListComponent } from './factura-list/factura-list.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { TreballadorFormEditComponent } from './treballador-form-edit/treballado
     TreballadorListFilterPipe,
     TreballadorFormComponent,
     TreballadorFormEditComponent,
+    FacturaListComponent,
   ],
 
   imports: [
