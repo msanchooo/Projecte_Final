@@ -432,6 +432,26 @@
                 }
             }
         },
+        "/api/facturas": {
+            "get": {
+                "tags": [
+                    "Facturas"
+                ],
+                "summary": "Veure totes les factures.",
+                "operationId": "02ff4ed5c86c42bf0ef431b6643802a1",
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les factures."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/serveis": {
             "get": {
                 "tags": [

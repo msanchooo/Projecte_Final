@@ -9,6 +9,8 @@ use App\Http\Controllers\ServeiController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TreballadorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FacturaController;
+
 
 
 
@@ -109,5 +111,9 @@ Route::post('/servei', [ServeiController::class, 'insertServei'])->name('servei_
 
 Route::delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
 
+//// Facturas
+
+
+Route::get('/facturas', [FacturaController::class, 'getFacturas'])->name('facturas_list');
 
 
