@@ -92,7 +92,7 @@ Route::delete('/user/{id}', [UserController::class, 'deleteUser'])->name('user_d
 
 //// Vehicles
 
-Route::get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list')->middleware('auth');
+Route::middleware('auth')->get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list');
 
 Route::get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca')->middleware('auth');
 

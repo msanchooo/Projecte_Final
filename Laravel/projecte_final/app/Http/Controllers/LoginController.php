@@ -21,15 +21,18 @@ class LoginController extends BaseController
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
+  
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+            $token = $request->user()->createToken('token1');
+  
+            return response()->json([
+                'token' => $token->plainTextToken,
+                'message' => 'Success'
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
         }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
     }
 }
