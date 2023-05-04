@@ -23,13 +23,14 @@ class LoginController extends BaseController
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+            $user = Auth::user();
+            // $token = $request->user()->createToken('token1');
 
-            return redirect()->intended('dashboard');
+            return $user;
+        } else {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
         }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
     }
 }

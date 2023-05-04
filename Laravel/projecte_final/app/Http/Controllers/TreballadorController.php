@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
 use App\Models\Treballador;
+use Illuminate\Support\Facades\Hash;
 
 class TreballadorController extends BaseController
 {
@@ -148,7 +149,7 @@ class TreballadorController extends BaseController
 
         $user = User::create([
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
 
         ]);
 
