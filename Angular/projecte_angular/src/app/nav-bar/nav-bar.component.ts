@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
-// import { AuthService } from '@auth0/auth0-angular';
+import { Cart, CartItem } from '../models/cart.models';
+import { CarritoComponent } from '../carrito/carrito.component';
+import { CartService } from 'src/services/cart.service';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,24 +12,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  // constructor(public auth: AuthService, private router: Router) {}
+  private _cart: Cart = { items: [] };
+  itemsQuantity = 0;
 
-   ngOnInit(): void {
-  //   this.auth.isAuthenticated$.subscribe((isAuthenticated) => {
-  //     if (isAuthenticated) {
-  //       this.router.navigate(['/body']);
-  //     }
-  //   });
-   }
+  @Input()
+  get cart(): Cart {
+    return this._cart;
+  }
 
-  // login() {
-  //   this.auth.loginWithRedirect();
-  // }
+  set cart(cart: Cart) {
+    this._cart = cart;
 
-  // logOut(){
-  //   this.auth.logout()
-  // }
+    this.itemsQuantity = cart.items
+      .map((item) => item.quantity)
+      .reduce((prev, current) => prev + current , 0);
+  }
+
+  constructor(private cartService: CartService) {
+
+  }
+  ngOnInit(): void {
+    
+  }
+
+  getTotal(items: Array<CartItem>): number{
+    return this.cartService.getTotal(items);
+  }
+
+  onClearCart() {
+    this.cartService.clearCart();
+  }
+
+  }
 
 
-}
 

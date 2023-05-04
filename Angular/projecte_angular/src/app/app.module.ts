@@ -15,13 +15,34 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 import {MatMenuModule} from '@angular/material/menu'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 // Import the module from the SDK
 // import { AuthModule } from '@auth0/auth0-angular';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TiendaComponent } from './tienda/tienda.component';
+import { ProductsHeaderComponent } from './products-header/products-header.component';
+import { FiltersComponent } from './filters/filters.component';
+import { ProductBoxComponent } from './product-box/product-box.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { CartService } from 'src/services/cart.service';
+import { StoreService } from 'src/services/store.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +57,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Pack3Component,
     InicioComponent,
     DashboardComponent,
-    CalendarComponent
+    CalendarComponent,
+    TiendaComponent,
+    ProductsHeaderComponent,
+    FiltersComponent,
+    ProductBoxComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
@@ -50,12 +76,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     //   }
     // }),
     MatMenuModule,
+    MatSidenavModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatBadgeModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   exports: [
     MatMenuModule,
   ],
-  providers: [],
+  providers: [CartService, StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
