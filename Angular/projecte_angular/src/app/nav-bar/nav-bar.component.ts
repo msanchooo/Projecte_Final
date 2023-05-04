@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../login/authentication/authentication.service';
+// import { AuthenticationService } from '../login/authentication/authentication.service';
+import { AuthenticationService } from '../login-token/_services/authentication.service';
+
 // import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
@@ -12,9 +14,9 @@ import { AuthenticationService } from '../login/authentication/authentication.se
 export class NavBarComponent implements OnInit {
   constructor(private loginPrd: AuthenticationService) {}
 
-  public logged():boolean {
-    return this.loginPrd.habilitarLogin();
-  }
+  // public logged(): boolean {
+  //   return this.loginPrd.habilitarLogin();
+  // }
 
   // constructor(public auth: AuthService, private router: Router) {}
 
@@ -33,4 +35,12 @@ export class NavBarComponent implements OnInit {
   // logOut(){
   //   this.auth.logout()
   // }
+
+  public _logout() {
+    return this.loginPrd.logout();
+  } 
+
+  public _isLoggedIn(){
+    return this.loginPrd.isLoggedIn();
+  }
 }

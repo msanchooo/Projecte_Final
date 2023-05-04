@@ -20,6 +20,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function handleRoute() {
             switch (true) {
                 case url.endsWith('/users/authenticate') && method === 'POST':
+                //var retorna = authenticate();    
+               // console.log(retorna);
                     return authenticate();
                 case url.endsWith('/users') && method === 'GET':
                     return getUsers();
@@ -35,6 +37,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const { username, password } = body;
             const user = users.find(x => x.username === username && x.password === password);
             if (!user) return error('Username or password is incorrect');
+            console.log( {
+                id: user.id,
+                username: user.username,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                token: 'fake-jwt-token'
+            });
             return ok({
                 id: user.id,
                 username: user.username,
