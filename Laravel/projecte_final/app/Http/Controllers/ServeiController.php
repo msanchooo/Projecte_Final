@@ -102,9 +102,9 @@ class ServeiController extends BaseController
     {
 
         $request->validate([
-            'nom' => ['required', 'max:25'],
-            'preu' => ['required'],
-            'durada' => ['required']
+            'nom' => ['required', 'max:25','alpha'],
+            'preu' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'durada' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/']
         ]);
 
         return Servei::create([
@@ -115,7 +115,7 @@ class ServeiController extends BaseController
     }
 
         /**
-     * @OA\Put(
+     * @OA\Post(
      *     path="/api/servei/{id}",
      *      tags={"Serveis"},
      *     summary="Update serveis",
@@ -135,14 +135,12 @@ class ServeiController extends BaseController
      *         @OA\Parameter(
      *         in="query",
      *         name="preu",
-     *         required=true,
      *         example="150.50",
      *         @OA\Schema(type="double"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
      *         name="durada",
-     *         required=true,
      *         example="5.5",
      *         @OA\Schema(type="double"),
      *     ),
@@ -159,9 +157,9 @@ class ServeiController extends BaseController
     {
 
         $request->validate([
-            'nom' => ['required', 'max:25'],
-            'preu' => ['required'],
-            'durada' => ['required']
+            'nom' => ['required', 'max:25','alpha'],
+            'preu' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'durada' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/']
         ]);
 
         $servei= Servei::find($request->id);

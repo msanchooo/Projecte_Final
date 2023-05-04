@@ -67,12 +67,12 @@
                     }
                 }
             },
-            "put": {
+            "post": {
                 "tags": [
                     "Citas"
                 ],
                 "summary": "Update cita",
-                "operationId": "75664909d0d4baa6cdc439eb4c65b874",
+                "operationId": "733986b2c4fcbc46138c73b79a849f9a",
                 "parameters": [
                     {
                         "name": "id",
@@ -269,12 +269,12 @@
                     }
                 }
             },
-            "put": {
+            "post": {
                 "tags": [
                     "Clients"
                 ],
                 "summary": "Update client",
-                "operationId": "3bb415af112de5c52347cafb67557a70",
+                "operationId": "2e8866ad96c2cc37286cbde160c1d8f1",
                 "parameters": [
                     {
                         "name": "id",
@@ -285,31 +285,12 @@
                         }
                     },
                     {
-                        "name": "username",
+                        "name": "user_id",
                         "in": "query",
                         "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "example": "username"
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "user@gmail.com"
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "username"
+                        }
                     },
                     {
                         "name": "nom",
@@ -395,31 +376,12 @@
                 "operationId": "9f8160de9035b77d036ad5ad32645606",
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "user_id",
                         "in": "query",
                         "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "example": "username"
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "user@gmail.com"
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "username"
+                        }
                     },
                     {
                         "name": "nom",
@@ -576,12 +538,12 @@
             }
         },
         "/api/servei/{id}": {
-            "put": {
+            "post": {
                 "tags": [
                     "Serveis"
                 ],
                 "summary": "Update serveis",
-                "operationId": "d245e3c6e6d60600b9262a2b687cc1cf",
+                "operationId": "cd99d9f45f046e4c74537336050cadf5",
                 "parameters": [
                     {
                         "name": "id",
@@ -603,7 +565,6 @@
                     {
                         "name": "preu",
                         "in": "query",
-                        "required": true,
                         "schema": {
                             "type": "double"
                         },
@@ -612,7 +573,6 @@
                     {
                         "name": "durada",
                         "in": "query",
-                        "required": true,
                         "schema": {
                             "type": "double"
                         },
@@ -713,12 +673,12 @@
                     }
                 }
             },
-            "put": {
+            "post": {
                 "tags": [
                     "Treballadors"
                 ],
                 "summary": "Update treballador",
-                "operationId": "40a65697328dd46fb98be9b0a996c941",
+                "operationId": "d04ef28447c52d6bc381d8f13d1dd849",
                 "parameters": [
                     {
                         "name": "id",
@@ -988,12 +948,12 @@
                     }
                 }
             },
-            "put": {
+            "post": {
                 "tags": [
                     "Vehicles"
                 ],
                 "summary": "Update vehicles",
-                "operationId": "aa7f78f3ea230f81ee226cef237f662d",
+                "operationId": "e395f36ab7fe92a03cea2ff0680b23c5",
                 "parameters": [
                     {
                         "name": "id",

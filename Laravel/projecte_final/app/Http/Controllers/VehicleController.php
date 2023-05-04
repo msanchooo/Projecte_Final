@@ -32,7 +32,7 @@ class VehicleController extends BaseController
 
     function getVehicles()
     {
-        return Vehicle::all();
+        return Vehicle::with('client')->get();
 
     }
 
@@ -60,7 +60,7 @@ class VehicleController extends BaseController
 
     function getVehicle($id)
     {
-        return Vehicle::find($id);
+        return Vehicle::with('client')->find($id);
     }
 
     /**
@@ -123,7 +123,7 @@ class VehicleController extends BaseController
     }
 
         /**
-     * @OA\Put(
+     * @OA\Post(
      *     path="/api/vehicle/{id}",
      *      tags={"Vehicles"},
      *     summary="Update vehicles",

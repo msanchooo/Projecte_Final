@@ -9,7 +9,7 @@ import { CartService } from 'src/services/cart.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
   private _cart: Cart = { items: [] };
@@ -38,6 +38,7 @@ export class NavBarComponent implements OnInit {
   getTotal(items: Array<CartItem>): number{
     return this.cartService.getTotal(items);
   }
+  
 
   onClearCart() {
     this.cartService.clearCart();

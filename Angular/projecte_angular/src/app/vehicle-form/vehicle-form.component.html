@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-header bg-danger text-white text-center">
+    <h1>Nou vehicle</h1>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+      <div class="form-group">
+        <label for="matricula" class="form-label">Matricula:</label>
+        <input id="matricula" placeholder="Matricula" class="form-control" formControlName="matricula">
+      </div>
+
+      <div *ngIf="formErrors['matricula'].length > 0" class="alert alert-danger">
+        {{formErrors['matricula']}}
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="marca" class="form-label">Marca:</label>
+        <input id="marca" placeholder="Marca" class="form-control" formControlName="marca">
+      </div>
+      <div *ngIf="formErrors['marca'].length > 0" class="alert alert-danger">
+        {{formErrors['marca']}}
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="model" class="form-label">Model:</label>
+        <input id="model" placeholder="Model" class="form-control" formControlName="model">
+      </div>
+      <div *ngIf="formErrors['model'].length > 0" class="alert alert-danger">
+        {{formErrors['model']}}
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="client_id" class="form-label">Client:</label>
+        <input id="client_id" placeholder="Client id" class="form-control" formControlName="client_id">
+      </div>
+
+      <div *ngIf="formErrors['client_id'].length > 0" class="alert alert-danger">
+        {{formErrors['client_id']}}
+      </div>
+      <br>
+
+      <div class="row text-center">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-lg btn-success">Crear</button>
+        </div>
+        <div class="col-md-6">
+          <button [routerLink]="['/vehicle-list']" class="btn btn-lg btn-danger">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

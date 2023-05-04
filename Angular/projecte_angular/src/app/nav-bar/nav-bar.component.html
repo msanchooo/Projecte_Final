@@ -21,26 +21,30 @@
 
         <li>
           <a aria-current="page" [routerLink]="['calendar']" class="nav-link text-white"> Cita Previa </a>
+
         </li>
         <li>
           <a aria-current="page" [routerLink]="['tienda']" class="nav-link text-white"> Tienda </a>
         </li>
         <li>
-          <a aria-current="page" [routerLink]="['contacto']" class="nav-link text-white">
-            Contacto
-          </a>
+
+          <a aria-current="page" [routerLink]="['contacto']" class="nav-link text-white"> Contacto </a>
+        </li>
+        <li>
+          <a aria-current="page" [routerLink]="['admin']" class="nav-link text-white"> Admin </a>
         </li>
       </ul>
-      
+      <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
 
       <!-- Verifica si esta loged -->
-      <section>
+      <section *ngIf="logged(); else loggedOut">
         <!-- <section *ngIf="auth.user$ | async as user; else loggedOut"> -->
         <!-- Client -->
         <div class="btn-group">
           <button class="btn btn-danger btn-primary">NOM USUARI</button>
-          <button mat-button [matMenuTriggerFor]="loged" class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split"
-            mdbDropdownToggle aria-expanded="false">
+          <button mat-button [matMenuTriggerFor]="loged"
+            class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split" mdbDropdownToggle
+            aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
 
@@ -51,7 +55,7 @@
               <hr class="dropdown-divider" />
             </li>
             <li>
-              <button type="button"  class="btn btn-light dropdown-item">
+              <button type="button" class="btn btn-light dropdown-item">
                 <!-- (click)="logOut()" -->
                 LogOut
               </button>
@@ -60,9 +64,8 @@
         </div>
       </section>
 
-      <ng-template >
-        <!-- #loggedOut -->
-        <button type="button"  class="btn btn-danger">
+      <ng-template #loggedOut>
+        <button type="button" class="btn btn-danger" [routerLink]="['login-material']">
           <!-- (click)="login()" -->
           Login / Sign-up
         </button>
