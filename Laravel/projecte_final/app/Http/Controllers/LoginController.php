@@ -21,14 +21,12 @@ class LoginController extends BaseController
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-  
+
         if (Auth::attempt($credentials)) {
-            $token = $request->user()->createToken('token1');
-  
-            return response()->json([
-                'token' => $token->plainTextToken,
-                'message' => 'Success'
-            ], 200);
+            $user = Auth::user();
+            // $token = $request->user()->createToken('token1');
+
+            return $user;
         } else {
             return response()->json([
                 'message' => 'Unauthorized'
