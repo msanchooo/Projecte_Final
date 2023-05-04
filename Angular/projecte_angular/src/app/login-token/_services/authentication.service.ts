@@ -27,8 +27,8 @@ export class AuthenticationService {
         return this.userSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/api/login`, { username, password })
+    login(email: string, password: string) {
+        return this.http.post<any>(`http://localhost/Projecte_Final/Laravel/projecte_final/public/index.php/api/login`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));

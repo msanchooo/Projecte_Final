@@ -24,7 +24,7 @@ class LoginController extends BaseController
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            // $token = $request->user()->createToken('token1');
+            $token = $request->user()->createToken('token1');
 
             return $user;
         } else {
