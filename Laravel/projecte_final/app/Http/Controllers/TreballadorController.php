@@ -33,6 +33,7 @@ class TreballadorController extends BaseController
 
     function getTreballadors()
     {
+        
         return Treballador::with('user')->get();
 
     }

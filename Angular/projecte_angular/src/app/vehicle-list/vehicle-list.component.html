@@ -24,6 +24,7 @@
           <th>Matricula</th>
           <th>Marca</th>
           <th>Model</th>
+          <th>Km</th>
           <th>Client</th>
           <th></th>
           <th></th>
@@ -35,6 +36,7 @@
           <td>{{vehicle.matricula}}</td>
           <td>{{vehicle.marca}}</td>
           <td>{{vehicle.model}}</td>
+          <td>{{vehicle.km}}</td>
           <td>{{vehicle.client.nom}} {{vehicle.client.cognoms}}</td>
           <td><a [routerLink]="['../vehicle-form-edit/'+vehicle.id]">Editar</a></td>
           <td><a href="" (click)="eliminarVehicle(vehicle.id)">Eliminar</a></td>

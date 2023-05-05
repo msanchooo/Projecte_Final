@@ -76,6 +76,13 @@ class VehicleController extends BaseController
      *         example="1456LMH",
      *         @OA\Schema(type="string"),
      *     ),
+    *         @OA\Parameter(
+     *         in="query",
+     *         name="km",
+     *         required=true,
+     *         example="150000",
+     *         @OA\Schema(type="integer"),
+     *     ),
      *         @OA\Parameter(
      *         in="query",
      *         name="marca",
@@ -118,7 +125,8 @@ class VehicleController extends BaseController
             'matricula' => $request->matricula,
             'marca' => $request->marca,
             'model' => $request->model,
-            'client_id' => $request->client_id
+            'client_id' => $request->client_id,
+            'km' => $request->km
         ]);
     }
 
@@ -139,6 +147,13 @@ class VehicleController extends BaseController
      *         required=true,
      *         example="1456LMH",
      *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="km",
+     *         required=true,
+     *         example="150000",
+     *         @OA\Schema(type="integer"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
@@ -171,6 +186,8 @@ class VehicleController extends BaseController
             'marca' => ['required', 'max:25'],
             'model' => ['required', 'max:25'],
             'client_id' => ['required'],
+            'km' => ['required']
+
         ]);
 
         $vehicle= Vehicle::find($request->id);
@@ -179,7 +196,9 @@ class VehicleController extends BaseController
             'matricula' => $request->matricula,
             'marca' => $request->marca,
             'model' => $request->model,
-            'client_id' => $request->client_id
+            'client_id' => $request->client_id,
+            'km' => $request->km
+
         ]);
 
         return $vehicle;
@@ -217,5 +236,14 @@ class VehicleController extends BaseController
         $vehicle->delete();
 
         return $vehicle;
+    }
+
+    function getVehicleClient($idClient){
+
+
+        $vehicles = Vehicle::where('client_id', $idClient)->get();
+
+        return $vehicles;
+
     }
 }

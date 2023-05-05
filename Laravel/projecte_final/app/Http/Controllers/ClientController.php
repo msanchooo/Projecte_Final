@@ -135,7 +135,11 @@ class ClientController extends BaseController
             'cognoms' => $request->cognoms,
             'nif' => $request->nif,
             'tipu_id' => 1,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'direccio' => $request->direccio,
+            'movil' => $request->movil
+
+
     
 
         ]);
@@ -215,8 +219,9 @@ class ClientController extends BaseController
             'cognoms' => $request->cognoms,
             'nif' => $request->nif,
             'tipu_id' => $request->tipu_id,
-            'user_id' => $request->user_id
-
+            'user_id' => $request->user_id,
+            'direccio' => $request->direccio,
+            'movil' => $request->movil
         ]);
 
         return $client;

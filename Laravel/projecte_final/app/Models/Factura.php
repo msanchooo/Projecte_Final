@@ -9,9 +9,18 @@ class Factura extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
     public function serveis()
     {
         return $this->belongsToMany(Servei::class);
+    }
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
   
 }

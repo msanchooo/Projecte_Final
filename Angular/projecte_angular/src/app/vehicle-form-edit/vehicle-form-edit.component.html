@@ -31,7 +31,15 @@
           {{formErrors['model']}}
         </div>
         <br>
-
+        
+        <div class="form-group">
+          <label for="km" class="form-label">Km:</label>
+          <input id="km" placeholder="Km" class="form-control" formControlName="km">
+        </div>
+        <div *ngIf="formErrors['km'].length > 0" class="alert alert-danger">
+          {{formErrors['km']}}
+        </div>
+        <br>
 
 
         <div class="row text-center">

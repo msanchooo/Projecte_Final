@@ -6,5 +6,6 @@ export interface IVehicle {
         matricula:string;
         marca:string;
         model:string;
+        km:number;
         client:IClient;    
 }

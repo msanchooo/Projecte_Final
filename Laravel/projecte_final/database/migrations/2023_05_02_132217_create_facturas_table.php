@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->date('data');
-            $table->String('numero');
+            $table->String('numero')->unique();
             $table->double('total');
             $table->double('total_con_iva');
 

@@ -438,7 +438,7 @@
                     "Facturas"
                 ],
                 "summary": "Veure totes les factures.",
-                "operationId": "02ff4ed5c86c42bf0ef431b6643802a1",
+                "operationId": "3f2ca30a5d394f811c0aed55879ef64c",
                 "responses": {
                     "200": {
                         "description": "Retorna totes les factures."
@@ -448,6 +448,86 @@
                     },
                     "404": {
                         "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/factura": {
+            "post": {
+                "tags": [
+                    "Facturas"
+                ],
+                "summary": "Adds a new factura",
+                "operationId": "e683ef93d57db7297b0639cb84ebb20d",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-07-20"
+                    },
+                    {
+                        "name": "total",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "100"
+                    },
+                    {
+                        "name": "total_con_iva",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "121"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[0]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[1]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 }
             }
