@@ -137,7 +137,6 @@ class ClientController extends BaseController
             'tipu_id' => 1,
             'user_id' => $user->id
     
-
         ]);
 
         return $client;

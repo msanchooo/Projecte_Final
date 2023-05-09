@@ -6,12 +6,12 @@
     <div class="card">
         <h4 class="card-header py-3">Angular 14 JWT Login Example</h4>
         <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">email</label>
                     <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
                     <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                        <div *ngIf="f['email'].errors['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors['required']">email is required</div>
                     </div>
                 </div>
                 <div class="mb-3">

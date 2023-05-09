@@ -26,7 +26,15 @@ class LoginController extends BaseController
             $user = Auth::user();
             $token = $request->user()->createToken('token1');
 
-            return $user;
+            //return $user;
+            return response()->json([
+            
+                'id' => $user->id,
+                'username'=> $user->email,
+                'firstName'=> null,
+                'lastName'=> null,
+                'token' => $token->plainTextToken
+            ], 200);
         } else {
             return response()->json([
                 'message' => 'Unauthorized'
