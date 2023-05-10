@@ -5,12 +5,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { User } from '../_models/user';
+import { IUser } from '../../interfaces/IUser';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  private userSubject: BehaviorSubject<User | null>;
-  public user: Observable<User | null>;
+  private userSubject: BehaviorSubject<IUser | null>;
+  public user: Observable<IUser | null>;
 
   constructor(private router: Router, private http: HttpClient) {
     this.userSubject = new BehaviorSubject(
@@ -24,17 +24,22 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-  //login(credencials: any) {
+    //login(credencials: any) {
     //return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
-    return this.login2({ email, password }).pipe(
-      map((user) => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        //console.log(user);
-        localStorage.setItem('user', JSON.stringify(user));
-        this.userSubject.next(user);
-        return user;
-      })
-    );
+    return this.http.post<any>(`${environment.apiUrl}/api/login`, { email, password })
+      .pipe(
+        map((user) => {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+           console.log(user);
+          localStorage.clear();
+          localStorage.setItem('token', JSON.stringify(user.token));
+          localStorage.setItem('user_id', user.id);
+          localStorage.setItem('rols', user.rol);
+
+          this.userSubject.next(user);
+          return user;
+        })
+      );
   }
 
   logout() {
@@ -52,22 +57,4 @@ export class AuthenticationService {
     1;
   }
 
-  login2(credencials: any) {
-    return this.http
-      .post<any>(`${environment.apiUrl}/api/login`, credencials)
-      .pipe(
-        map((user) => {
-          // let obj = JSON.parse(credencials);
-
-          var token: string = JSON.stringify(user.token).replace(/['"]+/g, '');
-
-            (user.username = user.username),
-            (user.firstName = user.firstName),
-            (user.lastName = user.lastName),
-            (user.token = token);
-
-          return user;
-        })
-      );
-  }
 }

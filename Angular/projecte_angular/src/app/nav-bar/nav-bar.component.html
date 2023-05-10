@@ -50,8 +50,12 @@
           </button>
 
           <mat-menu #loged="matMenu" class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
-            <li><a class="dropdown-item" href="#">Soporte técnico</a></li>
+            <li><a class="dropdown-item" [routerLink]="['../client-list']">  Clientes</a></li>
+            <li><a class="dropdown-item" [routerLink]="['../vehicle-list']"> Vehiculos</a></li>
+            <li><a class="dropdown-item" [routerLink]="['../servei-list']">  Servicios</a></li>
+            <li><a class="dropdown-item" [routerLink]="['../cita-list']"> Citas</a></li>        
+            <li><a class="dropdown-item" [routerLink]="['../treballador-list']"> Treballador</a></li>
+
             <li>
               <hr class="dropdown-divider" />
             </li>

@@ -28,12 +28,11 @@ class LoginController extends BaseController
 
             //return $user;
             return response()->json([
-            
                 'id' => $user->id,
-                'username'=> $user->email,
-                'firstName'=> null,
-                'lastName'=> null,
+                'email'=> $user->email,
+                'rol' => 2,
                 'token' => $token->plainTextToken
+
             ], 200);
         } else {
             return response()->json([

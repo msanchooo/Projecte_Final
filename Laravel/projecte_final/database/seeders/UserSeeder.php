@@ -20,7 +20,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123'),
+            'rol'=> '1'
           ]);
+        
+        
         // comanda per executar-ho:
         // php artisan db:seed UserSeeder
     }
