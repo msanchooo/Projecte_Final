@@ -14,7 +14,7 @@ export class AuthenticationService {
 
   constructor(private router: Router, private http: HttpClient) {
     this.userSubject = new BehaviorSubject(
-      JSON.parse(localStorage.getItem('user')!)
+      JSON.parse(localStorage.getItem('token')!)
     );
     this.user = this.userSubject.asObservable();
   }
@@ -54,7 +54,6 @@ export class AuthenticationService {
       return true;
     }
     return false;
-    1;
   }
 
 }

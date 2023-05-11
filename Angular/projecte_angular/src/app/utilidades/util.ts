@@ -19,11 +19,4 @@ export class Util {
       }
     }
   }
-
-
-  // static getRol(){
-  //   let rol = localStorage.getItem('rol');
-
-  //   return rol;
-  // }
 }
