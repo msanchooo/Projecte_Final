@@ -18,20 +18,20 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.subscriptionName = this.service.getUpdate().subscribe((message) => {
       //message contains the data sent from service
       this.rol = message;
+      this.rolUsuari = this.rol.text;
     });
   }
 
-  // rol: string | null = '';
+  // _rol: string | null = '';
   rol: any;
+  rolUsuari: string| null = '';
   private subscriptionName: Subscription;
 
   ngOnInit(): void {
-    // this.rol = Util.getRol();
-    // console.log(this.rol);
+      this.rolUsuari = localStorage.getItem('rol');
   }
 
   public _logout() {
-    console.log(this.rol);
     return this.loginPrd.logout();
   }
 
