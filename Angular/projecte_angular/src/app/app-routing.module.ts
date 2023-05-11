@@ -6,21 +6,13 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { Pack1Component } from './pack1/pack1.component';
 import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { LoginComponent } from './login/login.component';
-import { LoginMaterialComponent } from './login_material/login-material/login-material.component';
-import { RegisterComponent } from './login_material/register/register.component';
-import { UserlistingComponent } from './login_material/userlisting/userlisting.component';
-// import { AuthGuard } from 'src/app/login_material/guard/auth.guard';
 import { AuthGuard } from 'src/app/login-token/_helpers/auth.guard';
 import { HomeComponent } from 'src/app/login-token/home/home.component';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { ClientListComponent } from './client-list/client-list.component';
-import { AdminComponent } from './admin/admin.component';
 import { ServeiListComponent } from './servei-list/servei-list.component';
 import { ServeiFormComponent } from './servei-form/servei-form.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
@@ -38,9 +30,7 @@ const routes: Routes = [
   { path: 'pack3', component: Pack3Component },
   { path: 'contacto', component: ContactoComponent },
   { path: 'calendar', component: CalendarComponent },
-  { path: 'login', component: LoginComponent },
 
-  { path: 'admin', component: AdminComponent },
   { path: 'vehicle-list', component: VehicleListComponent },
   { path: 'vehicle-form', component: VehicleFormComponent },
   { path: 'vehicle-form-edit/:id', component: VehicleFormEditComponent },
@@ -57,13 +47,9 @@ const routes: Routes = [
   },
 
   { path: 'login-token', component: LoginTokenComponent },
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: BodyComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: ''},
-
-  { path: 'login-material', component: LoginMaterialComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'user', component: UserlistingComponent, canActivate: [AuthGuard] },
-  
+ 
   // {path:'', redirectTo:'body', pathMatch: 'full'},
   // {path:'**', redirectTo:'body', pathMatch: 'full'},
 

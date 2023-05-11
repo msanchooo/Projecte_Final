@@ -1,46 +1,46 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { Router } from '@angular/router';
-// import { AuthenticationService } from '../login/authentication/authentication.service';
-import { AuthenticationService } from '../login-token/_services/authentication.service';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
-// import { AuthService } from '@auth0/auth0-angular';
+import { Util } from '../utilidades/util';
+import { AuthenticationService } from '../login-token/_services/authentication.service';
+import { ServeiUpdateService } from '../servei-update/servei-update.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
 })
-export class NavBarComponent implements OnInit {
-  constructor(private loginPrd: AuthenticationService) {}
-
-  // public logged(): boolean {
-  //   return this.loginPrd.habilitarLogin();
-  // }
-
-  // constructor(public auth: AuthService, private router: Router) {}
-
-  ngOnInit(): void {
-    //   this.auth.isAuthenticated$.subscribe((isAuthenticated) => {
-    //     if (isAuthenticated) {
-    //       this.router.navigate(['/body']);
-    //     }
-    //   });
+export class NavBarComponent implements OnInit, OnDestroy {
+  constructor(
+    private loginPrd: AuthenticationService,
+    private service: ServeiUpdateService
+  ) {
+    this.subscriptionName = this.service.getUpdate().subscribe((message) => {
+      //message contains the data sent from service
+      this.rol = message;
+    });
   }
 
-  // login() {
-  //   this.auth.loginWithRedirect();
-  // }
+  // rol: string | null = '';
+  rol: any;
+  private subscriptionName: Subscription;
 
-  // logOut(){
-  //   this.auth.logout()
-  // }
+  ngOnInit(): void {
+    // this.rol = Util.getRol();
+    // console.log(this.rol);
+  }
 
   public _logout() {
+    console.log(this.rol);
     return this.loginPrd.logout();
-  } 
+  }
 
-  public _isLoggedIn(){
+  public _isLoggedIn() {
     return this.loginPrd.isLoggedIn();
+  }
+
+  ngOnDestroy() {
+    // It's a good practice to unsubscribe to ensure no memory leaks
+    this.subscriptionName.unsubscribe();
   }
 }

@@ -15,20 +15,14 @@ import { Pack3Component } from './pack3/pack3.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { ToastrModule } from 'ngx-toastr';
 
 // Import the module from the SDK
 // import { AuthModule } from '@auth0/auth0-angular';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { RegisterComponent } from './login_material/register/register.component';
-import { UserlistingComponent } from './login_material/userlisting/userlisting.component';
-import { UpdatepopupComponent } from './login_material/updatepopup/updatepopup.component';
-import { LoginMaterialComponent } from './login_material/login-material/login-material.component';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -42,7 +36,6 @@ import { ServeiListFilterPipe } from './servei-list/servei-list-filter.pipe';
 import { ServeiFormComponent } from './servei-form/servei-form.component';
 
 import { UserListComponent } from './user-list/user-list.component';
-import { AdminComponent } from './admin/admin.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
 import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.component';
 import { TreballadorListComponent } from './treballador-list/treballador-list.component';
@@ -70,16 +63,9 @@ import { HomeComponent } from './login-token/home/home.component';
     InicioComponent,
     DashboardComponent,
     CalendarComponent,
-    LoginComponent,
-    RegisterComponent,
-    UserlistingComponent,
-    UpdatepopupComponent,
-    LoginMaterialComponent,
-
     VehicleListComponent,
     ClientListComponent,
     UserListComponent,
-    AdminComponent,
     ClientListFilterPipe,
     VehicleListFilterPipe,
     VehicleFormComponent,
@@ -94,6 +80,7 @@ import { HomeComponent } from './login-token/home/home.component';
     TreballadorFormEditComponent,
     LoginTokenComponent,
     HomeComponent,
+    
   ],
 
   imports: [
@@ -102,11 +89,11 @@ import { HomeComponent } from './login-token/home/home.component';
     AppRoutingModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    
   ],
   exports: [MatMenuModule],
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IVehicle } from '../interfaces/IVehicle';
-import { AuthService } from '../login_material/service/auth.service';
+import { AuthenticationService } from '../login-token/_services/authentication.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -10,27 +10,14 @@ import { AuthService } from '../login_material/service/auth.service';
 })
 export class VehicleListComponent implements OnInit {
   router: any;
-  constructor(private vehicleService: DadesVehiclesService,private service: AuthService) { }
+  constructor(private vehicleService: DadesVehiclesService,private service: AuthenticationService) { }
   ngOnInit() {
-
-   
-    const idClient= this.service.GetId();
-
-
-    if(this.service.GetUserrole()=="1"){
-
-    this.vehicleService.getVehicleClient(idClient).subscribe(resp => {
-      console.log(resp);
-      // if(resp.body) this.vehicles = resp.body;
-    });
-    }else{
-
     this.vehicleService.getDades().subscribe(resp => {
       if(resp.body) this.vehicles = resp.body;
     });
   }
 
-  }
+
 
   confirmarEliminacion(): boolean {
     return confirm("¿Está seguro de que desea eliminar este vehiculo?");
