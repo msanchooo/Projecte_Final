@@ -9,6 +9,8 @@ use App\Http\Controllers\ServeiController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TreballadorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FacturaController;
+
 
 
 
@@ -91,6 +93,8 @@ Route::get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicl
 
 Route::get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
 
+Route::get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
+
 Route::post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 
 Route::post('/vehicle', [VehicleController::class, 'insertVehicle'])->name('vehicle_insert');
@@ -109,5 +113,11 @@ Route::post('/servei', [ServeiController::class, 'insertServei'])->name('servei_
 
 Route::delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
 
+//// Facturas
 
+
+Route::get('/facturas', [FacturaController::class, 'getFacturas']);
+Route::get('/factura/{id}', [FacturaController::class, 'getFactura']);
+Route::post('/factura', [FacturaController::class, 'insertFactura']);
+Route::post('/linea', [FacturaController::class, 'insertLineas']);
 

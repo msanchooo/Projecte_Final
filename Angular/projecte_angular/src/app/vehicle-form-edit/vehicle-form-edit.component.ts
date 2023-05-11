@@ -23,7 +23,8 @@ export class VehicleFormEditComponent {
     matricula: '',
     marca: '',
     model: '',
-    client: { id: 0, nom: '', cognoms: '', nif: '', user_id: '', tipu_id: 0 }
+    km:0,
+    client: { id: 0, nom: '', cognoms: '', nif: '', user_id: '', tipu_id: 0, direccio: '',movil:0 }
 
   };
   constructor(
@@ -51,7 +52,9 @@ export class VehicleFormEditComponent {
       this.myForm.setValue({
         matricula: data.matricula,
         marca: data.marca,
-        model: data.model
+        model: data.model,
+        km: data.km
+
       });
       console.log(data);
     }, error => {
@@ -63,6 +66,8 @@ export class VehicleFormEditComponent {
       matricula: ['BK300', [Validators.required, Validators.maxLength(25)]],
       marca: ['bmw', [Validators.required, Validators.maxLength(25)]],
       model: ['serie 3', [Validators.required, Validators.maxLength(25)]],
+      km: [0, [Validators.required]]
+
     });
   }
 
@@ -70,7 +75,8 @@ export class VehicleFormEditComponent {
   formErrors: any= {
     matricula: '',
     marca: '',
-    model: ''
+    model: '',
+    km:0
   };
 
 
@@ -87,6 +93,9 @@ export class VehicleFormEditComponent {
     model: {
       required: 'El modelo es obligatorio.',
       maxlength: 'El modelo no puede ser más largo que 25 caracteres.'
+    },
+    km: {
+      required: 'Els km es obligatorio.',
     }
   };
 
@@ -100,11 +109,13 @@ export class VehicleFormEditComponent {
     const matricula = this.myForm.get('matricula')?.value;
     const marca = this.myForm.get('marca')?.value;
     const model = this.myForm.get('model')?.value;
+    const km = this.myForm.get('km')?.value;
     const client_id = this.vehicle.client.id;
     
     if (matricula) formData.append('matricula', matricula);
     if (marca) formData.append('marca', marca);
     if (model) formData.append('model', model);
+    if (km) formData.append('km', km);
     if (client_id) formData.append('client_id', client_id.toString());
 
     const ps = this.vehicleService.putVehicle(this.id, formData);

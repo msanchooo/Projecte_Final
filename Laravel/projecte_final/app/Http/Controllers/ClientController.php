@@ -16,6 +16,8 @@ class ClientController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    #php artisan l5-swagger:generate
+
     /// Clients
 
     /**
@@ -105,6 +107,34 @@ class ClientController extends BaseController
      *           example="1",
      *         @OA\Schema(type="integer"),
      *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="direccio",
+     *         required=false,
+     *           example="user",
+     *         @OA\Schema(type="string"),
+     *     ),
+         *         @OA\Parameter(
+     *         in="query",
+     *         name="email",
+     *         required=false,
+     *           example="user",
+     *         @OA\Schema(type="string"),
+     *     ),
+         *         @OA\Parameter(
+     *         in="query",
+     *         name="password",
+     *         required=false,
+     *           example="user",
+     *         @OA\Schema(type="string"),
+     *     ),
+          *         @OA\Parameter(
+     *         in="query",
+     *         name="movil",
+     *         required=false,
+     *           example="user",
+     *         @OA\Schema(type="string"),
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -126,7 +156,7 @@ class ClientController extends BaseController
 
         $user = User::create([
             'email' => $request->email,
-            'password' => $request->password,
+            'password' =>bcrypt($request->password),
 
         ]);
         //dd($user);
@@ -135,7 +165,11 @@ class ClientController extends BaseController
             'cognoms' => $request->cognoms,
             'nif' => $request->nif,
             'tipu_id' => 1,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'direccio' => $request->direccio,
+            'movil' => $request->movil
+
+
     
 
         ]);
@@ -215,8 +249,9 @@ class ClientController extends BaseController
             'cognoms' => $request->cognoms,
             'nif' => $request->nif,
             'tipu_id' => $request->tipu_id,
-            'user_id' => $request->user_id
-
+            'user_id' => $request->user_id,
+            'direccio' => $request->direccio,
+            'movil' => $request->movil
         ]);
 
         return $client;
