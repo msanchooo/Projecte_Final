@@ -25,6 +25,14 @@ export class AppComponent implements DoCheck {
   logout() {
     this.authenticationService.logout();
   }
+
+  // items = ['item1', 'item2', 'item3', 'item4'];
+
+  // addItem(newItem: any) {
+  //   console.log(newItem);
+  //   this.items.push(newItem);
+  // }
+  
   //Entiendo q esto es para hacer visible o no la navbar(menu), min49
   ngDoCheck(): void {
     // let currenturl=this.router.url;

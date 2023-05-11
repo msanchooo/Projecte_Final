@@ -30,7 +30,7 @@ class LoginController extends BaseController
             return response()->json([
                 'id' => $user->id,
                 'email'=> $user->email,
-                'rol' => 2,
+                'rol' => $user->rol,
                 'token' => $token->plainTextToken
 
             ], 200);

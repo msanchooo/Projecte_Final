@@ -13,7 +13,6 @@ import { HomeComponent } from 'src/app/login-token/home/home.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { ClientListComponent } from './client-list/client-list.component';
-import { AdminComponent } from './admin/admin.component';
 import { ServeiListComponent } from './servei-list/servei-list.component';
 import { ServeiFormComponent } from './servei-form/servei-form.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
@@ -32,7 +31,6 @@ const routes: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'calendar', component: CalendarComponent },
 
-  { path: 'admin', component: AdminComponent },
   { path: 'vehicle-list', component: VehicleListComponent },
   { path: 'vehicle-form', component: VehicleFormComponent },
   { path: 'vehicle-form-edit/:id', component: VehicleFormEditComponent },

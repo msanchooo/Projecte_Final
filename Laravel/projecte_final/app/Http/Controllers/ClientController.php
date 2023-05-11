@@ -129,6 +129,7 @@ class ClientController extends BaseController
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'rol' => 2
 
         ]);
         //dd($user);

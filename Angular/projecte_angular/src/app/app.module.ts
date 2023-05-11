@@ -36,7 +36,6 @@ import { ServeiListFilterPipe } from './servei-list/servei-list-filter.pipe';
 import { ServeiFormComponent } from './servei-form/servei-form.component';
 
 import { UserListComponent } from './user-list/user-list.component';
-import { AdminComponent } from './admin/admin.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
 import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.component';
 import { TreballadorListComponent } from './treballador-list/treballador-list.component';
@@ -67,7 +66,6 @@ import { HomeComponent } from './login-token/home/home.component';
     VehicleListComponent,
     ClientListComponent,
     UserListComponent,
-    AdminComponent,
     ClientListFilterPipe,
     VehicleListFilterPipe,
     VehicleFormComponent,
@@ -82,6 +80,7 @@ import { HomeComponent } from './login-token/home/home.component';
     TreballadorFormEditComponent,
     LoginTokenComponent,
     HomeComponent,
+    
   ],
 
   imports: [
@@ -94,6 +93,7 @@ import { HomeComponent } from './login-token/home/home.component';
     FormsModule,
     MaterialModule,
     HttpClientModule,
+    
   ],
   exports: [MatMenuModule],
 

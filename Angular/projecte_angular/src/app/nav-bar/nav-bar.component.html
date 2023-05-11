@@ -30,9 +30,7 @@
 
           <a aria-current="page" [routerLink]="['contacto']" class="nav-link text-white"> Contacto </a>
         </li>
-        <li>
-          <a aria-current="page" [routerLink]="['admin']" class="nav-link text-white"> Admin </a>
-        </li>
+
       </ul>
       <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
 
@@ -50,11 +48,12 @@
           </button>
 
           <mat-menu #loged="matMenu" class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['../client-list']">  Clientes</a></li>
-            <li><a class="dropdown-item" [routerLink]="['../vehicle-list']"> Vehiculos</a></li>
-            <li><a class="dropdown-item" [routerLink]="['../servei-list']">  Servicios</a></li>
-            <li><a class="dropdown-item" [routerLink]="['../cita-list']"> Citas</a></li>        
-            <li><a class="dropdown-item" [routerLink]="['../treballador-list']"> Treballador</a></li>
+            <li><a class="dropdown-item" [routerLink]="">Perfil</a></li>
+            <li *ngIf="rol.text == '1'"><a class="dropdown-item" [routerLink]="['../client-list']">  Clientes</a></li>
+            <li *ngIf="rol.text == '1'"><a class="dropdown-item" [routerLink]="['../vehicle-list']"> Vehiculos</a></li>
+            <li *ngIf="rol.text == '1'"><a class="dropdown-item" [routerLink]="['../servei-list']">  Servicios</a></li>
+            <li *ngIf="rol.text == '1'"><a class="dropdown-item" [routerLink]="['../cita-list']"> Citas</a></li>        
+            <li *ngIf="rol.text == '1'"><a class="dropdown-item" [routerLink]="['../treballador-list']"> Treballador</a></li>
 
             <li>
               <hr class="dropdown-divider" />
