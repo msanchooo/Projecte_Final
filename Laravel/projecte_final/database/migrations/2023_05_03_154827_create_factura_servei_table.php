@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('factura_servei', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('unitats');
 
             $table->unsignedBigInteger('factura_id');
             $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('cascade');

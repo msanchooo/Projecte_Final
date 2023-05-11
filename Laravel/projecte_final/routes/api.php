@@ -116,7 +116,8 @@ Route::delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('
 //// Facturas
 
 
-Route::get('/facturas', [FacturaController::class, 'getFacturas'])->name('facturas_list');
-Route::post('/factura', [FacturaController::class, 'insertFactura'])->name('factura_insert');
-
+Route::get('/facturas', [FacturaController::class, 'getFacturas']);
+Route::get('/factura/{id}', [FacturaController::class, 'getFactura']);
+Route::post('/factura', [FacturaController::class, 'insertFactura']);
+Route::post('/linea', [FacturaController::class, 'insertLineas']);
 

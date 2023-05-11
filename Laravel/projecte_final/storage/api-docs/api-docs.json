@@ -418,6 +418,42 @@
                             "type": "integer"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "direccio",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "movil",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
                     }
                 ],
                 "responses": {
@@ -1073,6 +1109,15 @@
                         "example": "1456LMH"
                     },
                     {
+                        "name": "km",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "150000"
+                    },
+                    {
                         "name": "marca",
                         "in": "query",
                         "required": true,
@@ -1145,6 +1190,15 @@
                             "type": "string"
                         },
                         "example": "1456LMH"
+                    },
+                    {
+                        "name": "km",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "150000"
                     },
                     {
                         "name": "marca",

@@ -12,7 +12,7 @@ class Factura extends Model
 
     public function serveis()
     {
-        return $this->belongsToMany(Servei::class);
+        return $this->belongsToMany(Servei::class)->withPivot('unitats');
     }
     public function vehicle()
     {

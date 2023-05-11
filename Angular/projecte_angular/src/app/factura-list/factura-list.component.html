@@ -10,7 +10,7 @@
         <input type="text" [(ngModel)]="listFilter">
       </div>
       <div class="col-md-6">
-        <button [routerLink]="['../servei-form/']" class="btn btn-crear btn-success">Crear</button>
+        <button [routerLink]="['../factura-form/']" class="btn btn-crear btn-success">Crear</button>
       </div>
     </div>
     <!-- fi caixa filtrat -->
@@ -28,7 +28,6 @@
             <th>Client</th>
             <th>Vehicle</th>
             <th></th>
-            <th></th>
   
           </tr>
         </thead>
@@ -40,8 +39,7 @@
             <td>{{factura.total_con_iva}}</td>
             <td>{{factura.client.nom}} {{factura.client.cognoms}}</td>
             <td>{{factura.vehicle.marca}} {{factura.vehicle.model}}</td>
-            <td><a [routerLink]="['../factura-form-edit/'+factura.id]">Editar</a></td>
-            <!-- <td><a href="" (click)="eliminarFactura(factura.id)">Eliminar</a></td> -->
+            <td><a [routerLink]="['../factura-download/'+factura.id]">Visualizar</a></td>
           </tr>
         </tbody>
       </table>

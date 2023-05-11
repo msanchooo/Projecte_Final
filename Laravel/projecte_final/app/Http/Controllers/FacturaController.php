@@ -30,14 +30,15 @@ class FacturaController extends BaseController
      */
     function getFacturas()
     {
-        //return Factura::all();
 
-        return Factura::with('client','vehicle')->get();
-
-        //return Factura::with('client','vehicle','servei')->find($id);
+        return Factura::with('client', 'vehicle')->get();
 
     }
+    function getFactura($id)
+    {
+        return Factura::with('client','vehicle','serveis')->find($id);
 
+    }
     /**
      * @OA\Post(
      *     path="/api/factura",
@@ -99,32 +100,43 @@ class FacturaController extends BaseController
 
     function insertFactura(Request $request)
     {
-        
-        $fecha = strtotime($request->data);
-        $anio= new \DateTime();
-        $anio->setTimestamp($fecha);
-        $anio=$anio->format('Y');
 
-        $facturas=DB::table('facturas')
-            ->whereYear('data',$anio)
+        $fecha = strtotime($request->data);
+        $anio = new \DateTime();
+        $anio->setTimestamp($fecha);
+        $anio = $anio->format('Y');
+
+        $facturas = DB::table('facturas')
+            ->whereYear('data', $anio)
             ->get();
 
-        $ultimoNumero=$facturas->max('numero');
-        $ultimoNumero=intval(substr($ultimoNumero, 5));
+        $ultimoNumero = $facturas->max('numero');
+        $ultimoNumero = intval(substr($ultimoNumero, 5));
 
         $factura = Factura::create([
             'data' => $request->data,
-            'numero' => $anio . "/" . ($ultimoNumero+1),
+            'numero' => $anio . "/" . ($ultimoNumero + 1),
             'total' => $request->total,
             'total_con_iva' => $request->total_con_iva,
             'client_id' => $request->client_id,
             'vehicle_id' => $request->vehicle_id,
         ]);
 
-        $factura->serveis()->sync($request->serveis);
         return $factura;
 
     }
+
+    function insertLineas(Request $request)
+    {
+        $factura = Factura::find($request->id);
+         foreach ($request->serveis as $servei) {
+            $factura->serveis()->attach($servei['id'], ['unitats' => $servei['quantitat']]);
+
+         }
+         return $factura;
+
+    }
+
 
 
 

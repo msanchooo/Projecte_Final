@@ -51,6 +51,8 @@ import { TreballadorFormComponent } from './treballador-form/treballador-form.co
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
 import { FacturaListComponent } from './factura-list/factura-list.component';
 import { FacturaFormComponent } from './factura-form/factura-form.component';
+import { BorrarComponent } from './borrar/borrar.component';
+import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 
 
 @NgModule({
@@ -91,6 +93,8 @@ import { FacturaFormComponent } from './factura-form/factura-form.component';
     TreballadorFormEditComponent,
     FacturaListComponent,
     FacturaFormComponent,
+    BorrarComponent,
+    FacturaDownloadComponent,
   ],
 
   imports: [

@@ -28,6 +28,8 @@ import { TreballadorFormComponent } from './treballador-form/treballador-form.co
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
 import { FacturaListComponent } from './factura-list/factura-list.component';
 import { FacturaFormComponent } from './factura-form/factura-form.component';
+import { BorrarComponent } from './borrar/borrar.component';
+import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 
 const routes: Routes = [
   {path:'body', component: BodyComponent, canActivate:[AuthGuard]},
@@ -53,6 +55,8 @@ const routes: Routes = [
   {path:'treballador-form-edit/:id', component: TreballadorFormEditComponent},
   {path:'factura-list', component: FacturaListComponent},
   {path:'factura-form', component: FacturaFormComponent},
+  {path:'borrar', component: BorrarComponent},
+  {path:'factura-download/:id', component: FacturaDownloadComponent},
 
 
 
