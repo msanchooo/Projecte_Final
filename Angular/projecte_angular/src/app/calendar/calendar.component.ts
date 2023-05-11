@@ -24,11 +24,11 @@ export class CalendarComponent {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
     },
     initialView: 'dayGridMonth',
     initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
-    weekends: true,
+    weekends: false,
     editable: true,
     selectable: true,
     selectMirror: true,
@@ -58,8 +58,9 @@ export class CalendarComponent {
   }
 
   handleDateSelect(selectInfo: DateSelectArg) {
-    const title = prompt('Please enter a new title for your event');
+    const title = prompt('Introduce un titulo para el evento');
     const calendarApi = selectInfo.view.calendar;
+
 
     calendarApi.unselect(); // clear date selection
 
@@ -75,7 +76,7 @@ export class CalendarComponent {
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+    if (confirm(`Desea eliminar el evento '${clickInfo.event.title}'`)) {
       clickInfo.event.remove();
     }
   }

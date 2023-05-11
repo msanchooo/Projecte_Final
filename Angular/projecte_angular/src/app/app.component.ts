@@ -1,3 +1,6 @@
+import { OnInit } from '@angular/core';
+import { Cart } from './models/cart.models';
+import { CartService } from 'src/services/cart.service';
 import { Component, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -6,18 +9,16 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements DoCheck{
-  title = 'projecte_angular';
-  ismenurequired=false;
-  constructor(private router:Router){}
+export class AppComponent implements OnInit {
+  cart: Cart = { items: [] };
+  title: any;
 
-  //Entiendo q esto es para hacer visible o no la navbar(menu), min49
-  ngDoCheck(): void {
-    // let currenturl=this.router.url;
-    // if(currenturl=='/login-material' || currenturl=='/register'){
-    //   this.ismenurequired=false;
-    // } else {
-    //   this.ismenurequired=true;
-    // }
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+      this.cartService.cart.subscribe((_cart) => {
+        this.cart = _cart;
+      });
   }
 }

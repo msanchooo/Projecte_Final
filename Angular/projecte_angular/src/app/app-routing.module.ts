@@ -9,6 +9,8 @@ import { Pack3Component } from './pack3/pack3.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { TiendaComponent } from './tienda/tienda.component';
+import { CarritoComponent } from './carrito/carrito.component';
 import { LoginComponent } from './login/login.component';
 import { LoginMaterialComponent } from './login_material/login-material/login-material.component';
 import { RegisterComponent } from './login_material/register/register.component';
@@ -39,6 +41,8 @@ const routes: Routes = [
   {path:'pack3', component: Pack3Component},
   {path:'contacto', component: ContactoComponent},
   {path: 'calendar', component: CalendarComponent},
+  {path: 'tienda', component: TiendaComponent},
+  {path: 'carrito', component: CarritoComponent},
   {path: 'login', component: LoginComponent},
   
   {path:'admin', component: AdminComponent},

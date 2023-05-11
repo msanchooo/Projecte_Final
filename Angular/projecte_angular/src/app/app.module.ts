@@ -14,17 +14,37 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { ToastrModule } from 'ngx-toastr';
+
+import {MatMenuModule} from '@angular/material/menu'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+// import { ToastrModule } from 'ngx-toastr';
 
 // Import the module from the SDK
 // import { AuthModule } from '@auth0/auth0-angular';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TiendaComponent } from './tienda/tienda.component';
+import { ProductsHeaderComponent } from './products-header/products-header.component';
+import { FiltersComponent } from './filters/filters.component';
+import { ProductBoxComponent } from './product-box/product-box.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { CartService } from 'src/services/cart.service';
+import { StoreService } from 'src/services/store.service';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material.module';
-import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './login_material/register/register.component';
 import { UserlistingComponent } from './login_material/userlisting/userlisting.component';
 import { UpdatepopupComponent } from './login_material/updatepopup/updatepopup.component';
@@ -69,6 +89,11 @@ import { FacturaDownloadComponent } from './factura-download/factura-download.co
     InicioComponent,
     DashboardComponent,
     CalendarComponent,
+    TiendaComponent,
+    ProductsHeaderComponent,
+    FiltersComponent,
+    ProductBoxComponent,
+    CarritoComponent,
     LoginComponent,
     RegisterComponent,
     UserlistingComponent,
@@ -102,15 +127,30 @@ import { FacturaDownloadComponent } from './factura-download/factura-download.co
     FullCalendarModule,
     AppRoutingModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatBadgeModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+  ],
+  exports: [
+    MatMenuModule,
+  ],
+  providers: [CartService, StoreService],
+  bootstrap: [AppComponent,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot()
-  ],
-  exports: [MatMenuModule],
-  providers: [],
-  bootstrap: [AppComponent],
+  ]
+
 })
 export class AppModule {}
