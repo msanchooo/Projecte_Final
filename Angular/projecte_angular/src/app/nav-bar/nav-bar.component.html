@@ -37,7 +37,7 @@
       <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
 
       <!-- Verifica si esta loged -->
-      <section *ngIf="logged(); else loggedOut">
+      <section>
         <!-- <section *ngIf="auth.user$ | async as user; else loggedOut"> -->
         <!-- Client -->
         <div class="btn-group">
@@ -73,14 +73,14 @@
 
 
       <button mat-icon-button [matMenuTriggerFor]="menu"  [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity"
-      matBadgeColor="warn">
+      matBadgeColor="warn" matBadgeSize="large">
         <mat-icon
           >shopping_cart</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <div class="p-3 divide-y divide-solid">
-          <span class="mr-16">{{ itemsQuantity }} Items</span>
-          <a routerLink="/carrito">View Cart</a>
+          <span class="mr-16">{{ itemsQuantity }} Productos</span>
+          <a routerLink="/carrito">Mi Carrito</a>
         </div>
         <div *ngIf="cart.items.length" class="py-3">
           <div 

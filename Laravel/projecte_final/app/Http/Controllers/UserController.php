@@ -28,7 +28,7 @@ class UserController extends BaseController
         return User::find($id);
     }
 
-    function insertClient(Request $request)
+    function insertUser(Request $request)
     {
 
         return User::create($request->all());

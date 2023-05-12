@@ -23,7 +23,7 @@ export class CartService {
     }
 
     this.cart.next({ items });
-    this._snackBar.open('1 item added to cart', 'Ok', {duration: 3000});
+    this._snackBar.open('1 Producto añadido al carrito.', 'Ok', {duration: 3000});
   }
 
   removeQuantity(item: CartItem): void {
@@ -45,7 +45,7 @@ export class CartService {
     }
 
     this.cart.next({ items: filteredItems })
-    this._snackBar.open('1 item removed from cart', 'Ok', {
+    this._snackBar.open('1 Producto eliminado del carrito.', 'Ok', {
       duration: 3000
     });
   }
@@ -58,7 +58,7 @@ export class CartService {
 
   clearCart(): void {
     this.cart.next({ items: [] });
-    this._snackBar.open('Cart is cleared.', 'Ok', {
+    this._snackBar.open('Carrito vacío.', 'Ok', {
       duration: 3000
     });
   } 
@@ -70,7 +70,7 @@ export class CartService {
 
     if(update) {
       this.cart.next({ items: filteredItems });
-      this._snackBar.open('1 item removed from cart.','Ok', {
+      this._snackBar.open('1 Producto eliminado del carrito.','Ok', {
         duration: 3000
       });
     }

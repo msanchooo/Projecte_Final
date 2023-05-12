@@ -42,13 +42,11 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { CartService } from 'src/services/cart.service';
 import { StoreService } from 'src/services/store.service';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+import {MatSelectModule} from '@angular/material/select';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material.module';
-import { RegisterComponent } from './login_material/register/register.component';
-import { UserlistingComponent } from './login_material/userlisting/userlisting.component';
-import { UpdatepopupComponent } from './login_material/updatepopup/updatepopup.component';
-import { LoginMaterialComponent } from './login_material/login-material/login-material.component';
+
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -69,6 +67,9 @@ import { TreballadorListComponent } from './treballador-list/treballador-list.co
 import { TreballadorListFilterPipe } from './treballador-list/treballador-list-filter.pipe';
 import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
+import { ContactService } from 'src/services/contact.service';
+
+
 
 
 @NgModule({
@@ -90,11 +91,6 @@ import { TreballadorFormEditComponent } from './treballador-form-edit/treballado
     FiltersComponent,
     ProductBoxComponent,
     CarritoComponent,
-    LoginComponent,
-    RegisterComponent,
-    UserlistingComponent,
-    UpdatepopupComponent,
-    LoginMaterialComponent,
 
     VehicleListComponent,
     ClientListComponent,
@@ -132,11 +128,14 @@ import { TreballadorFormEditComponent } from './treballador-form-edit/treballado
     MatSnackBarModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
   ],
   exports: [
     MatMenuModule,
   ],
-  providers: [CartService, StoreService],
+  providers: [CartService, StoreService, ContactService],
   bootstrap: [AppComponent,
     FormsModule,
     ReactiveFormsModule,
