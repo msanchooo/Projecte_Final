@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('cognoms');
             $table->string('nif');
+            $table->string('direccio');
+            $table->integer('movil');
             
             //Particular o Empresa
             $table->unsignedBigInteger('tipu_id');

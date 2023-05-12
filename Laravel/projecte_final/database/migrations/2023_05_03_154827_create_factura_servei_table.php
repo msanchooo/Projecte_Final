@@ -13,20 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('factura_servei', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('unitats');
 
-            $table->string('matricula');
-            $table->string('marca');
-            $table->string('model');
-            $table->integer('km');
+            $table->unsignedBigInteger('factura_id');
+            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('cascade');
 
-            
-            $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('clients');
-
-
+            $table->unsignedBigInteger('servei_id');
+            $table->foreign('servei_id')->references('id')->on('serveis')->onDelete('cascade');
         });
     }
 
@@ -37,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('factura_servei');
     }
 };

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
+</head>
+
+<body>
+    <div id="pdfTable" class="container">
+        <h1>Factura: {{factura_numero}}</h1>
+        <div class="row">
+            <div class="col dataDiv">
+                <h2>Fecha</h2>
+                <p>{{factura_fecha}}</p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <h2>Información de la empresa</h2>
+                <p>Taller Tuku</p>
+                <p>Barcelona, 08420</p>
+                <p>650 08 08 90</p>
+            </div>
+            <div class="col-sm">
+                <h2>Información del cliente</h2>
+                <p>Client: {{client_nom}}</p>
+                <p>Direccio: {{ client_direccio }}</p>
+                <p>Movil: {{ client_movil }}</p>
+            </div>
+            <div class="col-sm">
+                <h2>Información del vehículo</h2>
+                <p>Marca: {{vehicle_marca_model}}</p>
+                <p>Matricula: {{ vehicle_matricula }}</p>
+                <p>Km: {{ vehicle_km}}</p>
+            </div>
+
+        </div>
+        <hr class="my-4">
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Total</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let servei of serveiArr">
+                        <td>{{servei.nom}}</td>
+                        <td>{{servei.pivot.unitats}}</td>
+                        <td>{{servei.preu}}</td>
+                        <td>{{servei.preu*servei.pivot.unitats}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total con IVA</b></td>
+                        <td>{{total_factura}}</td>
+                        <td><b>Total sin IVA</b></td>
+                        <td>{{total_factura_iva}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <button class="btn btn-primary" (click)="exportPDF()">Export To PDF</button>
+
+</body>

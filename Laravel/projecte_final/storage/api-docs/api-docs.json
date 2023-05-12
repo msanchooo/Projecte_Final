@@ -418,6 +418,142 @@
                             "type": "integer"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "direccio",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "movil",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/facturas": {
+            "get": {
+                "tags": [
+                    "Facturas"
+                ],
+                "summary": "Veure totes les factures.",
+                "operationId": "3f2ca30a5d394f811c0aed55879ef64c",
+                "responses": {
+                    "200": {
+                        "description": "Retorna totes les factures."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/factura": {
+            "post": {
+                "tags": [
+                    "Facturas"
+                ],
+                "summary": "Adds a new factura",
+                "operationId": "e683ef93d57db7297b0639cb84ebb20d",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-07-20"
+                    },
+                    {
+                        "name": "total",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "100"
+                    },
+                    {
+                        "name": "total_con_iva",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "121"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[0]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "serveis[1]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -973,6 +1109,15 @@
                         "example": "1456LMH"
                     },
                     {
+                        "name": "km",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "150000"
+                    },
+                    {
                         "name": "marca",
                         "in": "query",
                         "required": true,
@@ -1045,6 +1190,15 @@
                             "type": "string"
                         },
                         "example": "1456LMH"
+                    },
+                    {
+                        "name": "km",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "150000"
                     },
                     {
                         "name": "marca",

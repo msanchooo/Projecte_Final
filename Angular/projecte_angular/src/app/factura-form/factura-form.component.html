@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Factura</h1>
+        <div class="row">
+            <div class="col dataDiv">
+                <h2>Fecha</h2>
+                <input [(ngModel)]="data" (change)="actualizarData(data)" class="form-control data" type="date">
+                <p class="error">{{error_fecha}}</p>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <h2>Información de la empresa</h2>
+                <p>Taller Tuku</p>
+                <p>Barcelona, 08420</p>
+                <p>650 08 08 90</p>
+            </div>
+            <div class="col-sm">
+                <h2>Información del cliente</h2>
+                <div class="form-element ">
+                    <select class="form-select info" [(ngModel)]="selectedOptionClient"
+                        (change)="actualizarClient(selectedOptionClient)" id="client">
+                        <option value="">
+                            Selecciona un cliente
+                        </option>
+                        <option *ngFor="let client of clients" [value]="client.id">
+                            {{client.nom}} {{client.cognoms}}
+                        </option>
+                    </select>
+                    <p class="error">{{error_client}}</p>
+                </div>
+                <p>Direccio: {{ client_direccio }}</p>
+                <p>Movil: {{ client_movil }}</p>
+            </div>
+            <div class="col-sm">
+                <h2>Información del vehículo</h2>
+                <div class="form-element">
+                    <select class="form-select info" [(ngModel)]="selectedOptionVehicle"
+                        (change)="actualizarVehicle(selectedOptionVehicle)" id="vehicles">
+                        <option value="">
+                            Selecciona un vehiculo
+                        </option>
+                        <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+                            {{vehicle.marca}} {{vehicle.model}}
+                        </option>
+                    </select>
+                    <p class="error">{{error_vehicle}}</p>
+                </div>
+                <p>Matricula: {{ vehicle_matricula }}</p>
+                <p>Km: {{ vehicle_km}}</p>
+            </div>
+
+        </div>
+        <hr class="my-4">
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select class="form-select" [(ngModel)]="selectedOptionServei"
+                                (change)="actualizarServei(selectedOptionServei)" id="serveis">
+                                <option value="">
+                                    Selecciona un servicio
+                                </option>
+                                <option *ngFor="let servei of serveis" [value]="servei.id">
+                                    {{servei.nom}}
+                                </option>
+                            </select>
+                            <p class="error">{{error_servei}}</p>
+                        </td>
+                        <td>
+                            <input class="form-control" (change)="actualizarServei(selectedOptionServei)" value="1"
+                                type="number" [(ngModel)]="quantitat">
+                            <p class="error">{{this.error_cantidad}}</p>
+                        </td>
+                        <td>{{ servei.preu }}</td>
+                        <td>{{ servei_total }}</td>
+                        <td><button (click)="anadirLinea()">Agregar</button></td>
+                    </tr>
+                    <tr *ngFor="let serveiL of serveiArr">
+                        <td>{{serveiL.nom}}</td>
+                        <td>{{serveiL.quantitat}}</td>
+                        <td>{{serveiL.preu}}</td>
+                        <td>{{serveiL.total}}</td>
+                        <td><button (click)="borrarLinea(serveiL.nom)">Borrar</button></td>
+
+                    </tr>
+                    <tr>
+                        <th>Total con IVA</th>
+                        <th>{{total_factura}}</th>
+                        <th>Total sin IVA</th>
+                        <th>{{total_factura_iva}}</th>
+                        <td><button (click)="onSubmit()">Generar</button></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>

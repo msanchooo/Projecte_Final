@@ -25,6 +25,10 @@ export class DadesVehiclesService {
       catchError(this.handleError)
     );
   }
+  
+  public getVehicleClient(idClient: any): Observable<HttpResponse<IVehicle[]>>{
+    return this._http.get<IVehicle[]>(environment.apiUrl + '/api/vehicle-client/' + idClient, { observe: 'response' });
+  }
 
   public putVehicle(id: any, dada: any): Observable<any> {
     const httpOptions = {

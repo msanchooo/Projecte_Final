@@ -120,7 +120,6 @@ class CitaController extends BaseController
     function insertCita(Request $request)
     {
 
-
         $request->validate([
             'data' => ['required'],
             'client_id' => ['required'],

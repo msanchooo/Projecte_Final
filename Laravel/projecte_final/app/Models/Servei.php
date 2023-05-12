@@ -13,5 +13,9 @@ class Servei extends Model
     {
         return $this->belongsToMany(Cita::class);
     }
+    public function factures()
+    {
+        return $this->belongsToMany(Factura::class);
+    }
   
 }

@@ -70,6 +70,10 @@ import { TreballadorFormEditComponent } from './treballador-form-edit/treballado
 import { ContactService } from 'src/services/contact.service';
 
 
+import { FacturaListComponent } from './factura-list/factura-list.component';
+import { FacturaFormComponent } from './factura-form/factura-form.component';
+import { BorrarComponent } from './borrar/borrar.component';
+import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 
 
 @NgModule({
@@ -108,6 +112,10 @@ import { ContactService } from 'src/services/contact.service';
     TreballadorListFilterPipe,
     TreballadorFormComponent,
     TreballadorFormEditComponent,
+    FacturaListComponent,
+    FacturaFormComponent,
+    BorrarComponent,
+    FacturaDownloadComponent,
   ],
 
   imports: [
