@@ -20,7 +20,7 @@ export class DadesClientsService {
     return this._http.delete(`${environment.apiUrl}/api/client/${id}`);
   }
 
-  getClientByUserId(id: any): Observable<HttpResponse<IClient>> {
+  public getClientByUserId(id: any): Observable<HttpResponse<IClient>> {
     return this._http.get<IClient>(
       environment.apiUrl + '/api/client-user/' + id,
       { observe: 'response' }

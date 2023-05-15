@@ -12,7 +12,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
 
-
 use App\Http\Controllers\ApiController;
 
 /*
@@ -33,7 +32,9 @@ use App\Http\Controllers\ApiController;
 Route::get('/', [Controller::class, 'home'])->name('home');
 
 //// Cites
-Route::middleware(['auth:sanctum','Admin::class'])->get('/citas', [CitaController::class, 'getCitas']);
+// Route::middleware(['auth:sanctum',Admin::class])->get('/citas', [CitaController::class, 'getCitas']);
+
+Route::middleware(['auth:sanctum','admin'])->get('/citas', [CitaController::class, 'getCitas']);
 
 Route::middleware('auth:sanctum')->get('/cita/{id}', [CitaController::class, 'getCita']);
 
@@ -45,7 +46,7 @@ Route::delete('/cita/{id}', [CitaController::class, 'deleteCita'])->name('cita_d
 
 //// Clients
 
-Route::middleware('auth:sanctum')->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
+Route::middleware(['auth:sanctum','admin'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
 
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
@@ -92,7 +93,7 @@ Route::delete('/user/{id}', [UserController::class, 'deleteUser'])->name('user_d
 
 //// Vehicles
 
-Route::middleware('auth:sanctum')->get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list');
+Route::middleware(['auth:sanctum','admin'])->get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list');
 
 Route::middleware('auth:sanctum')->get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
 
@@ -106,7 +107,7 @@ Route::delete('/vehicle/{id}', [VehicleController::class, 'deleteVehicle'])->nam
 
 //// Serveis
 
-Route::middleware('auth:sanctum')->get('/serveis', [ServeiController::class, 'getServeis'])->name('serveis_list');
+Route::middleware(['auth:sanctum'])->get('/serveis', [ServeiController::class, 'getServeis'])->name('serveis_list');
 
 Route::middleware('auth:sanctum')->get('/servei/{id}', [ServeiController::class, 'getServei'])->name('servei_cerca');
 
