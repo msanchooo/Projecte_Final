@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Client;
 
 
 
@@ -25,13 +26,15 @@ class LoginController extends BaseController
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $request->user()->createToken('token1');
+            $client = Client::where('user_id', $user->id)->first();
 
             //return $user;
             return response()->json([
                 'id' => $user->id,
                 'email'=> $user->email,
                 'rol' => $user->rol,
-                'token' => $token->plainTextToken
+                'token' => $token->plainTextToken,
+                'username' => $client->nom
 
             ], 200);
         } else {

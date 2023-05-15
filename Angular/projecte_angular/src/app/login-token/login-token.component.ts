@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { ServeiUpdateService } from '../servei-update/servei-update.service';
 import { AuthenticationService } from './_services/authentication.service';
+import { DadesClientsService } from '../datos/dades-clients.service';
+
 
 @Component({ templateUrl: 'login-token.component.html' })
 export class LoginTokenComponent implements OnInit {
@@ -12,13 +14,17 @@ export class LoginTokenComponent implements OnInit {
   submitted = false;
   error = '';
   _rol: string | null = '';
+  _user: string | null = '';
+
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private service: ServeiUpdateService
+    private service: ServeiUpdateService,
+    private clientService: DadesClientsService
+
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.userValue) {
@@ -44,6 +50,12 @@ export class LoginTokenComponent implements OnInit {
       rol
     );
   }
+  sendMessage2(user: string): void {
+    // send message to subscribers via observable subject
+    this.service.sendUpdate2(
+      user
+    );
+  }
 
   onSubmit(credencials: any) {
     this.submitted = true;
@@ -63,8 +75,13 @@ export class LoginTokenComponent implements OnInit {
         next: () => {
           const returnUrl = '/';
           this._rol = localStorage.getItem('rol');
+          this._user = localStorage.getItem('username')
           if(this._rol !== null){
             this.sendMessage(this._rol);
+          }
+
+          if(this._user !== null){
+            this.sendMessage2(this._user);
           }
           
           this.router.navigate([returnUrl]);
