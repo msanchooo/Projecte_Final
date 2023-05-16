@@ -8,6 +8,14 @@ describe('CartService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CartService);
+import { ServeiUpdateService } from '../servei-update.service';
+
+describe('ServeiUpdateService', () => {
+  let service: ServeiUpdateService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ServeiUpdateService);
   });
 
   it('should be created', () => {

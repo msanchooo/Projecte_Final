@@ -23,7 +23,7 @@ export class TreballadorFormEditComponent {
     nif: '',
     sou: 0,
     carrec: '',
-    user: { id: 0, email: '', password: '' },
+    user: { id: 0, email: '', password: '', rol: 0 },
     mostrarContrasenya: false
   };
   constructor(

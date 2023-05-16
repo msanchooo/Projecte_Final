@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
 use App\Models\Treballador;
+use Illuminate\Support\Facades\Hash;
 
 class TreballadorController extends BaseController
 {
@@ -149,7 +150,7 @@ class TreballadorController extends BaseController
 
         $user = User::create([
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
 
         ]);
 
@@ -309,5 +310,10 @@ class TreballadorController extends BaseController
         $user->delete();
 
         return $treballador;
+    }
+
+    function getTreballadorByUserId($userId)
+    {
+        return Treballador::where('user_id', $userId)->first();
     }
 }

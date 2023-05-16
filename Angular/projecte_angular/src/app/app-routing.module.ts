@@ -6,16 +6,14 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { Pack1Component } from './pack1/pack1.component';
 import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { TiendaComponent } from './tienda/tienda.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { AuthGuard } from 'src/app/login-token/_helpers/auth.guard';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { ClientListComponent } from './client-list/client-list.component';
-import { AdminComponent } from './admin/admin.component';
 import { ServeiListComponent } from './servei-list/servei-list.component';
 import { ServeiFormComponent } from './servei-form/servei-form.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
@@ -27,6 +25,8 @@ import { FacturaListComponent } from './factura-list/factura-list.component';
 import { FacturaFormComponent } from './factura-form/factura-form.component';
 import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
+import { LoginTokenComponent } from './login-token/login-token.component';
+
 
 const routes: Routes = [
   {path:'body', component: BodyComponent,},
@@ -40,7 +40,6 @@ const routes: Routes = [
   {path: 'carrito', component: CarritoComponent},
 
   
-  {path:'admin', component: AdminComponent},
   {path:'vehicle-list', component: VehicleListComponent},
   {path:'vehicle-form', component: VehicleFormComponent},
   {path:'vehicle-form-edit/:id', component: VehicleFormEditComponent},
@@ -56,12 +55,10 @@ const routes: Routes = [
   {path:'factura-form', component: FacturaFormComponent},
   {path:'borrar', component: BorrarComponent},
   {path:'factura-download/:id', component: FacturaDownloadComponent},
+  { path: 'login-token', component: LoginTokenComponent },
+  { path: '', component: BodyComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: ''}
 
-
-
-
-  {path:'', redirectTo:'body', pathMatch: 'full'},
-  {path:'**', redirectTo:'body', pathMatch: 'full'},
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   // { path: 'inicio', component: InicioComponent },
   // { path: 'dashboard', component: DashboardComponent },

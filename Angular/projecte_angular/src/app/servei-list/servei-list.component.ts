@@ -15,10 +15,11 @@ export class ServeiListComponent {
   ngOnInit(): void {
     //fem servir event de creacio
     console.log("Listat de serveis inicialitzat");
-    this.serveiService.getDades().subscribe(resp => {
-      // accedim al body de la resposta HTTP.
+    this.serveiService.getDades().subscribe(resp=>{
       if(resp.body) this.serveis = resp.body;
-    });
+    })
+
+    
   }
 
   confirmarEliminacion(): boolean {
