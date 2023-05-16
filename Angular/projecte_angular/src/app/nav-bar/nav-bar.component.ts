@@ -17,12 +17,16 @@ export class NavBarComponent implements OnInit, OnDestroy {
   constructor(
     private loginPrd: AuthenticationService,
     private service: ServeiUpdateService,
-    private clientService: DadesClientsService
+    private clientService: DadesClientsService,
+    private authenticationService: AuthenticationService
+
   ) {
     this.subscriptionName = this.service.getUpdate().subscribe((message) => {
       //message contains the data sent from service
       this.rol = message;
       this.rolUsuari = this.rol._rol;
+
+      console.log(message);
     });
 
     this.subscriptionName2 = this.service.getUpdate2().subscribe((message) => {
@@ -36,14 +40,21 @@ export class NavBarComponent implements OnInit, OnDestroy {
   private subscriptionName2: Subscription;
 
   rol: any;
-  rolUsuari: string | null = '';
+  rolUsuari: any;
 
-  username: string | null = '';
+  username: any;
   usuari: any;
 
   ngOnInit(): void {
-    this.rolUsuari = localStorage.getItem('rol');
-    this.username =  localStorage.getItem('username');
+
+    // this.rolUsuari = localStorage.getItem('rol');
+    // this.username =  localStorage.getItem('username');
+
+    const user = this.authenticationService.userValue;
+
+    this.rolUsuari = user?.rol;
+
+    this.username = user?.username;
   }
 
   public _logout() {

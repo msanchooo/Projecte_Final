@@ -34,9 +34,18 @@ class VehicleController extends BaseController
 
     function getVehicles()
     {
-        return Vehicle::with('client')->get();
+        $user = Auth::user();
 
+        if ($user->rol == 1) {
+            return Vehicle::with('client')->get();
+        } else {
+            $client = Client::where('user_id', $user->id)->first();
+            if ($client) {
+                return Vehicle::with('client')->where('client_id', $client->id)->get();
+            }
+        }
     }
+
 
     /**
      * @OA\Get(
@@ -65,9 +74,9 @@ class VehicleController extends BaseController
         $user = Auth::user();
         $vehicle = Vehicle::with('client')->find($id);
 
-        if ($user->rol == 1){
+        if ($user->rol == 1) {
             return $vehicle;
-        } else if ($vehicle->client->user_id == $user->id)  {
+        } else if ($vehicle->client->user_id == $user->id) {
             return $vehicle;
         }
 
@@ -119,27 +128,28 @@ class VehicleController extends BaseController
 
     function insertVehicle(Request $request)
     {
-
-        $client = Client::find($request->client_id);
         $user = Auth::user();
+        $client = Client::where('user_id', $user->id)->first();
+        
 
-        if($client->user_id==$user->id || $user->rol==1){
-        $request->validate([
-            'matricula' => ['required', 'max:25'],
-            'marca' => ['required', 'max:25'],
-            'model' => ['required', 'max:25'],
-            'client_id' => ['required'],
-        ]);
+        if ($client->user_id == $user->id || $user->rol == 1) {
 
-        return Vehicle::create([
-            'matricula' => $request->matricula,
-            'marca' => $request->marca,
-            'model' => $request->model,
-            'client_id' => $request->client_id
-        ]);
+            $request->validate([
+                'matricula' => ['required', 'max:25'],
+                'marca' => ['required', 'max:25'],
+                'model' => ['required', 'max:25'],
+                'client_id' => ['required'],
+            ]);
 
+            return Vehicle::create([
+                'matricula' => $request->matricula,
+                'marca' => $request->marca,
+                'model' => $request->model,
+                'client_id' => $request->client_id
+            ]);
+
+        }
     }
-}
 
     /**
      * @OA\Post(
@@ -184,24 +194,29 @@ class VehicleController extends BaseController
 
     function updateVehicle(Request $request, $id)
     {
+        $user = Auth::user();
+        $client = Client::where('user_id', $user->id)->first();
 
-        $request->validate([
-            'matricula' => ['required', 'max:25'],
-            'marca' => ['required', 'max:25'],
-            'model' => ['required', 'max:25'],
-            'client_id' => ['required'],
-        ]);
+        if ($client->user_id == $user->id || $user->rol == 1) {
 
-        $vehicle = Vehicle::find($request->id);
+            $request->validate([
+                'matricula' => ['required', 'max:25'],
+                'marca' => ['required', 'max:25'],
+                'model' => ['required', 'max:25'],
+                'client_id' => ['required'],
+            ]);
 
-        $vehicle->update([
-            'matricula' => $request->matricula,
-            'marca' => $request->marca,
-            'model' => $request->model,
-            'client_id' => $request->client_id
-        ]);
+            $vehicle = Vehicle::find($request->id);
 
-        return $vehicle;
+            $vehicle->update([
+                'matricula' => $request->matricula,
+                'marca' => $request->marca,
+                'model' => $request->model,
+                'client_id' => $request->client_id
+            ]);
+
+            return $vehicle;
+        }
     }
 
 

@@ -4,4 +4,5 @@ export interface IUser {
         password:string;
         rol: number;
         token?: string;
+        username?: string;
 }

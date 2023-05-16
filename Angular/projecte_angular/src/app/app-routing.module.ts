@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'vehicle-list', component: VehicleListComponent },
   { path: 'vehicle-form', component: VehicleFormComponent },
   { path: 'vehicle-form-edit/:id', component: VehicleFormEditComponent },
-  { path: 'client-list', component: ClientListComponent },
+  { path: 'client-list', component: ClientListComponent, canActivate: [AuthGuard]  },
   { path: 'servei-list', component: ServeiListComponent },
   { path: 'servei-form', component: ServeiFormComponent },
   { path: 'servei-form-edit/:id', component: ServeiFormEditComponent },

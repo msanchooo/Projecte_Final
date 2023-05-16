@@ -46,7 +46,7 @@ Route::delete('/cita/{id}', [CitaController::class, 'deleteCita'])->name('cita_d
 
 //// Clients
 
-Route::middleware(['auth:sanctum','admin'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
+Route::middleware(['auth:sanctum'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
 
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
@@ -93,7 +93,7 @@ Route::delete('/user/{id}', [UserController::class, 'deleteUser'])->name('user_d
 
 //// Vehicles
 
-Route::middleware(['auth:sanctum','admin'])->get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list');
+Route::middleware(['auth:sanctum'])->get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list');
 
 Route::middleware('auth:sanctum')->get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
 
@@ -103,7 +103,7 @@ Route::middleware('auth:sanctum')->post('/vehicle/{id}', [VehicleController::cla
 
 Route::middleware('auth:sanctum')->post('/vehicle', [VehicleController::class, 'insertVehicle'])->name('vehicle_insert');
 
-Route::delete('/vehicle/{id}', [VehicleController::class, 'deleteVehicle'])->name('vehicle_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/vehicle/{id}', [VehicleController::class, 'deleteVehicle'])->name('vehicle_delete');
 
 //// Serveis
 
