@@ -7,8 +7,10 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use App\Models\Client;
 
 use App\Models\Vehicle;
+use Illuminate\Support\Facades\Auth;
 
 class VehicleController extends BaseController
 {
@@ -60,7 +62,18 @@ class VehicleController extends BaseController
 
     function getVehicle($id)
     {
-        return Vehicle::with('client')->find($id);
+        $user = Auth::user();
+        $vehicle = Vehicle::with('client')->find($id);
+
+        if ($user->rol == 1){
+            return $vehicle;
+        } else if ($vehicle->client->user_id == $user->id)  {
+            return $vehicle;
+        }
+
+        return "unautorized";
+
+
     }
 
     /**
@@ -114,6 +127,10 @@ class VehicleController extends BaseController
     function insertVehicle(Request $request)
     {
 
+        $client = Client::find($request->client_id);
+        $user = Auth::user();
+
+        if($client->user_id==$user->id || $user->rol==1){
         $request->validate([
             'matricula' => ['required', 'max:25'],
             'marca' => ['required', 'max:25'],
@@ -128,9 +145,11 @@ class VehicleController extends BaseController
             'client_id' => $request->client_id,
             'km' => $request->km
         ]);
-    }
 
-        /**
+    }
+}
+
+    /**
      * @OA\Post(
      *     path="/api/vehicle/{id}",
      *      tags={"Vehicles"},
@@ -190,7 +209,7 @@ class VehicleController extends BaseController
 
         ]);
 
-        $vehicle= Vehicle::find($request->id);
+        $vehicle = Vehicle::find($request->id);
 
         $vehicle->update([
             'matricula' => $request->matricula,
@@ -205,7 +224,7 @@ class VehicleController extends BaseController
     }
 
 
-     /**
+    /**
      * @OA\Delete(
      *     path="/api/vehicle/{id}",
      *      tags={"Vehicles"},
@@ -238,12 +257,11 @@ class VehicleController extends BaseController
         return $vehicle;
     }
 
-    function getVehicleClient($idClient){
 
-
-        $vehicles = Vehicle::where('client_id', $idClient)->get();
+    function getVehicleClient($idClient)
+    {
+        $vehicles = Vehicle::where('client_id', $idClient);
 
         return $vehicles;
-
     }
 }

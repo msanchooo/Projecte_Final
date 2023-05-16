@@ -28,8 +28,6 @@ import {MatTableModule} from '@angular/material/table';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-// import { ToastrModule } from 'ngx-toastr';
-
 // Import the module from the SDK
 // import { AuthModule } from '@auth0/auth0-angular';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -41,12 +39,11 @@ import { ProductBoxComponent } from './product-box/product-box.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CartService } from 'src/services/cart.service';
 import { StoreService } from 'src/services/store.service';
-import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material.module';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -60,7 +57,6 @@ import { ServeiListFilterPipe } from './servei-list/servei-list-filter.pipe';
 import { ServeiFormComponent } from './servei-form/servei-form.component';
 
 import { UserListComponent } from './user-list/user-list.component';
-import { AdminComponent } from './admin/admin.component';
 import { ServeiFormEditComponent } from './servei-form-edit/servei-form-edit.component';
 import { VehicleFormEditComponent } from './vehicle-form-edit/vehicle-form-edit.component';
 import { TreballadorListComponent } from './treballador-list/treballador-list.component';
@@ -75,6 +71,10 @@ import { FacturaFormComponent } from './factura-form/factura-form.component';
 import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 
+import { LoginTokenComponent } from './login-token/login-token.component';
+import { fakeBackendProvider } from './login-token/_helpers/fake-backend';
+import { JwtInterceptor } from './login-token/_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -95,11 +95,9 @@ import { FacturaDownloadComponent } from './factura-download/factura-download.co
     FiltersComponent,
     ProductBoxComponent,
     CarritoComponent,
-
     VehicleListComponent,
     ClientListComponent,
     UserListComponent,
-    AdminComponent,
     ClientListFilterPipe,
     VehicleListFilterPipe,
     VehicleFormComponent,
@@ -116,6 +114,7 @@ import { FacturaDownloadComponent } from './factura-download/factura-download.co
     FacturaFormComponent,
     BorrarComponent,
     FacturaDownloadComponent,
+    LoginTokenComponent,    
   ],
 
   imports: [
@@ -140,16 +139,27 @@ import { FacturaDownloadComponent } from './factura-download/factura-download.co
     ReactiveFormsModule,
     MatSelectModule,
   ],
+
   exports: [
     MatMenuModule,
   ],
-  providers: [CartService, StoreService, ContactService],
-  bootstrap: [AppComponent,
+
+  providers: [
+    CartService, 
+    StoreService, 
+    ContactService, 
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    fakeBackendProvider
+  ],
+
+  bootstrap: [
+    AppComponent,
     FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     HttpClientModule,
   ]
-
 })
 export class AppModule {}

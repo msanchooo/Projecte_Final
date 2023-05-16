@@ -23,8 +23,11 @@
   </head>
   <app-nav-bar [cart]="cart"></app-nav-bar>
   <div class="container">
-    <router-outlet></router-outlet>
+    <router-outlet ></router-outlet>
   </div>
+  <!--(newItemEvent)="addItem($event)" <ul>
+    <li *ngFor="let item of items">{{item}}</li>
+  </ul> -->
   <app-footer></app-footer>
 
   

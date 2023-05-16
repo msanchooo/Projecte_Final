@@ -41,6 +41,13 @@ export class DadesTreballadorsService {
   public deleteTreballador(id: any): Observable<any> {
     return this._http.delete(`${environment.apiUrl}/api/treballador/${id}`);
   }
+
+  public getTreballadorByUserId(id: any): Observable<ITreballador> {
+    return this._http.get<ITreballador>(`${environment.apiUrl}/api/treballador-user/${id}`);
+  }
+
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

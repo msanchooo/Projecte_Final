@@ -9,6 +9,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 use App\Models\Client;
 
@@ -156,7 +158,8 @@ class ClientController extends BaseController
 
         $user = User::create([
             'email' => $request->email,
-            'password' =>bcrypt($request->password),
+            'password' => Hash::make($request->password),
+            'rol' => 2
 
         ]);
         //dd($user);
@@ -171,7 +174,6 @@ class ClientController extends BaseController
 
 
     
-
         ]);
 
         return $client;
@@ -292,4 +294,11 @@ class ClientController extends BaseController
 
         return $client;
     }
+
+
+    function getClientByUserId($userId)
+    {
+        return Client::where('user_id', $userId)->first();
+    }
+
 }
