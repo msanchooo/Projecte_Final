@@ -8,7 +8,6 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { AuthGuard } from 'src/app/login-token/_helpers/auth.guard';
-import { HomeComponent } from 'src/app/login-token/home/home.component';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';

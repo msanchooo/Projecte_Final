@@ -47,7 +47,6 @@ import { LoginTokenComponent } from './login-token/login-token.component';
 import { fakeBackendProvider } from './login-token/_helpers/fake-backend';
 import { JwtInterceptor } from './login-token/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
-import { HomeComponent } from './login-token/home/home.component';
 
 @NgModule({
   declarations: [
@@ -78,9 +77,7 @@ import { HomeComponent } from './login-token/home/home.component';
     TreballadorListFilterPipe,
     TreballadorFormComponent,
     TreballadorFormEditComponent,
-    LoginTokenComponent,
-    HomeComponent,
-    
+    LoginTokenComponent,    
   ],
 
   imports: [
