@@ -9,7 +9,7 @@ import { Pack3Component } from './pack3/pack3.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { TiendaComponent } from './tienda/tienda.component';
 import { CarritoComponent } from './carrito/carrito.component';
-import { AuthGuard } from 'src/app/login-token/_helpers/auth.guard';
+import { AuthGuard } from 'src/app/auth/_helpers/auth.guard';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -25,7 +25,7 @@ import { FacturaListComponent } from './factura-list/factura-list.component';
 import { FacturaFormComponent } from './factura-form/factura-form.component';
 import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
-import { LoginTokenComponent } from './login-token/login-token.component';
+import { LoginTokenComponent } from './auth/login/login-token.component';
 
 
 const routes: Routes = [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IVehicle } from '../interfaces/IVehicle';
-import { AuthenticationService } from '../login-token/_services/authentication.service';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-vehicle-list',
