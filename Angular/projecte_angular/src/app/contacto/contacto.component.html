@@ -30,37 +30,41 @@
             </div>
 
             <div class="col-lg-6 col-sm-12 contact-form">
-                <form class="row g-3" action="https://mailthis.to/albert1" method="POST" [formGroup]="loginForm" (ngSubmit)="submitForm()"
+                <form class="row g-3" action="https://mailthis.to/albert1" method="POST" [formGroup]="contactForm" (ngSubmit)="submitForm()"
                 enctype="multipart/form-data">
                     <div class="col-md-12" >
                         <label for="validationForm" class="form-label">Tus Datos</label>
-                        <input placeholder="Nombre" type="text" class="form-control inputs" id="validationDefault01" formControlName="nombre">
+                        <input placeholder="Nombre" type="text" class="form-control inputs" formControlName="nombre">
                         <span style="color: rgb(235, 57, 57);" *ngIf="nombre && nombre.invalid && nombre.touched">Introduce un nombre.</span>
                     </div>
                     <div class="col-md-12">
-                        <input placeholder="Apellidos" type="text" class="form-control inputs" id="validationDefault02"  formControlName="apellidos" >
+                        <input placeholder="Apellidos" type="text" class="form-control inputs" formControlName="apellidos" >
                         <span style="color: rgb(235, 57, 57);" *ngIf="apellidos && apellidos.invalid && apellidos.touched">Introduce un apellido.</span>
                     </div>
                     <div class="col-md-12">
                         <div class="input-group">
                             <span class="input-group-text bg-danger text-light" id="inputGroupPrepend2">+34</span>
-                            <input placeholder="Teléfono" type="text" class="form-control inputs" id="validationDefaultPhone"
+                            <input placeholder="Teléfono" type="text" class="form-control inputs"
                                 aria-describedby="inputGroupPrepend2" formControlName="telefono">
                         </div>
                         <span style="color: rgb(235, 57, 57);" *ngIf="telefono && telefono.invalid && telefono.touched">Introduce un número válido.</span> 
                     </div>
                     <div class="col-md-4">
-                        <input placeholder="Población" type="text" class="form-control inputs" id="validationDefault03"  formControlName="poblacion">
+                        <input placeholder="Población" type="text" class="form-control inputs" formControlName="poblacion">
                         <span style="color: rgb(235, 57, 57);" *ngIf="poblacion && poblacion.invalid && poblacion.touched">Introduce una población.</span>
                         <br> &nbsp;
                     </div>
                     <div class="col-md-4">
-                        <input placeholder="Código Postal" type="text" class="form-control inputs" id="validationDefault05"  formControlName="codigopostal">
+                        <input placeholder="Código Postal" type="text" class="form-control inputs" formControlName="codigopostal">
                         <span style="color: rgb(235, 57, 57);" *ngIf="codigopostal && codigopostal.invalid && codigopostal.touched">Introduce un código postal válido.</span>
                     </div>
                     <div class="col-md-12">
-                        <label for="validationDefault06" class="form-label">Mensaje</label>
-                        <textarea placeholder="..." type="text" class="form-control inputs" id="validationDefault06" formControlName="mensaje" rows="2" spellcheck="false"></textarea>
+                        <label class="form-label">Mensaje</label>
+                        <input placeholder="Motivo de la cita" type="text" class="form-control inputs" formControlName="motivo">
+                        <span style="color: rgb(235, 57, 57);" *ngIf="motivo && motivo.invalid && motivo.touched">Introduce un motivo de cita. (Ej. Revisión, cambio neumáticos...)</span>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea placeholder="Información adicional..." type="text" class="form-control inputs" formControlName="mensaje" rows="2" spellcheck="false"></textarea>
                     </div>
                     <div class="col-12">
                         <input class="btn btn-primary bg-danger border-danger" type="submit" value="Enviar" style="margin-left: 90%">

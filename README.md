@@ -29,12 +29,12 @@ La aplicación web se desarrollará utilizando las siguientes tecnologías:
     Base de datos: MySQL.
     Herramientas de front-end: HTML, CSS, JavaScript, Bootstrap y Tailwind.
 
-## Instalación
+## Instalación y configuración
 
 Para instalar y ejecutar la aplicación web, se deben seguir los siguientes pasos:
 
     Clonar este repositorio a una carpeta en tu ordenador.
-    Instalar las dependencias del proyecto con pip install -r requirements.txt.
+    Instalar las dependencias del proyecto.
     Configurar las variables de entorno en un archivo .env.
     Crear la base de datos en MySQL.
     Ejecutar las migraciones con php artisan migrate.
@@ -43,7 +43,7 @@ Para instalar y ejecutar la aplicación web, se deben seguir los siguientes paso
     - FULLCALENDAR
     - tailwindcss
     - Bootstrap
-    - 
+    
 
 
 ### Autores

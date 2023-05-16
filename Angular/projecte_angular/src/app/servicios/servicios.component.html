@@ -1,25 +1,46 @@
 <body class="text-light bg-dark">
 
-	<div class="grid grid-cols-3 gap-4" style="text-align: center; margin-left: 60px;">
-		<div class="col-sm">
-			<a aria-current="page" [routerLink]="['../pack1']"><img src="../../assets/img/pack1.jpeg" width="400px" height="600px" style="text-align: center; margin-left: 50px;">
-				<br>
-				<button class="option1">Pack mantenimiento básico</button></a>
+<h1>Nuestros servicios disponibles</h1>
+<br>
+
+	<div class="grid grid-cols-3 gap-4" style="text-align: center;">
+		<div class="col-sm" style="margin: none;">
+			<div class="container">
+				<a aria-current="page" [routerLink]="['../pack1']">
+					<div class="image-container">
+						<img src="../../assets/img/pack1.jpeg" alt="Descripción de la imagen">
+						<div class="overlayy">
+							<p>Pack Mantenimiento Básica</p>
+						</div>
+					</div>
+				</a>
+			</div>
 		</div>
 		<div class="col-sm">
-			<a aria-current="page" [routerLink]="['../pack2']"><img src="../../assets/img/pack2.jpeg" width="400px" height="600px" style="text-align: center; margin-left: 50px;">
-				<br>
-				<button class="option1">Pack revisión premium</button>
-			</a>
+			<div class="container">
+				<a aria-current="page" [routerLink]="['../pack2']">
+					<div class="image-container">
+						<img src="../../assets/img/pack2.jpeg" alt="Descripción de la imagen">
+						<div class="overlayy">
+							<p>Pack Mantenimiento Premium</p>
+						</div>
+					</div>
+				</a>
+			</div>
 		</div>
 		<div class="col-sm">
-			<a aria-current="page" [routerLink]="['../pack3']"><img src="../../assets/img/pack3.jpeg" width="400px" height="600px" style="text-align: center; margin-left: 50px;">
-				<br>
-				<button class="option1">Revisión previa ITV</button>
-			</a>
+			<div class="container">
+				<a aria-current="page" [routerLink]="['../pack3']">
+					<div class="image-container">
+						<img src="../../assets/img/pack3.jpeg" alt="Descripción de la imagen">
+						<div class="overlayy">
+							<p>Revisión Previa ITV</p>
+						</div>
+					</div>
+				</a>
+			</div> 
 		</div>
 	</div>
-
 
 
 </body>
