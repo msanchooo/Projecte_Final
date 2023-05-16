@@ -1,14 +1,7 @@
 import { TestBed } from '@angular/core/testing';
+import { ServeiUpdateService } from '../servei-update/servei-update.service';
 
-import { CartService } from './cart.service';
 
-describe('CartService', () => {
-  let service: CartService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(CartService);
-import { ServeiUpdateService } from '../servei-update.service';
 
 describe('ServeiUpdateService', () => {
   let service: ServeiUpdateService;

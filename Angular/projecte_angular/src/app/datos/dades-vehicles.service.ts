@@ -20,10 +20,6 @@ export class DadesVehiclesService {
     return this._http.get<IVehicle>(`${environment.apiUrl}/api/vehicle/${id}`);
   }
 
-  public getVehicleClient(idClient: any): Observable<IVehicle> {
-    return this._http.get<IVehicle>(`${environment.apiUrl}/api/vehicle-client/${idClient}`);
-  }
-
   public postVehicle(dada: any): Observable<any> {
     return this._http.post(environment.apiUrl + '/api/vehicle', dada, { observe: 'response' }).pipe(
       catchError(this.handleError)
