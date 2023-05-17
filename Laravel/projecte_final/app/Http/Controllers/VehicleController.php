@@ -145,6 +145,7 @@ class VehicleController extends BaseController
                 'matricula' => $request->matricula,
                 'marca' => $request->marca,
                 'model' => $request->model,
+                // 'client_id' => $request->client_id
                 'client_id' => $request->client_id
             ]);
 

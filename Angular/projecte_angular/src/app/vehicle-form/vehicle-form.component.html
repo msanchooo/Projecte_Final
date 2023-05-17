@@ -32,12 +32,12 @@
       </div>
       <br>
 
-      <div class="form-group">
+      <div *ngIf="rol == '1' || rol == '3' " class="form-group">
         <label for="client_id" class="form-label">Client:</label>
         <input id="client_id" placeholder="Client id" class="form-control" formControlName="client_id">
       </div>
 
-      <div *ngIf="formErrors['client_id'].length > 0" class="alert alert-danger">
+      <div *ngIf="formErrors['client_id'].length > 0 && (rol==1 || rol==3)" class="alert alert-danger">
         {{formErrors['client_id']}}
       </div>
       <br>

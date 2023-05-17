@@ -18,7 +18,7 @@ class TreballadorController extends BaseController
 
     /// Treballadors
 
-     /**
+    /**
      * @OA\Get(
      *      path="/api/treballadors",
      *      tags={"Treballadors"},
@@ -66,7 +66,7 @@ class TreballadorController extends BaseController
 
     }
 
-        /**
+    /**
      * @OA\Post(
      *     path="/api/treballador",
      *      tags={"Treballadors"},
@@ -137,20 +137,20 @@ class TreballadorController extends BaseController
      */
     function insertTreballador(Request $request)
     {
-          $request->validate([
+        $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6', 'max:15'],
-            'nom' => ['required', 'max:15','alpha'],
-            'cognoms' => ['required', 'max:25','alpha'],
+            'nom' => ['required', 'max:15', 'alpha'],
+            'cognoms' => ['required', 'max:25', 'alpha'],
             'nif' => ['required'],
-            'sou' => ['required','regex:/^\d+(\.\d{1,2})?$/'],
-            'carrec' => ['required','alpha']
+            'sou' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'carrec' => ['required', 'alpha']
         ]);
 
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
-
+            'rol' => 3
         ]);
 
 
@@ -158,7 +158,7 @@ class TreballadorController extends BaseController
         $treballador = Treballador::create([
             'user_id' => $user->id,
             'sou' => $request->sou,
-            'carrec'=>$request->carrec,
+            'carrec' => $request->carrec,
             'nom' => $request->nom,
             'cognoms' => $request->cognoms,
             'nif' => $request->nif
@@ -168,7 +168,7 @@ class TreballadorController extends BaseController
         return $treballador;
     }
 
-           /**
+    /**
      * @OA\Post(
      *     path="/api/treballador/{id}",
      *      tags={"Treballadors"},
@@ -246,19 +246,18 @@ class TreballadorController extends BaseController
     {
         $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:6', 'max:15'],
-            'nom' => ['required', 'max:15','alpha'],
-            'cognoms' => ['required', 'max:25','alpha'],
+            'nom' => ['required', 'max:15', 'alpha'],
+            'cognoms' => ['required', 'max:25', 'alpha'],
             'nif' => ['required'],
-            'sou' => ['required','regex:/^\d+(\.\d{1,2})?$/'],
-            'carrec' => ['required','alpha']
+            'sou' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'carrec' => ['required', 'alpha']
         ]);
 
         $treballador = Treballador::find($request->id);
 
         $treballador->update([
             'sou' => $request->sou,
-            'carrec'=>$request->carrec,
+            'carrec' => $request->carrec,
             'nom' => $request->nom,
             'cognoms' => $request->cognoms,
             'nif' => $request->nif
@@ -268,15 +267,13 @@ class TreballadorController extends BaseController
 
         $user->update([
             'email' => $request->email,
-            'password' => $request->password,
-
         ]);
 
 
         return $treballador;
     }
 
- /**
+    /**
      * @OA\Delete(
      *     path="/api/treballador/{id}",
      *      tags={"Treballadors"},

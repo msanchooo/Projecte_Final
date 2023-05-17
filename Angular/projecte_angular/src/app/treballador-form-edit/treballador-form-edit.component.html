@@ -38,22 +38,6 @@
             <br>
 
             <div class="form-group">
-                <label for="password" class="form-label">Contraseña:</label>
-                <div class="input-group">
-                    <input id="password" type="{{ mostrarContrasenya ? 'text' : 'password' }}" placeholder="Contraseña"
-                        class="form-control" formControlName="password">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" (click)="mostrarOcultarContrasenya()">
-                            {{ mostrarContrasenya ? 'Ocultar' : 'Mostrar' }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div *ngIf="formErrors['password'].length > 0" class="alert alert-danger">
-                {{formErrors['password']}}
-            </div>
-            <br>
-            <div class="form-group">
                 <label for="sou" class="form-label">Sou:</label>
                 <input id="sou" placeholder="Sou" class="form-control" formControlName="sou">
             </div>
@@ -69,7 +53,6 @@
                 {{formErrors['carrec']}}
             </div>
             <br>
-
 
             <div class="row text-center">
                 <div class="col-md-6">

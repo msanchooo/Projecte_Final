@@ -25,7 +25,6 @@
             <th>Cognoms</th>
             <th>NIF</th>
             <th>Email</th>
-            <th>Password</th>
             <th>Sou</th>
             <th>Carrec</th>
             <th></th>
@@ -39,12 +38,6 @@
             <td>{{treballador.cognoms}}</td>
             <td>{{treballador.nif}}</td>
             <td>{{treballador.user.email}}</td>
-            <td>
-              <a (click)="mostrarOcultarContrasenya(treballador)">
-                {{ treballador.mostrarContrasenya ? treballador.user.password : '*********' }}
-              </a>
-            </td>
-
             <td>{{treballador.sou}}</td>
             <td>{{treballador.carrec}}</td>
             <td><a [routerLink]="['../treballador-form-edit/'+treballador.id]">Editar</a></td> 

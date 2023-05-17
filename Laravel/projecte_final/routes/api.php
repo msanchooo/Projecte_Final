@@ -46,7 +46,7 @@ Route::delete('/cita/{id}', [CitaController::class, 'deleteCita'])->name('cita_d
 
 //// Clients
 
-Route::middleware(['auth:sanctum'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
+Route::middleware(['auth:sanctum','admin'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
 
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
@@ -60,17 +60,17 @@ Route::middleware('auth:sanctum')->get('/client-user/{id}', [ClientController::c
 
 //// Treballadors
 
-Route::middleware('auth:sanctum')->get('/treballadors', [TreballadorController::class, 'getTreballadors'])->name('treballadors_list');
+Route::middleware(['auth:sanctum','admin'])->get('/treballadors', [TreballadorController::class, 'getTreballadors'])->name('treballadors_list');
 
-Route::middleware('auth:sanctum')->get('/treballador/{id}', [TreballadorController::class, 'getTreballador'])->name('treballador_cerca');
+Route::middleware(['auth:sanctum','admin'])->get('/treballador/{id}', [TreballadorController::class, 'getTreballador'])->name('treballador_cerca');
 
-Route::middleware('auth:sanctum')->post('/treballador/{id}', [TreballadorController::class, 'updateTreballador'])->name('treballador_update');
+Route::middleware(['auth:sanctum','admin'])->post('/treballador/{id}', [TreballadorController::class, 'updateTreballador'])->name('treballador_update');
 
-Route::middleware('auth:sanctum')->post('/treballador', [TreballadorController::class, 'insertTreballador'])->name('treballador_insert');
+Route::middleware(['auth:sanctum','admin'])->post('/treballador', [TreballadorController::class, 'insertTreballador'])->name('treballador_insert');
 
-Route::delete('/treballador/{id}', [TreballadorController::class, 'deleteTreballador'])->name('treballador_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/treballador/{id}', [TreballadorController::class, 'deleteTreballador'])->name('treballador_delete');
 
-Route::middleware('auth:sanctum')->get('/treballador-user/{id}', [TreballadorController::class, 'getTreballadorByUserId'])->name('treballador_user');
+Route::middleware(['auth:sanctum','admin'])->get('/treballador-user/{id}', [TreballadorController::class, 'getTreballadorByUserId'])->name('treballador_user');
 
 //// Users
 
