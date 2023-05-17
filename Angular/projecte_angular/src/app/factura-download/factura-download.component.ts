@@ -4,10 +4,10 @@ import { DadesFacturasService } from '../datos/dades-facturas.service';
 
 declare var require: any;
 
-import * as pdfMake from "pdfmake/build/pdfmake";
-import * as pdfFonts from "pdfmake/build/vfs_fonts";
-const htmlToPdfmake = require("html-to-pdfmake");
-(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+// import * as pdfMake from "pdfmake/build/pdfmake";
+// import * as pdfFonts from "pdfmake/build/vfs_fonts";
+// const htmlToPdfmake = require("html-to-pdfmake");
+// (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-factura-download',
@@ -77,14 +77,14 @@ export class FacturaDownloadComponent {
     });
   }
 
-  public exportPDF() {
-    const pdfInner = document.getElementById("pdfTable");
-    if (pdfInner) {
+  // public exportPDF() {
+  //   const pdfInner = document.getElementById("pdfTable");
+  //   if (pdfInner) {
 
-      var html = htmlToPdfmake(pdfInner.innerHTML);
-      const documentDefinition = {content: html };
-      pdfMake.createPdf(documentDefinition).download();
-      console.log(html);
-    }
-  }
+  //     var html = htmlToPdfmake(pdfInner.innerHTML);
+  //     const documentDefinition = {content: html };
+  //     pdfMake.createPdf(documentDefinition).download();
+  //     console.log(html);
+  //   }
+  // }
 }
