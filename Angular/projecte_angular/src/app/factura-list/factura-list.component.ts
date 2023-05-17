@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IFactura } from '../interfaces/IFactura';
 import { DadesFacturasService } from '../datos/dades-facturas.service';
-import { AuthenticationService } from '../login-token/_services/authentication.service';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-factura-list',

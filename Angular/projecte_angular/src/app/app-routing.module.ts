@@ -30,7 +30,7 @@ import { RegisterComponent } from './auth/register/register.component';
 
 
 const routes: Routes = [
-<<<<<<< HEAD
+
   {path:'body', component: BodyComponent,},
   {path:'servicios', component: ServiciosComponent},
   {path:'pack1', component: Pack1Component},

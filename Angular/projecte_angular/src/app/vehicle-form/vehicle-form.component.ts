@@ -5,7 +5,7 @@ import { DadesClientsService } from '../datos/dades-clients.service';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IClient } from '../interfaces/IClient';
 import { Util } from '../utilidades/util';
-import { AuthenticationService } from '../login-token/_services/authentication.service';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-vehicle-form',

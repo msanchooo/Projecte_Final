@@ -25,7 +25,7 @@
           <tr>
             <th>Factura Num.</th>
             <th>Total</th>
-            <th>Client</th>
+            <th *ngIf="rol==1 || rol==3" >Client</th>
             <th>Vehicle</th>
             <th></th>
   
@@ -36,8 +36,8 @@
 
           <tr *ngFor="let factura of facturas">
             <td>{{factura.numero}}</td>
-            <td>{{factura.total_con_iva}}</td>
-            <td>{{factura.client.nom}} {{factura.client.cognoms}}</td>
+            <td>{{factura.total_con_iva}} €</td>
+            <td *ngIf="rol==1 || rol==3">{{factura.client.nom}} {{factura.client.cognoms}}</td>
             <td>{{factura.vehicle.marca}} {{factura.vehicle.model}}</td>
             <td><a [routerLink]="['../factura-download/'+factura.id]">Visualizar</a></td>
           </tr>

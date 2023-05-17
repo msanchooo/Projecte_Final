@@ -55,7 +55,7 @@ Route::middleware('auth:sanctum')->post('/client/{id}', [ClientController::class
 
 Route::post('/client', [ClientController::class, 'insertClient']);
 
-Route::delete('/client/{id}', [ClientController::class, 'deleteClient'])->name('client_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/client/{id}', [ClientController::class, 'deleteClient'])->name('client_delete');
 
 Route::middleware('auth:sanctum')->get('/client-user/{id}', [ClientController::class, 'getClientByUserId'])->name('client_user');
 
@@ -98,9 +98,9 @@ Route::middleware(['auth:sanctum'])->get('/vehicles', [VehicleController::class,
 
 Route::middleware('auth:sanctum')->get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
 
-Route::get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
+Route::middleware('auth:sanctum')->get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
 
-Route::post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
+Route::middleware('auth:sanctum')->post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 
 Route::middleware('auth:sanctum')->get('/vehicle-client/{id}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
 
@@ -116,16 +116,18 @@ Route::middleware(['auth:sanctum'])->get('/serveis', [ServeiController::class, '
 
 Route::middleware('auth:sanctum')->get('/servei/{id}', [ServeiController::class, 'getServei'])->name('servei_cerca');
 
-Route::middleware('auth:sanctum')->post('/servei/{id}', [ServeiController::class, 'updateServei'])->name('servei_update');
+Route::middleware(['auth:sanctum','admin'])->post('/servei/{id}', [ServeiController::class, 'updateServei'])->name('servei_update');
 
-Route::middleware('auth:sanctum')->post('/servei', [ServeiController::class, 'insertServei'])->name('servei_insert');
+Route::middleware(['auth:sanctum','admin'])->post('/servei', [ServeiController::class, 'insertServei'])->name('servei_insert');
 
-Route::delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
 
 //// Facturas
 
+Route::middleware('auth:sanctum')->get('/facturas', [FacturaController::class, 'getFacturas']);
 
-Route::get('/facturas', [FacturaController::class, 'getFacturas']);
-Route::get('/factura/{id}', [FacturaController::class, 'getFactura']);
-Route::post('/factura', [FacturaController::class, 'insertFactura']);
-Route::post('/linea', [FacturaController::class, 'insertLineas']);
+Route::middleware('auth:sanctum')->get('/factura/{id}', [FacturaController::class, 'getFactura']);
+
+Route::middleware('auth:sanctum')->post('/factura', [FacturaController::class, 'insertFactura']);
+
+Route::middleware('auth:sanctum')->post('/linea', [FacturaController::class, 'insertLineas']);

@@ -55,7 +55,7 @@ class FacturaController extends BaseController
 
         $factura = Factura::with('client', 'vehicle', 'serveis')->find($id);
 
-        if ($user->rol == 1 || $user->rol == 3 || $factura->client->user_id == $user->id ) {
+        if ($user->rol == "1" || $user->rol == "3" || $factura->client->user_id == $user->id ) {
             
             return $factura;
         }
