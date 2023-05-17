@@ -55,6 +55,7 @@
             <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../servei-list']">  Servicios</a></li>
             <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../cita-list']"> Citas</a></li>        
             <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../treballador-list']"> Treballador</a></li>
+            <li *ngIf="rolUsuari == '1' || rolUsuari == '2' "><a class="dropdown-item" [routerLink]="['../factura-list']"> Facturas</a></li>
 
             <li>
               <hr class="dropdown-divider" />

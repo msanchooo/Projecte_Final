@@ -36,7 +36,7 @@ class VehicleController extends BaseController
     {
         $user = Auth::user();
 
-        if ($user->rol == 1) {
+        if ($user->rol == 1 || $user->rol == 3) {
             return Vehicle::with('client')->get();
         } else {
             $client = Client::where('user_id', $user->id)->first();
@@ -74,9 +74,8 @@ class VehicleController extends BaseController
         $user = Auth::user();
         $vehicle = Vehicle::with('client')->find($id);
 
-        if ($user->rol == 1) {
-            return $vehicle;
-        } else if ($vehicle->client->user_id == $user->id) {
+        if ($user->rol == 1 || $user->rol == 3 || $vehicle->client->user_id == $user->id ) {
+            
             return $vehicle;
         }
 
@@ -267,6 +266,8 @@ class VehicleController extends BaseController
 
     function deleteVehicle($id)
     {
+        //Solo admin
+
         $vehicle = Vehicle::find($id);
         $vehicle->delete();
 
@@ -274,10 +275,17 @@ class VehicleController extends BaseController
     }
 
 
-    function getVehicleClient($idClient)
+    function getVehicleClient($id)
     {
-        $vehicles = Vehicle::where('client_id', $idClient);
+        $user = Auth::user(); 
 
-        return $vehicles;
+        if ($user->rol == 1 || $user->rol == 3) {
+
+            $vehicles = Vehicle::where('client_id', $id)->get();
+            return $vehicles;
+
+        }
+        return "No hay coches";
+
     }
 }

@@ -102,7 +102,7 @@ Route::get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleC
 
 Route::post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 
-Route::middleware('auth:sanctum')->get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
+Route::middleware('auth:sanctum')->get('/vehicle-client/{id}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
 
 Route::middleware('auth:sanctum')->post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 

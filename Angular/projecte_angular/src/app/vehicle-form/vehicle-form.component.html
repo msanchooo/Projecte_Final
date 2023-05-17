@@ -33,34 +33,33 @@
       <br>
 
 
-      <div *ngIf="rol == '1' || rol == '3' " class="form-group">
-      <div class="form-group">
-        <label for="km" class="form-label">Km:</label>
-        <input id="km" placeholder="Km" class="form-control" formControlName="km">
-      </div>
-      <div *ngIf="formErrors['km'].length > 0" class="alert alert-danger">
-        {{formErrors['km']}}
-      </div>
-      <br>
-
-      <div class="form-group">
-        <label for="client_id" class="form-label">Client:</label>
-        <input id="client_id" placeholder="Client id" class="form-control" formControlName="client_id">
-      </div>
-
-      <div *ngIf="formErrors['client_id'].length > 0 && (rol==1 || rol==3)" class="alert alert-danger">
-        {{formErrors['client_id']}}
-      </div>
-      <br>
-
-      <div class="row text-center">
-        <div class="col-md-6">
-          <button type="submit" class="btn btn-lg btn-success">Crear</button>
+        <div class="form-group">
+          <label for="km" class="form-label">Km:</label>
+          <input id="km" placeholder="Km" class="form-control" formControlName="km">
         </div>
-        <div class="col-md-6">
-          <button [routerLink]="['/vehicle-list']" class="btn btn-lg btn-danger">Cancelar</button>
+        <div *ngIf="formErrors['km'].length > 0" class="alert alert-danger">
+          {{formErrors['km']}}
         </div>
-      </div>
+        <br>
+        
+        <div *ngIf="rol == '1' || rol == '3' " class="form-group">
+          <label for="client_id" class="form-label">Client:</label>
+          <input id="client_id" placeholder="Client id" class="form-control" formControlName="client_id">
+        </div>
+
+        <div *ngIf="formErrors['client_id'].length > 0 && (rol==1 || rol==3)" class="alert alert-danger">
+          {{formErrors['client_id']}}
+        </div>
+        <br>
+
+        <div class="row text-center">
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-lg btn-success">Crear</button>
+          </div>
+          <div class="col-md-6">
+            <button [routerLink]="['/vehicle-list']" class="btn btn-lg btn-danger">Cancelar</button>
+          </div>
+        </div>
     </form>
   </div>
 </div>
