@@ -9,6 +9,7 @@ use App\Http\Controllers\ServeiController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TreballadorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\LoginController;
 
 
@@ -97,6 +98,10 @@ Route::middleware(['auth:sanctum'])->get('/vehicles', [VehicleController::class,
 
 Route::middleware('auth:sanctum')->get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
 
+Route::get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
+
+Route::post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
+
 Route::middleware('auth:sanctum')->get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
 
 Route::middleware('auth:sanctum')->post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
@@ -117,4 +122,10 @@ Route::middleware('auth:sanctum')->post('/servei', [ServeiController::class, 'in
 
 Route::delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
 
+//// Facturas
 
+
+Route::get('/facturas', [FacturaController::class, 'getFacturas']);
+Route::get('/factura/{id}', [FacturaController::class, 'getFactura']);
+Route::post('/factura', [FacturaController::class, 'insertFactura']);
+Route::post('/linea', [FacturaController::class, 'insertLineas']);

@@ -1,3 +1,6 @@
+import { OnInit } from '@angular/core';
+import { Cart } from './models/cart.models';
+import { CartService } from 'src/services/cart.service';
 import { Component, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,13 +14,14 @@ import { User } from '../app/login-token/_models/user';
 })
 export class AppComponent implements DoCheck {
   user?: User | null;
-  
   title = 'projecte_angular';
   ismenurequired = false;
+  cart: Cart = { items: [] };
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private cartService: CartService
   ) {
     this.authenticationService.user.subscribe((x) => (this.user = x));
   }
@@ -25,21 +29,10 @@ export class AppComponent implements DoCheck {
   logout() {
     this.authenticationService.logout();
   }
-
-  // items = ['item1', 'item2', 'item3', 'item4'];
-
-  // addItem(newItem: any) {
-  //   console.log(newItem);
-  //   this.items.push(newItem);
-  // }
   
-  //Entiendo q esto es para hacer visible o no la navbar(menu), min49
   ngDoCheck(): void {
-    // let currenturl=this.router.url;
-    // if(currenturl=='/login-material' || currenturl=='/register'){
-    //   this.ismenurequired=false;
-    // } else {
-    //   this.ismenurequired=true;
-    // }
+    this.cartService.cart.subscribe((_cart) => {
+      this.cart = _cart;
+    });
   }
 }

@@ -14,12 +14,33 @@ import { Pack2Component } from './pack2/pack2.component';
 import { Pack3Component } from './pack3/pack3.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { MatMenuModule } from '@angular/material/menu';
+
+import {MatMenuModule} from '@angular/material/menu'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 // Import the module from the SDK
 // import { AuthModule } from '@auth0/auth0-angular';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TiendaComponent } from './tienda/tienda.component';
+import { ProductsHeaderComponent } from './products-header/products-header.component';
+import { FiltersComponent } from './filters/filters.component';
+import { ProductBoxComponent } from './product-box/product-box.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { CartService } from 'src/services/cart.service';
+import { StoreService } from 'src/services/store.service';
+import {MatSelectModule} from '@angular/material/select';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -42,6 +63,13 @@ import { TreballadorListComponent } from './treballador-list/treballador-list.co
 import { TreballadorListFilterPipe } from './treballador-list/treballador-list-filter.pipe';
 import { TreballadorFormComponent } from './treballador-form/treballador-form.component';
 import { TreballadorFormEditComponent } from './treballador-form-edit/treballador-form-edit.component';
+import { ContactService } from 'src/services/contact.service';
+
+
+import { FacturaListComponent } from './factura-list/factura-list.component';
+import { FacturaFormComponent } from './factura-form/factura-form.component';
+import { BorrarComponent } from './borrar/borrar.component';
+import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 
 import { LoginTokenComponent } from './login-token/login-token.component';
 import { fakeBackendProvider } from './login-token/_helpers/fake-backend';
@@ -62,6 +90,11 @@ import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
     InicioComponent,
     DashboardComponent,
     CalendarComponent,
+    TiendaComponent,
+    ProductsHeaderComponent,
+    FiltersComponent,
+    ProductBoxComponent,
+    CarritoComponent,
     VehicleListComponent,
     ClientListComponent,
     UserListComponent,
@@ -77,6 +110,10 @@ import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
     TreballadorListFilterPipe,
     TreballadorFormComponent,
     TreballadorFormEditComponent,
+    FacturaListComponent,
+    FacturaFormComponent,
+    BorrarComponent,
+    FacturaDownloadComponent,
     LoginTokenComponent,    
   ],
 
@@ -85,20 +122,44 @@ import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
     FullCalendarModule,
     AppRoutingModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatBadgeModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MaterialModule,
     HttpClientModule,
-    
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
   ],
-  exports: [MatMenuModule],
+
+  exports: [
+    MatMenuModule,
+  ],
 
   providers: [
+    CartService, 
+    StoreService, 
+    ContactService, 
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     fakeBackendProvider
   ],
-  bootstrap: [AppComponent],
+
+  bootstrap: [
+    AppComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    HttpClientModule,
+  ]
 })
 export class AppModule {}

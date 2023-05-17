@@ -1,4 +1,9 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
+import { Cart, CartItem } from '../models/cart.models';
+import { CarritoComponent } from '../carrito/carrito.component';
+import { CartService } from 'src/services/cart.service';
 
 import { Util } from '../utilidades/util';
 import { AuthenticationService } from '../login-token/_services/authentication.service';
@@ -12,13 +17,21 @@ import { DadesClientsService } from '../datos/dades-clients.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
 })
+
 export class NavBarComponent implements OnInit, OnDestroy {
   http: any;
+  private _cart: Cart = { items: [] };
+  itemsQuantity = 0;
+
+  private subscriptionName: Subscription;
+  private subscriptionName2: Subscription;
+
   constructor(
     private loginPrd: AuthenticationService,
     private service: ServeiUpdateService,
     private clientService: DadesClientsService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private cartService: CartService
 
   ) {
     this.subscriptionName = this.service.getUpdate().subscribe((message) => {
@@ -36,14 +49,24 @@ export class NavBarComponent implements OnInit, OnDestroy {
     });
   }
 
-  private subscriptionName: Subscription;
-  private subscriptionName2: Subscription;
 
   rol: any;
   rolUsuari: any;
 
   username: any;
   usuari: any;
+
+  @Input()
+  get cart(): Cart {
+    return this._cart;
+  }
+
+  set cart(cart: Cart) {
+    this._cart = cart;
+    this.itemsQuantity = cart.items
+      .map((item) => item.quantity)
+      .reduce((prev, current) => prev + current , 0);
+  }
 
   ngOnInit(): void {
 
@@ -63,6 +86,15 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   public _isLoggedIn() {
     return this.loginPrd.isLoggedIn();
+  }
+
+  getTotal(items: Array<CartItem>): number{
+    return this.cartService.getTotal(items);
+  }
+  
+
+  onClearCart() {
+    this.cartService.clearCart();
   }
 
   ngOnDestroy() {

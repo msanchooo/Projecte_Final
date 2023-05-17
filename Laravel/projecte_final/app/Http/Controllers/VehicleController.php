@@ -100,6 +100,13 @@ class VehicleController extends BaseController
      *     ),
      *         @OA\Parameter(
      *         in="query",
+     *         name="km",
+     *         required=true,
+     *         example="150000",
+     *         @OA\Schema(type="integer"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
      *         name="marca",
      *         required=true,
      *         example="BMW",
@@ -130,10 +137,9 @@ class VehicleController extends BaseController
     {
         $user = Auth::user();
         $client = Client::where('user_id', $user->id)->first();
-        
+
 
         if ($client->user_id == $user->id || $user->rol == 1) {
-
             $request->validate([
                 'matricula' => ['required', 'max:25'],
                 'marca' => ['required', 'max:25'],
@@ -145,8 +151,8 @@ class VehicleController extends BaseController
                 'matricula' => $request->matricula,
                 'marca' => $request->marca,
                 'model' => $request->model,
-                // 'client_id' => $request->client_id
-                'client_id' => $request->client_id
+                'client_id' => $request->client_id,
+                'km' => $request->km
             ]);
 
         }
@@ -169,6 +175,13 @@ class VehicleController extends BaseController
      *         required=true,
      *         example="1456LMH",
      *         @OA\Schema(type="string"),
+     *     ),
+     *         @OA\Parameter(
+     *         in="query",
+     *         name="km",
+     *         required=true,
+     *         example="150000",
+     *         @OA\Schema(type="integer"),
      *     ),
      *         @OA\Parameter(
      *         in="query",
@@ -198,6 +211,7 @@ class VehicleController extends BaseController
         $user = Auth::user();
         $client = Client::where('user_id', $user->id)->first();
 
+
         if ($client->user_id == $user->id || $user->rol == 1) {
 
             $request->validate([
@@ -205,16 +219,21 @@ class VehicleController extends BaseController
                 'marca' => ['required', 'max:25'],
                 'model' => ['required', 'max:25'],
                 'client_id' => ['required'],
+                'km' => ['required']
+
             ]);
 
             $vehicle = Vehicle::find($request->id);
-
             $vehicle->update([
                 'matricula' => $request->matricula,
                 'marca' => $request->marca,
                 'model' => $request->model,
-                'client_id' => $request->client_id
+                'client_id' => $request->client_id,
+                'km' => $request->km
+
             ]);
+
+
 
             return $vehicle;
         }
@@ -254,13 +273,11 @@ class VehicleController extends BaseController
         return $vehicle;
     }
 
+
     function getVehicleClient($idClient)
     {
-
-
         $vehicles = Vehicle::where('client_id', $idClient);
 
         return $vehicles;
-
     }
 }

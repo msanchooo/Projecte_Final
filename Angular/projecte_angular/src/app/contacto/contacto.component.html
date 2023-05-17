@@ -1,65 +1,11 @@
-<h1>Contacta con nosotros</h1>
-<section
-class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
->
-    <div class="container">
-        <div class="row">
-            <!-- form contacte -->
-            <div class="col-lg-6 col-sm-12 contact-form">
-                <form class="row g-3">
-                    <div class="col-md-12">
-                        <label for="validationDefault01" class="form-label">Nombre</label>
-                        <input type="text" class="form-control inputs" id="validationDefault01" required>
-                    </div>
-                    <div class="col-md-12">
-                        <label for="validationDefault02" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control inputs" id="validationDefault02" required>
-                    </div>
-                    <div class="col-md-12">
-                        <label for="validationDefaultPhone" class="form-label">Teléfono</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-danger text-light" id="inputGroupPrepend2">+34</span>
-                            <input type="text" class="form-control inputs" id="validationDefaultPhone"
-                                aria-describedby="inputGroupPrepend2" required>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="validationDefault03" class="form-label">Población</label>
-                        <input type="text" class="form-control inputs" id="validationDefault03" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="validationDefault04" class="form-label">Estado</label>
-                        <select class="form-select text-light inputs" id="validationDefault04" required>
-                            <option selected disabled value="">Selecciona...</option>
-                            <option>Barcelona</option>
-                            <option>Madrid</option>
-                            <option>Lleida</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="validationDefault05" class="form-label">CP</label>
-                        <input type="text" class="form-control inputs" id="validationDefault05" required>
-                    </div>
-                    <div class="col-md-12">
-                        <label for="validationDefault06" class="form-label">Mensaje</label>
-                        <textarea type="text" class="form-control inputs" id="validationDefault06" rows="2"></textarea>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                            <label class="form-check-label" for="invalidCheck2">
-                                Accepto términos y condiciones
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary bg-danger border-danger" type="submit">Enviar</button>
-                    </div>
-                </form>
-            </div>
 
-            <!-- info contacte -->
-            <div class="col-lg-6 col-sm-12 contact-info">
+
+<div class="container">
+
+
+        
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 contact-info" style="width: 200px;">
                 <h3>Información de contacto</h3>
                 <p>
                     <span class="spans">Dirección:</span><br>
@@ -79,8 +25,50 @@ class="d-flex justify-content-center justify-content-lg-between p-4 border-botto
                     Domingo: cerrado
                 </p>
                 <p>
-                    <img src="../../assets/img/logo.png" width="50%" height="50%">
+                    <img src="../../assets/img/logo.png" width="40%" height="40%" style="margin-left: 60%;">
                 </p>
             </div>
+
+            <div class="col-lg-6 col-sm-12 contact-form">
+                <form class="row g-3" action="https://mailthis.to/albert1" method="POST" [formGroup]="contactForm" (ngSubmit)="submitForm()"
+                enctype="multipart/form-data">
+                    <div class="col-md-12" >
+                        <label for="validationForm" class="form-label">Tus Datos</label>
+                        <input placeholder="Nombre" type="text" class="form-control inputs" formControlName="nombre">
+                        <span style="color: rgb(235, 57, 57);" *ngIf="nombre && nombre.invalid && nombre.touched">Introduce un nombre.</span>
+                    </div>
+                    <div class="col-md-12">
+                        <input placeholder="Apellidos" type="text" class="form-control inputs" formControlName="apellidos" >
+                        <span style="color: rgb(235, 57, 57);" *ngIf="apellidos && apellidos.invalid && apellidos.touched">Introduce un apellido.</span>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-text bg-danger text-light" id="inputGroupPrepend2">+34</span>
+                            <input placeholder="Teléfono" type="text" class="form-control inputs"
+                                aria-describedby="inputGroupPrepend2" formControlName="telefono">
+                        </div>
+                        <span style="color: rgb(235, 57, 57);" *ngIf="telefono && telefono.invalid && telefono.touched">Introduce un número válido.</span> 
+                    </div>
+                    <div class="col-md-4">
+                        <input placeholder="Población" type="text" class="form-control inputs" formControlName="poblacion">
+                        <span style="color: rgb(235, 57, 57);" *ngIf="poblacion && poblacion.invalid && poblacion.touched">Introduce una población.</span>
+                        <br> &nbsp;
+                    </div>
+                    <div class="col-md-4">
+                        <input placeholder="Código Postal" type="text" class="form-control inputs" formControlName="codigopostal">
+                        <span style="color: rgb(235, 57, 57);" *ngIf="codigopostal && codigopostal.invalid && codigopostal.touched">Introduce un código postal válido.</span>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Mensaje</label>
+                        <input placeholder="Motivo de la cita" type="text" class="form-control inputs" formControlName="motivo">
+                        <span style="color: rgb(235, 57, 57);" *ngIf="motivo && motivo.invalid && motivo.touched">Introduce un motivo de cita. (Ej. Revisión, cambio neumáticos...)</span>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea placeholder="Información adicional..." type="text" class="form-control inputs" formControlName="mensaje" rows="2" spellcheck="false"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <input class="btn btn-primary bg-danger border-danger" type="submit" value="Enviar" style="margin-left: 90%">
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>

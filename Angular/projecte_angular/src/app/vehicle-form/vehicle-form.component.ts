@@ -30,6 +30,7 @@ export class VehicleFormComponent implements OnInit {
       matricula: ['', [Validators.required, Validators.maxLength(25)]],
       marca: ['', [Validators.required, Validators.maxLength(25)]],
       model: ['', [Validators.required, Validators.maxLength(25)]],
+      km: [170000, [Validators.required]],
       client_id: [null, Validators.required]
     });
 
@@ -56,6 +57,7 @@ export class VehicleFormComponent implements OnInit {
     matricula: '',
     marca: '',
     model: '',
+    km: 0,
     client_id: ''
   };
   client: IClient = {
@@ -64,7 +66,9 @@ export class VehicleFormComponent implements OnInit {
     cognoms: '',
     nif: '',
     user_id: '',
-    tipu_id: 0
+    tipu_id: 0,
+    direccio: '',
+    movil: 0
   };
 
 
@@ -84,6 +88,9 @@ export class VehicleFormComponent implements OnInit {
     },
     client_id: {
       required: 'El cliente es obligatorio.'
+    },
+    km: {
+      required: 'Els km es obligatorio.'
     }
   };
 

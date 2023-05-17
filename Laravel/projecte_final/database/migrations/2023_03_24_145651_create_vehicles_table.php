@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('matricula');
             $table->string('marca');
             $table->string('model');
+            $table->integer('km');
+
             
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');
