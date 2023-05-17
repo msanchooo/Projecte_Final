@@ -2,9 +2,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { ServeiUpdateService } from '../servei-update/servei-update.service';
-import { AuthenticationService } from './_services/authentication.service';
-import { DadesClientsService } from '../datos/dades-clients.service';
+import { ServeiUpdateService } from '../../servei-update/servei-update.service';
+import { AuthenticationService } from '../_services/authentication.service';
+import { DadesClientsService } from '../../datos/dades-clients.service';
 
 
 @Component({ templateUrl: 'login-token.component.html' })

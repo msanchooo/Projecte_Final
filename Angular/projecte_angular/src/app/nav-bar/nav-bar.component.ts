@@ -6,7 +6,7 @@ import { CarritoComponent } from '../carrito/carrito.component';
 import { CartService } from 'src/services/cart.service';
 
 import { Util } from '../utilidades/util';
-import { AuthenticationService } from '../login-token/_services/authentication.service';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 import { ServeiUpdateService } from '../servei-update/servei-update.service';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
