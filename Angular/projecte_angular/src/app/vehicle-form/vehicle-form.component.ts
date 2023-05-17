@@ -5,6 +5,7 @@ import { DadesClientsService } from '../datos/dades-clients.service';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IClient } from '../interfaces/IClient';
 import { Util } from '../utilidades/util';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -16,7 +17,8 @@ export class VehicleFormComponent implements OnInit {
     private vehicleService: DadesVehiclesService,
     private clientService: DadesClientsService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
 
   ) {
     this.myForm = new FormGroup({
@@ -25,17 +27,21 @@ export class VehicleFormComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      matricula: ['BK300', [Validators.required, Validators.maxLength(25)]],
-      marca: ['bmw', [Validators.required, Validators.maxLength(25)]],
-      model: ['serie 3', [Validators.required, Validators.maxLength(25)]],
+      matricula: ['', [Validators.required, Validators.maxLength(25)]],
+      marca: ['', [Validators.required, Validators.maxLength(25)]],
+      model: ['', [Validators.required, Validators.maxLength(25)]],
       km: [170000, [Validators.required]],
       client_id: [null, Validators.required]
     });
 
-    this.clientService.getDades().subscribe(resp => {
-      if (resp.body) this.clients = resp.body;
-    });
 
+    const user = this.authenticationService.userValue;
+    this.id = user?.id;
+    this.rol=user?.rol;
+
+    this.clientService.getClientByUserId(this.id).subscribe(resp => {
+       if (resp) this.client = resp;
+     });
     this.myForm.valueChanges.subscribe(() => {
       Util.onValueChanged(false, this.myForm,this.formErrors,this.validationMessages);
     });
@@ -43,7 +49,8 @@ export class VehicleFormComponent implements OnInit {
 
 
   }
-
+  id:any;
+  rol:any;
   myForm: FormGroup;
   errorMessage: string = '';
   formErrors: any= {
@@ -53,7 +60,16 @@ export class VehicleFormComponent implements OnInit {
     km: 0,
     client_id: ''
   };
-  clients: IClient[] = [];
+  client: IClient = {
+    id: 0,
+    nom: '',
+    cognoms: '',
+    nif: '',
+    user_id: '',
+    tipu_id: 0,
+    direccio: '',
+    movil: 0
+  };
 
 
 
@@ -81,9 +97,9 @@ export class VehicleFormComponent implements OnInit {
   onSubmit(vehicle: any) {
     Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
 
-
-    console.log(vehicle);
-
+    if(this.rol==2){
+    vehicle.client_id=this.client.id;
+    }
     this.vehicleService.postVehicle(vehicle).subscribe({
       next: (data) => {
         this.router.navigate(['vehicle-list'])

@@ -52,8 +52,7 @@ export class TreballadorFormEditComponent {
         nif: data.nif,
         sou: data.sou,
         carrec: data.carrec,
-        email: data.user.email,
-        password: data.user.password
+        email: data.user.email
       });
       console.log(data);
     }, error => {
@@ -65,14 +64,11 @@ export class TreballadorFormEditComponent {
     this.myForm = this.formBuilder.group({
 
       nom: ['', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      cognoms: ['Cuesta', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      nif: ['1565176A', [Validators.required]],
-      sou: [1300, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
-      carrec: ['Ayudante', [Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]],
-      email: ['juancuesta@yahoo.es', [Validators.required, Validators.email]],
-      password: ['juancuesta', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
-
-
+      cognoms: ['', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      nif: ['', [Validators.required]],
+      sou: [, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      carrec: ['', [Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -82,8 +78,7 @@ export class TreballadorFormEditComponent {
     nif: '',
     sou: 0,
     carrec: '',
-    email: '',
-    password: ''
+    email: ''
   };
 
   validationMessages: any = {
@@ -111,11 +106,6 @@ export class TreballadorFormEditComponent {
     email: {
       required: 'El correo electrónico es obligatorio.',
       email: 'El correo electrónico no es válido.'
-    },
-    password: {
-      required: 'La contraseña es obligatoria.',
-      minlength: 'La contraseña debe tener al menos 6 caracteres.',
-      maxlength: 'La contraseña no puede tener más de 15 caracteres.'
     }
   };
 
@@ -138,7 +128,6 @@ export class TreballadorFormEditComponent {
     const carrec = this.myForm.get('carrec')?.value;
     const user_id = this.treballador.user.id;
     const email = this.myForm.get('email')?.value;
-    const password = this.myForm.get('password')?.value;
     
     if (nom) formData.append('nom', nom);
     if (cognoms) formData.append('cognoms', cognoms);
@@ -147,7 +136,6 @@ export class TreballadorFormEditComponent {
     if (carrec) formData.append('carrec', carrec);
     if (user_id) formData.append('user_id', user_id.toString());
     if (email) formData.append('email', email);
-    if (password) formData.append('password', password);
 
     const ps = this.treballadorService.putTreballador(this.id, formData);
     ps.subscribe(

@@ -76,6 +76,7 @@ import { fakeBackendProvider } from './auth/_helpers/fake-backend';
 import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
 import { RegisterComponent } from './auth/register/register.component';
+import { PerfilViewComponent } from './perfil-view/perfil-view.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { RegisterComponent } from './auth/register/register.component';
     BorrarComponent,
     FacturaDownloadComponent,
     LoginTokenComponent,
-    RegisterComponent,    
+    RegisterComponent,
+    PerfilViewComponent,    
   ],
 
   imports: [
