@@ -155,11 +155,11 @@ import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
 
   bootstrap: [
     AppComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MaterialModule,
-    HttpClientModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // FormsModule,
+    // MaterialModule,
+    // HttpClientModule,
   ]
 })
 export class AppModule {}
