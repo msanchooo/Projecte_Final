@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ContactService } from 'src/services/contact.service';
+import { IVehicle } from '../interfaces/IVehicle';
+import { DadesVehiclesService } from '../datos/dades-vehicles.service';
+
 
 @Component({
   selector: 'app-contacto',
@@ -8,7 +11,18 @@ import { ContactService } from 'src/services/contact.service';
   styleUrls: ['./contacto.component.css']
 })
 
-export class ContactoComponent{
+export class ContactoComponent implements OnInit{
+
+
+  constructor(
+    private vehicleService: DadesVehiclesService
+  ) { }
+  
+  ngOnInit(): void {
+    this.vehicleService.getDades().subscribe(resp => {
+      if(resp.body) this.vehicles = resp.body;
+    });
+  }
 
   contactForm= new FormGroup({
     nombre:new FormControl('',[Validators.required]),
@@ -19,6 +33,8 @@ export class ContactoComponent{
     motivo: new FormControl('',[Validators.required]),
     mensaje: new FormControl('',[Validators.required]),
   })
+
+  vehicles: IVehicle[]=[];
 
   submitForm()
   {

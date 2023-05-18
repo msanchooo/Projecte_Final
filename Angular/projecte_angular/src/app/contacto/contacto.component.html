@@ -49,14 +49,23 @@
                         </div>
                         <span style="color: rgb(235, 57, 57);" *ngIf="telefono && telefono.invalid && telefono.touched">Introduce un número válido.</span> 
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <input placeholder="Población" type="text" class="form-control inputs" formControlName="poblacion">
                         <span style="color: rgb(235, 57, 57);" *ngIf="poblacion && poblacion.invalid && poblacion.touched">Introduce una población.</span>
                         <br> &nbsp;
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <input placeholder="Código Postal" type="text" class="form-control inputs" formControlName="codigopostal">
                         <span style="color: rgb(235, 57, 57);" *ngIf="codigopostal && codigopostal.invalid && codigopostal.touched">Introduce un código postal válido.</span>
+                    </div>
+                    <div class="col-md-12" >
+                        <label for="validationForm" class="form-label">Selecciona un vehiculo : </label> &nbsp;
+                        <select formControlName="vehicle_id" id="vehicle">
+                            <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+                                {{vehicle.marca}} {{vehicle.model}}
+                            </option>
+                        </select>
+                        <span style="color: rgb(235, 57, 57);" *ngIf="nombre && nombre.invalid && nombre.touched">Selecciona un vehiculo.</span>
                     </div>
                     <div class="col-md-12">
                         <label class="form-label">Mensaje</label>
