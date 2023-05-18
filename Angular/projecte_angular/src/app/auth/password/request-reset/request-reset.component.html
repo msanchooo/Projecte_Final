@@ -1,12 +1,8 @@
 <div class="col-md-6 offset-md-3 mt-5 mb-5">
-    <!-- <div class="alert alert-info">
-        email: test<br />
-        Password: test
-    </div> -->
     <div class="card">
         <h4 class="card-header py-3">Send email for reset password</h4>
         <div class="card-body">
-            <form [formGroup]="RequestResetForm" (ngSubmit)="onSubmit(RequestResetForm.value)">
+            <form [formGroup]="requestResetForm" (ngSubmit)="onSubmit(requestResetForm.value)">
                 <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
@@ -14,7 +10,7 @@
                         <div *ngIf="f['email'].errors['required']">Email is required</div>
                     </div>
                 </div>
-                <button [disabled]="loading" class="btn btn-primary btn-danger" [disabled]="!RequestResetForm.valid">
+                <button [disabled]="loading" class="btn btn-primary btn-danger">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Send email
                 </button>
