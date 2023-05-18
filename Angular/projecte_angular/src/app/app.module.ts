@@ -71,10 +71,12 @@ import { FacturaFormComponent } from './factura-form/factura-form.component';
 import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 
-import { LoginTokenComponent } from './login-token/login-token.component';
-import { fakeBackendProvider } from './login-token/_helpers/fake-backend';
-import { JwtInterceptor } from './login-token/_helpers/jwt.interceptor';
-import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
+import { LoginTokenComponent } from './auth/login/login-token.component';
+import { fakeBackendProvider } from './auth/_helpers/fake-backend';
+import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
+import { RegisterComponent } from './auth/register/register.component';
+import { PerfilViewComponent } from './perfil-view/perfil-view.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +116,9 @@ import { ErrorInterceptor } from './login-token/_helpers/error.interceptor';
     FacturaFormComponent,
     BorrarComponent,
     FacturaDownloadComponent,
-    LoginTokenComponent,    
+    LoginTokenComponent,
+    RegisterComponent,
+    PerfilViewComponent,    
   ],
 
   imports: [

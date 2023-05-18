@@ -63,10 +63,10 @@ export class VehicleFormEditComponent {
   }
   createForm(): void {
     this.myForm = this.formBuilder.group({
-      matricula: ['BK300', [Validators.required, Validators.maxLength(25)]],
-      marca: ['bmw', [Validators.required, Validators.maxLength(25)]],
-      model: ['serie 3', [Validators.required, Validators.maxLength(25)]],
-      km: [0, [Validators.required]]
+
+      matricula: ['', [Validators.required, Validators.maxLength(25)]],
+      marca: ['', [Validators.required, Validators.maxLength(25)]],
+      model: ['', [Validators.required, Validators.maxLength(25)]],
 
     });
   }

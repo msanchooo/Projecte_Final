@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DadesServeisService } from '../datos/dades-serveis.service';
 import { IServei } from '../interfaces/IServei';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-servei-list',
@@ -9,8 +10,9 @@ import { IServei } from '../interfaces/IServei';
 })
 export class ServeiListComponent {
   router: any;
+  rol:any;
 
-  constructor(private serveiService: DadesServeisService) { }
+  constructor(private serveiService: DadesServeisService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     //fem servir event de creacio
@@ -19,7 +21,8 @@ export class ServeiListComponent {
       if(resp.body) this.serveis = resp.body;
     })
 
-    
+    const user = this.authenticationService.userValue;
+    this.rol=user?.rol;
   }
 
   confirmarEliminacion(): boolean {

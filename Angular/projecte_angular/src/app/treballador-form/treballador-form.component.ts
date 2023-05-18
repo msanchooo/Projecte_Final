@@ -22,7 +22,7 @@ export class TreballadorFormComponent {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      nom: ['', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      nom: ['Juan', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
       cognoms: ['Cuesta', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
       nif: ['1565176A', [Validators.required]],
       sou: [1300, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],

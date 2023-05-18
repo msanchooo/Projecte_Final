@@ -11,7 +11,7 @@ export class ServeiUpdateService {
   private subjectName2 = new Subject<any>(); //need to create a subject
 
 
-  sendUpdate(message: string) {
+  sendUpdate(message: any) {
     //the component that wants to update something, calls this fn
     this.subjectName.next({ _rol: message}); //next() will feed the value in Subject
   }

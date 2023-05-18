@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 import { IVehicle } from '../interfaces/IVehicle';
-import { AuthenticationService } from '../login-token/_services/authentication.service';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -10,11 +10,15 @@ import { AuthenticationService } from '../login-token/_services/authentication.s
 })
 export class VehicleListComponent implements OnInit {
   router: any;
-  constructor(private vehicleService: DadesVehiclesService,private service: AuthenticationService) { }
+  rol: any;
+  constructor(private vehicleService: DadesVehiclesService, private service: AuthenticationService, private authenticationService: AuthenticationService) { }
   ngOnInit() {
     this.vehicleService.getDades().subscribe(resp => {
-      if(resp.body) this.vehicles = resp.body;
+      if (resp.body) this.vehicles = resp.body;
     });
+
+    const user = this.authenticationService.userValue;
+    this.rol = user?.rol;
   }
 
 
@@ -39,7 +43,7 @@ export class VehicleListComponent implements OnInit {
   }
 
   titolLlistat = 'Llistat de vehicles';
-  vehicles:IVehicle[] = [];
+  vehicles: IVehicle[] = [];
   listFilter: string = '';
 
 

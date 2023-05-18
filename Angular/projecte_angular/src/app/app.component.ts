@@ -4,8 +4,8 @@ import { CartService } from 'src/services/cart.service';
 import { Component, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from '../app/login-token/_services/authentication.service';
-import { User } from '../app/login-token/_models/user';
+import { AuthenticationService } from './auth/_services/authentication.service';
+import { User } from './auth/_models/user';
 
 @Component({
   selector: 'app-root',

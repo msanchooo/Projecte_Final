@@ -34,9 +34,18 @@ class VehicleController extends BaseController
 
     function getVehicles()
     {
-        return Vehicle::with('client')->get();
+        $user = Auth::user();
 
+        if ($user->rol == 1 || $user->rol == 3) {
+            return Vehicle::with('client')->get();
+        } else {
+            $client = Client::where('user_id', $user->id)->first();
+            if ($client) {
+                return Vehicle::with('client')->where('client_id', $client->id)->get();
+            }
+        }
     }
+
 
     /**
      * @OA\Get(
@@ -65,9 +74,8 @@ class VehicleController extends BaseController
         $user = Auth::user();
         $vehicle = Vehicle::with('client')->find($id);
 
-        if ($user->rol == 1){
-            return $vehicle;
-        } else if ($vehicle->client->user_id == $user->id)  {
+        if ($user->rol == 1 || $user->rol == 3 || $vehicle->client->user_id == $user->id ) {
+            
             return $vehicle;
         }
 
@@ -89,7 +97,7 @@ class VehicleController extends BaseController
      *         example="1456LMH",
      *         @OA\Schema(type="string"),
      *     ),
-    *         @OA\Parameter(
+     *         @OA\Parameter(
      *         in="query",
      *         name="km",
      *         required=true,
@@ -126,28 +134,28 @@ class VehicleController extends BaseController
 
     function insertVehicle(Request $request)
     {
-
-        $client = Client::find($request->client_id);
         $user = Auth::user();
+        $client = Client::where('user_id', $user->id)->first();
 
-        if($client->user_id==$user->id || $user->rol==1){
-        $request->validate([
-            'matricula' => ['required', 'max:25'],
-            'marca' => ['required', 'max:25'],
-            'model' => ['required', 'max:25'],
-            'client_id' => ['required'],
-        ]);
 
-        return Vehicle::create([
-            'matricula' => $request->matricula,
-            'marca' => $request->marca,
-            'model' => $request->model,
-            'client_id' => $request->client_id,
-            'km' => $request->km
-        ]);
+        if ($client->user_id == $user->id || $user->rol == 1) {
+            $request->validate([
+                'matricula' => ['required', 'max:25'],
+                'marca' => ['required', 'max:25'],
+                'model' => ['required', 'max:25'],
+                'client_id' => ['required'],
+            ]);
 
+            return Vehicle::create([
+                'matricula' => $request->matricula,
+                'marca' => $request->marca,
+                'model' => $request->model,
+                'client_id' => $request->client_id,
+                'km' => $request->km
+            ]);
+
+        }
     }
-}
 
     /**
      * @OA\Post(
@@ -199,28 +207,35 @@ class VehicleController extends BaseController
 
     function updateVehicle(Request $request, $id)
     {
+        $user = Auth::user();
+        $client = Client::where('user_id', $user->id)->first();
 
-        $request->validate([
-            'matricula' => ['required', 'max:25'],
-            'marca' => ['required', 'max:25'],
-            'model' => ['required', 'max:25'],
-            'client_id' => ['required'],
-            'km' => ['required']
 
-        ]);
+        if ($client->user_id == $user->id || $user->rol == 1) {
 
-        $vehicle = Vehicle::find($request->id);
+            $request->validate([
+                'matricula' => ['required', 'max:25'],
+                'marca' => ['required', 'max:25'],
+                'model' => ['required', 'max:25'],
+                'client_id' => ['required'],
+                'km' => ['required']
 
-        $vehicle->update([
-            'matricula' => $request->matricula,
-            'marca' => $request->marca,
-            'model' => $request->model,
-            'client_id' => $request->client_id,
-            'km' => $request->km
+            ]);
 
-        ]);
+            $vehicle = Vehicle::find($request->id);
+            $vehicle->update([
+                'matricula' => $request->matricula,
+                'marca' => $request->marca,
+                'model' => $request->model,
+                'client_id' => $request->client_id,
+                'km' => $request->km
 
-        return $vehicle;
+            ]);
+
+
+
+            return $vehicle;
+        }
     }
 
 
@@ -251,6 +266,8 @@ class VehicleController extends BaseController
 
     function deleteVehicle($id)
     {
+        //Solo admin
+
         $vehicle = Vehicle::find($id);
         $vehicle->delete();
 
@@ -258,10 +275,17 @@ class VehicleController extends BaseController
     }
 
 
-    function getVehicleClient($idClient)
+    function getVehicleClient($id)
     {
-        $vehicles = Vehicle::where('client_id', $idClient);
+        $user = Auth::user(); 
 
-        return $vehicles;
+        if ($user->rol == 1 || $user->rol == 3) {
+
+            $vehicles = Vehicle::where('client_id', $id)->get();
+            return $vehicles;
+
+        }
+        return "No tienes permiso";
+
     }
 }

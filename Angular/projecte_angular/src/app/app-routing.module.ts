@@ -9,7 +9,7 @@ import { Pack3Component } from './pack3/pack3.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { TiendaComponent } from './tienda/tienda.component';
 import { CarritoComponent } from './carrito/carrito.component';
-import { AuthGuard } from 'src/app/login-token/_helpers/auth.guard';
+import { AuthGuard } from 'src/app/auth/_helpers/auth.guard';
 
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
@@ -25,10 +25,12 @@ import { FacturaListComponent } from './factura-list/factura-list.component';
 import { FacturaFormComponent } from './factura-form/factura-form.component';
 import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
-import { LoginTokenComponent } from './login-token/login-token.component';
+import { LoginTokenComponent } from './auth/login/login-token.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 const routes: Routes = [
+
   {path:'body', component: BodyComponent,},
   {path:'servicios', component: ServiciosComponent},
   {path:'pack1', component: Pack1Component},
@@ -37,9 +39,7 @@ const routes: Routes = [
   {path:'contacto', component: ContactoComponent},
   {path: 'calendar', component: CalendarComponent},
   {path: 'tienda', component: TiendaComponent},
-  {path: 'carrito', component: CarritoComponent},
-
-  
+  {path: 'carrito', component: CarritoComponent},  
   {path:'vehicle-list', component: VehicleListComponent},
   {path:'vehicle-form', component: VehicleFormComponent},
   {path:'vehicle-form-edit/:id', component: VehicleFormEditComponent},
@@ -56,8 +56,9 @@ const routes: Routes = [
   {path:'borrar', component: BorrarComponent},
   {path:'factura-download/:id', component: FacturaDownloadComponent},
   { path: 'login-token', component: LoginTokenComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '', component: BodyComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: ''}
+  { path: '**', redirectTo: '' },
 
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
   // { path: 'inicio', component: InicioComponent },

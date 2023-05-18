@@ -53,25 +53,25 @@ Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class,
 
 Route::middleware('auth:sanctum')->post('/client/{id}', [ClientController::class, 'updateClient'])->name('client_update');
 
-Route::middleware('auth:sanctum')->post('/client', [ClientController::class, 'insertClient'])->middleware('auth');
+Route::post('/client', [ClientController::class, 'insertClient']);
 
-Route::delete('/client/{id}', [ClientController::class, 'deleteClient'])->name('client_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/client/{id}', [ClientController::class, 'deleteClient'])->name('client_delete');
 
 Route::middleware('auth:sanctum')->get('/client-user/{id}', [ClientController::class, 'getClientByUserId'])->name('client_user');
 
 //// Treballadors
 
-Route::middleware('auth:sanctum')->get('/treballadors', [TreballadorController::class, 'getTreballadors'])->name('treballadors_list');
+Route::middleware(['auth:sanctum','admin'])->get('/treballadors', [TreballadorController::class, 'getTreballadors'])->name('treballadors_list');
 
-Route::middleware('auth:sanctum')->get('/treballador/{id}', [TreballadorController::class, 'getTreballador'])->name('treballador_cerca');
+Route::middleware(['auth:sanctum','admin'])->get('/treballador/{id}', [TreballadorController::class, 'getTreballador'])->name('treballador_cerca');
 
-Route::middleware('auth:sanctum')->post('/treballador/{id}', [TreballadorController::class, 'updateTreballador'])->name('treballador_update');
+Route::middleware(['auth:sanctum','admin'])->post('/treballador/{id}', [TreballadorController::class, 'updateTreballador'])->name('treballador_update');
 
-Route::middleware('auth:sanctum')->post('/treballador', [TreballadorController::class, 'insertTreballador'])->name('treballador_insert');
+Route::middleware(['auth:sanctum','admin'])->post('/treballador', [TreballadorController::class, 'insertTreballador'])->name('treballador_insert');
 
-Route::delete('/treballador/{id}', [TreballadorController::class, 'deleteTreballador'])->name('treballador_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/treballador/{id}', [TreballadorController::class, 'deleteTreballador'])->name('treballador_delete');
 
-Route::middleware('auth:sanctum')->get('/treballador-user/{id}', [TreballadorController::class, 'getTreballadorByUserId'])->name('treballador_user');
+Route::middleware(['auth:sanctum','admin'])->get('/treballador-user/{id}', [TreballadorController::class, 'getTreballadorByUserId'])->name('treballador_user');
 
 //// Users
 
@@ -94,21 +94,21 @@ Route::delete('/user/{id}', [UserController::class, 'deleteUser'])->name('user_d
 
 //// Vehicles
 
-Route::middleware(['auth:sanctum','admin'])->get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list');
+Route::middleware(['auth:sanctum'])->get('/vehicles', [VehicleController::class, 'getVehicles'])->name('vehicles_list');
 
 Route::middleware('auth:sanctum')->get('/vehicle/{id}', [VehicleController::class, 'getVehicle'])->name('vehicle_cerca');
-
-Route::get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
-
-Route::post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 
 Route::middleware('auth:sanctum')->get('/vehicle-client/{idClient}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
 
 Route::middleware('auth:sanctum')->post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
 
+Route::middleware('auth:sanctum')->get('/vehicle-client/{id}', [VehicleController::class, 'getVehicleClient'])->name('vehicle_client');
+
+Route::middleware('auth:sanctum')->post('/vehicle/{id}', [VehicleController::class, 'updateVehicle'])->name('vehicle_update');
+
 Route::middleware('auth:sanctum')->post('/vehicle', [VehicleController::class, 'insertVehicle'])->name('vehicle_insert');
 
-Route::delete('/vehicle/{id}', [VehicleController::class, 'deleteVehicle'])->name('vehicle_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/vehicle/{id}', [VehicleController::class, 'deleteVehicle'])->name('vehicle_delete');
 
 //// Serveis
 
@@ -116,16 +116,18 @@ Route::middleware(['auth:sanctum'])->get('/serveis', [ServeiController::class, '
 
 Route::middleware('auth:sanctum')->get('/servei/{id}', [ServeiController::class, 'getServei'])->name('servei_cerca');
 
-Route::middleware('auth:sanctum')->post('/servei/{id}', [ServeiController::class, 'updateServei'])->name('servei_update');
+Route::middleware(['auth:sanctum','admin'])->post('/servei/{id}', [ServeiController::class, 'updateServei'])->name('servei_update');
 
-Route::middleware('auth:sanctum')->post('/servei', [ServeiController::class, 'insertServei'])->name('servei_insert');
+Route::middleware(['auth:sanctum','admin'])->post('/servei', [ServeiController::class, 'insertServei'])->name('servei_insert');
 
-Route::delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
+Route::middleware(['auth:sanctum','admin'])->delete('/servei/{id}', [ServeiController::class, 'deleteServei'])->name('servei_delete');
 
 //// Facturas
 
+Route::middleware('auth:sanctum')->get('/facturas', [FacturaController::class, 'getFacturas']);
 
-Route::get('/facturas', [FacturaController::class, 'getFacturas']);
-Route::get('/factura/{id}', [FacturaController::class, 'getFactura']);
-Route::post('/factura', [FacturaController::class, 'insertFactura']);
-Route::post('/linea', [FacturaController::class, 'insertLineas']);
+Route::middleware('auth:sanctum')->get('/factura/{id}', [FacturaController::class, 'getFactura']);
+
+Route::middleware('auth:sanctum')->post('/factura', [FacturaController::class, 'insertFactura']);
+
+Route::middleware('auth:sanctum')->post('/linea', [FacturaController::class, 'insertLineas']);

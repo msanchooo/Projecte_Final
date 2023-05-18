@@ -26,8 +26,8 @@
           <th>Model</th>
           <th>Km</th>
           <th>Client</th>
-          <th></th>
-          <th></th>
+          <th *ngIf="rol == '1' || rol == '3' "></th>
+          <th *ngIf="rol == '1' || rol == '3' "></th>
         </tr>
       </thead>
       <tbody>
@@ -38,8 +38,8 @@
           <td>{{vehicle.model}}</td>
           <td>{{vehicle.km}}</td>
           <td>{{vehicle.client.nom}} {{vehicle.client.cognoms}}</td>
-          <td><a [routerLink]="['../vehicle-form-edit/'+vehicle.id]">Editar</a></td>
-          <td><a href="" (click)="eliminarVehicle(vehicle.id)">Eliminar</a></td>
+          <td *ngIf="rol == '1' || rol == '3' "><a [routerLink]="['../vehicle-form-edit/'+vehicle.id]">Editar</a></td>
+          <td *ngIf="rol == '1' || rol == '3'"><a href="" (click)="eliminarVehicle(vehicle.id)">Eliminar</a></td>
         
         </tr>
       </tbody>
