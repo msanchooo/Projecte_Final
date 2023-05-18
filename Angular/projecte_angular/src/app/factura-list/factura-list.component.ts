@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IFactura } from '../interfaces/IFactura';
 import { DadesFacturasService } from '../datos/dades-facturas.service';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-factura-list',
@@ -9,8 +10,9 @@ import { DadesFacturasService } from '../datos/dades-facturas.service';
 })
 export class FacturaListComponent {
   router: any;
-
-  constructor(private facturaService: DadesFacturasService) { }
+  id:any;
+  rol:any;
+  constructor(private facturaService: DadesFacturasService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     //fem servir event de creacio
@@ -19,6 +21,11 @@ export class FacturaListComponent {
       // accedim al body de la resposta HTTP.
       if(resp.body) this.facturas = resp.body;
     });
+
+    const user = this.authenticationService.userValue;
+    this.id = user?.id;
+    this.rol=user?.rol;
+
   }
 
   confirmarEliminacion(): boolean {

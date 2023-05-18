@@ -10,7 +10,7 @@
       <input type="text" [(ngModel)]="listFilter">
     </div>
     <div class="col-md-6">
-      <button [routerLink]="['../servei-form/']" class="btn btn-crear btn-success">Crear</button>
+      <button  *ngIf="rol==1 || rol==3" [routerLink]="['../servei-form/']" class="btn btn-crear btn-success">Crear</button>
     </div>
   </div>
   <!-- fi caixa filtrat -->
@@ -27,8 +27,8 @@
           <th>Nom</th>
           <th>Preu</th>
           <th>Durada</th>
-          <th></th>
-          <th></th>
+          <th *ngIf="rol==1 || rol==3"></th>
+          <th *ngIf="rol==1 || rol==3"></th>
 
         </tr>
       </thead>
@@ -38,8 +38,8 @@
           <td>{{servei.nom}}</td>
           <td>{{servei.preu}}</td>
           <td>{{servei.durada}}</td>
-          <td><a [routerLink]="['../servei-form-edit/'+servei.id]">Editar</a></td>
-          <td><a href="" (click)="eliminarServei(servei.id)">Eliminar</a></td>
+          <td *ngIf="rol==1 || rol==3"><a [routerLink]="['../servei-form-edit/'+servei.id]">Editar</a></td>
+          <td *ngIf="rol==1 || rol==3"><a href="" (click)="eliminarServei(servei.id)">Eliminar</a></td>
         </tr>
       </tbody>
     </table>

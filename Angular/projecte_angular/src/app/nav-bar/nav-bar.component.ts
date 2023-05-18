@@ -26,22 +26,20 @@ export class NavBarComponent implements OnInit, OnDestroy {
   private subscriptionName: Subscription;
   private subscriptionName2: Subscription;
 
-  rol: any;
-  rolUsuari: string | null = '';
-
-  username: string | null = '';
-  usuari: any;
-
   constructor(
     private loginPrd: AuthenticationService,
     private service: ServeiUpdateService,
     private clientService: DadesClientsService,
+    private authenticationService: AuthenticationService,
     private cartService: CartService
+
   ) {
     this.subscriptionName = this.service.getUpdate().subscribe((message) => {
       //message contains the data sent from service
       this.rol = message;
       this.rolUsuari = this.rol._rol;
+
+      console.log(message);
     });
 
     this.subscriptionName2 = this.service.getUpdate2().subscribe((message) => {
@@ -50,6 +48,13 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.username = this.usuari._user;
     });
   }
+
+
+  rol: any;
+  rolUsuari: any;
+
+  username: any;
+  usuari: any;
 
   @Input()
   get cart(): Cart {
@@ -64,8 +69,15 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.rolUsuari = localStorage.getItem('rol');
-    this.username =  localStorage.getItem('username');
+
+    // this.rolUsuari = localStorage.getItem('rol');
+    // this.username =  localStorage.getItem('username');
+
+    const user = this.authenticationService.userValue;
+
+    this.rolUsuari = user?.rol;
+
+    this.username = user?.username;
   }
 
   public _logout() {

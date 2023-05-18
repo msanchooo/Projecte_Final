@@ -19,7 +19,7 @@ export class AuthenticationService {
     private clientService: DadesClientsService
   ) {
     this.userSubject = new BehaviorSubject(
-      JSON.parse(localStorage.getItem('token')!)
+      JSON.parse(localStorage.getItem('user')!)
     );
     this.user = this.userSubject.asObservable();
   }
@@ -34,13 +34,7 @@ export class AuthenticationService {
       .pipe(
         map((user) => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          console.log(user);
-          localStorage.clear();
-          localStorage.setItem('token', JSON.stringify(user.token));
-          localStorage.setItem('user_id', user.id);
-          localStorage.setItem('rol', user.rol);
-          localStorage.setItem('username', user.username);
-
+          localStorage.setItem('user', JSON.stringify(user));
           this.userSubject.next(user);
           return user;
         })

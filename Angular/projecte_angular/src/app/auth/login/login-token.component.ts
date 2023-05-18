@@ -13,8 +13,8 @@ export class LoginTokenComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
-  _rol: string | null = '';
-  _user: string | null = '';
+  _rol: any;
+  _user: any;
 
 
   constructor(
@@ -44,15 +44,16 @@ export class LoginTokenComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  sendMessage(rol: string): void {
+  sendMessage(rol: any): void {
     // send message to subscribers via observable subject
     this.service.sendUpdate(
       rol
     );
   }
-  sendMessage2(user: string): void {
+  sendMessage2(user: any): void {
     // send message to subscribers via observable subject
     this.service.sendUpdate2(
+
       user
     );
   }
@@ -74,8 +75,14 @@ export class LoginTokenComponent implements OnInit {
       .subscribe({
         next: () => {
           const returnUrl = '/';
-          this._rol = localStorage.getItem('rol');
-          this._user = localStorage.getItem('username')
+          // this._rol = localStorage.getItem('user');
+          // console.log(this._rol);
+          const user = this.authenticationService.userValue;
+          this._rol = user?.rol;
+
+          console.log(this._rol)
+          this._user = user?.username;
+
           if(this._rol !== null){
             this.sendMessage(this._rol);
           }

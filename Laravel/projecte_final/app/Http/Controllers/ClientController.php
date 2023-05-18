@@ -38,7 +38,16 @@ class ClientController extends BaseController
 
     function getClients()
     {
-        return Client::all();
+
+        //return Client::all();
+
+        $user = Auth::user();
+
+        if ($user->rol == 1 || $user->rol == 3) {
+            return Client::with('user')->get();
+        } else {
+            return Client::with('user')->where('user_id', $user->id)->first();
+        }
     }
 
 
@@ -66,7 +75,17 @@ class ClientController extends BaseController
 
     function getClient($id)
     {
-        return Client::find($id);
+        //return Client::find($id);
+
+        $user = Auth::user();
+        $client = Client::with('user')->find($id);
+
+        if ($user->rol == 1 || $user->rol == 3 || $client->user_id == $user->id) {
+
+            return $client;
+        }
+
+        return "unautorized";
     }
 
     /**
@@ -116,21 +135,21 @@ class ClientController extends BaseController
      *           example="user",
      *         @OA\Schema(type="string"),
      *     ),
-         *         @OA\Parameter(
+     *         @OA\Parameter(
      *         in="query",
      *         name="email",
      *         required=false,
      *           example="user",
      *         @OA\Schema(type="string"),
      *     ),
-         *         @OA\Parameter(
+     *         @OA\Parameter(
      *         in="query",
      *         name="password",
      *         required=false,
      *           example="user",
      *         @OA\Schema(type="string"),
      *     ),
-          *         @OA\Parameter(
+     *         @OA\Parameter(
      *         in="query",
      *         name="movil",
      *         required=false,
@@ -162,7 +181,7 @@ class ClientController extends BaseController
             'rol' => 2
 
         ]);
-        //dd($user);
+
         $client = Client::create([
             'nom' => $request->nom,
             'cognoms' => $request->cognoms,
@@ -173,7 +192,7 @@ class ClientController extends BaseController
             'movil' => $request->movil
 
 
-    
+
         ]);
 
         return $client;
@@ -236,25 +255,33 @@ class ClientController extends BaseController
 
     function updateClient(Request $request)
     {
-        $request->validate([
-            'nom' => ['required', 'max:15'],
-            'cognoms' => ['required', 'max:25'],
-            'nif' => ['required'],
-            'tipu_id' => ['required', 'integer', 'min:1', 'max:2'],
-            'user_id'=> ['required']
-        ]);
+        $user = Auth::user();
+        $client = Client::where('user_id', $user->id)->first();
 
-        $client = Client::find($request->id);
 
-        $client->update([
-            'nom' => $request->nom,
-            'cognoms' => $request->cognoms,
-            'nif' => $request->nif,
-            'tipu_id' => $request->tipu_id,
-            'user_id' => $request->user_id,
-            'direccio' => $request->direccio,
-            'movil' => $request->movil
-        ]);
+        if ($client->user_id == $user->id || $user->rol == 1) {
+
+            $request->validate([
+                'nom' => ['required', 'max:15'],
+                'cognoms' => ['required', 'max:25'],
+                'nif' => ['required'],
+                'tipu_id' => ['required', 'integer', 'min:1', 'max:2'],
+                'user_id' => ['required']
+            ]);
+
+            $client = Client::find($request->id);
+
+            $client->update([
+                'nom' => $request->nom,
+                'cognoms' => $request->cognoms,
+                'nif' => $request->nif,
+                'tipu_id' => $request->tipu_id,
+                'user_id' => $request->user_id,
+                'direccio' => $request->direccio,
+                'movil' => $request->movil
+            ]);
+
+        }
 
         return $client;
     }
@@ -298,7 +325,16 @@ class ClientController extends BaseController
 
     function getClientByUserId($userId)
     {
+        $user = Auth::user(); 
+
+        if ($user->rol == 1 || $user->rol == 3) {
+
         return Client::where('user_id', $userId)->first();
+
+        }
+
+        return "No tienes permiso";
+
     }
 
 }

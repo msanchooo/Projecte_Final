@@ -7,8 +7,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-
+use App\Models\Client;
 use App\Models\Factura;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FacturaController extends BaseController
@@ -30,13 +31,36 @@ class FacturaController extends BaseController
      */
     function getFacturas()
     {
+        $user = Auth::user();
 
-        return Factura::with('client', 'vehicle')->get();
+        if ($user->rol == "1" || $user->rol == "3") {
+
+            return Factura::with('client', 'vehicle')->get();
+
+        } else if ($user->rol == "2") {
+
+            $client = Client::where('user_id', $user->id)->first();
+
+            if ($client) {
+                
+                return Factura::with('client', 'vehicle')->where('client_id', $client->id)->get();
+            }
+        }
 
     }
     function getFactura($id)
     {
-        return Factura::with('client','vehicle','serveis')->find($id);
+
+        $user = Auth::user();
+
+        $factura = Factura::with('client', 'vehicle', 'serveis')->find($id);
+
+        if ($user->rol == "1" || $user->rol == "3" || $factura->client->user_id == $user->id ) {
+            
+            return $factura;
+        }
+
+        return "unautorized";
 
     }
     /**
@@ -100,27 +124,30 @@ class FacturaController extends BaseController
 
     function insertFactura(Request $request)
     {
+        $user = Auth::user();
+        if ($user->rol == "1" || $user->rol == "3") {
 
-        $fecha = strtotime($request->data);
-        $anio = new \DateTime();
-        $anio->setTimestamp($fecha);
-        $anio = $anio->format('Y');
+            $fecha = strtotime($request->data);
+            $anio = new \DateTime();
+            $anio->setTimestamp($fecha);
+            $anio = $anio->format('Y');
 
-        $facturas = DB::table('facturas')
-            ->whereYear('data', $anio)
-            ->get();
+            $facturas = DB::table('facturas')
+                ->whereYear('data', $anio)
+                ->get();
 
-        $ultimoNumero = $facturas->max('numero');
-        $ultimoNumero = intval(substr($ultimoNumero, 5));
+            $ultimoNumero = $facturas->max('numero');
+            $ultimoNumero = intval(substr($ultimoNumero, 5));
 
-        $factura = Factura::create([
-            'data' => $request->data,
-            'numero' => $anio . "/" . ($ultimoNumero + 1),
-            'total' => $request->total,
-            'total_con_iva' => $request->total_con_iva,
-            'client_id' => $request->client_id,
-            'vehicle_id' => $request->vehicle_id,
-        ]);
+            $factura = Factura::create([
+                'data' => $request->data,
+                'numero' => $anio . "/" . ($ultimoNumero + 1),
+                'total' => $request->total,
+                'total_con_iva' => $request->total_con_iva,
+                'client_id' => $request->client_id,
+                'vehicle_id' => $request->vehicle_id,
+            ]);
+        }
 
         return $factura;
 
@@ -129,11 +156,11 @@ class FacturaController extends BaseController
     function insertLineas(Request $request)
     {
         $factura = Factura::find($request->id);
-         foreach ($request->serveis as $servei) {
+        foreach ($request->serveis as $servei) {
             $factura->serveis()->attach($servei['id'], ['unitats' => $servei['quantitat']]);
 
-         }
-         return $factura;
+        }
+        return $factura;
 
     }
 

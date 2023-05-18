@@ -40,12 +40,7 @@ export class TreballadorListComponent {
     }
     this.router.navigate(['treballador-list']);
   }
-
-  mostrarContrasenya: boolean = false;
-
-    mostrarOcultarContrasenya(treballador: { mostrarContrasenya: boolean; }) {
-      treballador.mostrarContrasenya = !treballador.mostrarContrasenya;
-          }
+  
 
   titolLlistat = 'Llistat de treballadors';
   treballadors:ITreballador[] = [];
