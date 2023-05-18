@@ -68,6 +68,11 @@ export class AuthenticationService {
     return false;
   }
 
+  sendPasswordReset(data: any){
+    return this.http.post(`${environment.apiUrl}/api/sendPasswordResetLink`,  data)
+  }
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -82,4 +87,6 @@ export class AuthenticationService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
 
   }
+
+ 
 }

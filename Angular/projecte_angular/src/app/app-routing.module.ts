@@ -27,6 +27,8 @@ import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 import { LoginTokenComponent } from './auth/login/login-token.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
 
 const routes: Routes = [
   { path: 'body', component: BodyComponent },
@@ -57,8 +59,12 @@ const routes: Routes = [
   { path: 'factura-form', component: FacturaFormComponent },
   { path: 'borrar', component: BorrarComponent },
   { path: 'factura-download/:id', component: FacturaDownloadComponent },
+
   { path: 'login-token', component: LoginTokenComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'request-password-reset', component: RequestResetComponent },
+  { path: 'response-password-reset', component: ResponseResetComponent },
+
   { path: '', component: BodyComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 

@@ -76,6 +76,8 @@ import { fakeBackendProvider } from './auth/_helpers/fake-backend';
 import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
 import { RegisterComponent } from './auth/register/register.component';
+import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +118,9 @@ import { RegisterComponent } from './auth/register/register.component';
     BorrarComponent,
     FacturaDownloadComponent,
     LoginTokenComponent,
-    RegisterComponent,    
+    RegisterComponent,
+    RequestResetComponent,
+    ResponseResetComponent,    
   ],
 
   imports: [
