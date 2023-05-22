@@ -76,8 +76,14 @@ import { fakeBackendProvider } from './auth/_helpers/fake-backend';
 import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
 import { RegisterComponent } from './auth/register/register.component';
+
 import { PerfilViewComponent } from './perfil-view/perfil-view.component';
 import { ClientFormEditComponent } from './client-form-edit/client-form-edit.component';
+
+import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
+// import { PerfilViewComponent } from './perfil-view/perfil-view.component';
+
 
 @NgModule({
   declarations: [
@@ -119,8 +125,14 @@ import { ClientFormEditComponent } from './client-form-edit/client-form-edit.com
     FacturaDownloadComponent,
     LoginTokenComponent,
     RegisterComponent,
+
     PerfilViewComponent,
     ClientFormEditComponent,    
+
+    RequestResetComponent,
+    ResponseResetComponent,    
+    // PerfilViewComponent,    
+
   ],
 
   imports: [

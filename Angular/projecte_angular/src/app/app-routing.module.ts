@@ -27,8 +27,12 @@ import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 import { LoginTokenComponent } from './auth/login/login-token.component';
 import { RegisterComponent } from './auth/register/register.component';
+
 import { PerfilViewComponent } from './perfil-view/perfil-view.component';
 import { ClientFormEditComponent } from './client-form-edit/client-form-edit.component';
+
+import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
 
 
 const routes: Routes = [
@@ -61,6 +65,9 @@ const routes: Routes = [
   {path:'perfil-view', component: PerfilViewComponent},
   { path: 'login-token', component: LoginTokenComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'request-password-reset', component: RequestResetComponent },
+  { path: 'response-password-reset', component: ResponseResetComponent },
+
   { path: '', component: BodyComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 
