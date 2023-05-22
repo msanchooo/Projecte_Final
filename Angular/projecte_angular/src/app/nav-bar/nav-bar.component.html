@@ -49,7 +49,7 @@
           </button>
 
           <mat-menu #loged="matMenu" class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="">Perfil</a></li>
+            <li><a class="dropdown-item" [routerLink]="['../perfil-view']">Perfil</a></li>
             <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../client-list']">  Clientes</a></li>
             <li><a class="dropdown-item" [routerLink]="['../vehicle-list']"> Vehiculos</a></li>
             <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../servei-list']">  Servicios</a></li>

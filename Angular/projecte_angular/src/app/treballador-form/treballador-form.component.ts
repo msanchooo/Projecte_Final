@@ -23,7 +23,7 @@ export class TreballadorFormComponent {
     this.myForm = this.formBuilder.group({
 
       nom: ['Juan', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      cognoms: ['Cuesta', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      cognoms: ['Cuesta', [Validators.required, Validators.maxLength(25)]],
       nif: ['1565176A', [Validators.required]],
       sou: [1300, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
       carrec: ['Ayudante', [Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]],
@@ -52,7 +52,6 @@ export class TreballadorFormComponent {
     nom: {
       required: 'El nombre es obligatorio.',
       maxlength: 'El nombre no puede tener más de 15 caracteres.',
-      pattern:'El nombre no puede contener numeros'
     },
     cognoms: {
       required: 'Los apellidos son obligatorios.',

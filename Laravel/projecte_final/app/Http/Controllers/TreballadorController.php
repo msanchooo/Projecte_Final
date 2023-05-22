@@ -142,7 +142,7 @@ class TreballadorController extends BaseController
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6', 'max:15'],
             'nom' => ['required', 'max:15', 'alpha'],
-            'cognoms' => ['required', 'max:25', 'alpha'],
+            'cognoms' => ['required', 'max:25'],
             'nif' => ['required'],
             'sou' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
             'carrec' => ['required', 'alpha']
@@ -248,7 +248,7 @@ class TreballadorController extends BaseController
         $request->validate([
             'email' => ['required', 'email'],
             'nom' => ['required', 'max:15', 'alpha'],
-            'cognoms' => ['required', 'max:25', 'alpha'],
+            'cognoms' => ['required', 'max:25'],
             'nif' => ['required'],
             'sou' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
             'carrec' => ['required', 'alpha']

@@ -65,8 +65,7 @@ export class VehicleFormComponent implements OnInit {
     nom: '',
     cognoms: '',
     nif: '',
-    user_id: '',
-    tipu_id: 0,
+    user: { id: 0, email: '', password: '', rol: 0 },
     direccio: '',
     movil: 0
   };
