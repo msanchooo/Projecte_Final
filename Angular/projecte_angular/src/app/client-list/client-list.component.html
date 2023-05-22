@@ -24,8 +24,8 @@
           <th>Nom</th>
           <th>Cognoms</th>
           <th>NIF</th>
-          <th>tipu_id</th>
           <th>user_id</th>
+          <th *ngIf="rol==1"></th>
 
         </tr>
       </thead>
@@ -35,9 +35,9 @@
           <td>{{client.nom}}</td>
           <td>{{client.cognoms}}</td>
           <td>{{client.nif}}</td>
-          <td>{{client.tipu_id}}</td>
-          <td>{{client.user_id}}</td>
-
+          <td>{{client.user.id}}</td>
+          <td><a [routerLink]="['../client-form-edit/'+client.id]">Editar</a></td>
+          <td *ngIf="rol==1"><a href="" (click)="eliminarClient(client.id)">Eliminar</a></td>
         </tr>
       </tbody>
     </table>

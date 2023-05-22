@@ -27,6 +27,8 @@ import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 import { LoginTokenComponent } from './auth/login/login-token.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { PerfilViewComponent } from './perfil-view/perfil-view.component';
+import { ClientFormEditComponent } from './client-form-edit/client-form-edit.component';
 
 
 const routes: Routes = [
@@ -44,6 +46,7 @@ const routes: Routes = [
   {path:'vehicle-form', component: VehicleFormComponent},
   {path:'vehicle-form-edit/:id', component: VehicleFormEditComponent},
   {path:'client-list', component: ClientListComponent},
+  {path:'client-form-edit/:id', component: ClientFormEditComponent},
   {path:'servei-list', component: ServeiListComponent},
   {path:'servei-form', component: ServeiFormComponent},
   {path:'servei-form-edit/:id', component: ServeiFormEditComponent},
@@ -55,6 +58,7 @@ const routes: Routes = [
   {path:'factura-form', component: FacturaFormComponent},
   {path:'borrar', component: BorrarComponent},
   {path:'factura-download/:id', component: FacturaDownloadComponent},
+  {path:'perfil-view', component: PerfilViewComponent},
   { path: 'login-token', component: LoginTokenComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', component: BodyComponent, canActivate: [AuthGuard] },

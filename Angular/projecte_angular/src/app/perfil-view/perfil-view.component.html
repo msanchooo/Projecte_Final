@@ -1,0 +1,61 @@
+<div class="col-md-6 offset-md-3 mt-5 mb-5">
+    <div class="card">
+        <h4 class="card-header bg-danger text-light py-3">Perfil</h4>
+        <div class="card-body">
+            <form [formGroup]="myForm">
+                <div class="mb-3">
+                    <label class="form-label">Nom</label>
+                    <input type="text" formControlName="nom" class="form-control" readonly />
+                    <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
+                        {{formErrors['nom']}}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Cognoms</label>
+                    <input type="text" formControlName="cognoms" class="form-control" readonly />
+                    <div *ngIf="formErrors['cognoms'].length > 0" class="alert alert-danger">
+                        {{formErrors['cognoms']}}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">NIF</label>
+                    <input type="text" formControlName="nif" class="form-control" readonly/>
+                    <div *ngIf="formErrors['nif'].length > 0" class="alert alert-danger">
+                        {{formErrors['nif']}}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Direccio</label>
+                    <input type="text" formControlName="direccio" class="form-control" readonly />
+                    <div *ngIf="formErrors['direccio'].length > 0" class="alert alert-danger">
+                        {{formErrors['direccio']}}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Movil</label>
+                    <input type="text" formControlName="movil" class="form-control"  readonly />
+                    <div *ngIf="formErrors['movil'].length > 0" class="alert alert-danger">
+                        {{formErrors['movil']}}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" formControlName="email" class="form-control" readonly/>
+                    <div *ngIf="formErrors['email'].length > 0" class="alert alert-danger">
+                        {{formErrors['email']}}
+                    </div>
+                </div>
+
+                <button type="submit" (click)="cambiarBoton()" [disabled]="loading" class="btn boton btn-primary btn-danger">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Editar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

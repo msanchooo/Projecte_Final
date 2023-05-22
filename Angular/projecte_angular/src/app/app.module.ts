@@ -77,6 +77,7 @@ import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
 import { RegisterComponent } from './auth/register/register.component';
 import { PerfilViewComponent } from './perfil-view/perfil-view.component';
+import { ClientFormEditComponent } from './client-form-edit/client-form-edit.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +119,8 @@ import { PerfilViewComponent } from './perfil-view/perfil-view.component';
     FacturaDownloadComponent,
     LoginTokenComponent,
     RegisterComponent,
-    PerfilViewComponent,    
+    PerfilViewComponent,
+    ClientFormEditComponent,    
   ],
 
   imports: [

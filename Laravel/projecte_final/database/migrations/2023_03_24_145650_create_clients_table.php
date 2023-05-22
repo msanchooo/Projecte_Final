@@ -26,9 +26,7 @@ return new class extends Migration
             $table->string('direccio');
             $table->integer('movil');
             
-            //Particular o Empresa
-            $table->unsignedBigInteger('tipu_id');
-            $table->foreign('tipu_id')->references('id')->on('tipus_clients');
+
 
 
         });

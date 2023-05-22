@@ -1,0 +1,68 @@
+<div class="card">
+    <div class="card-header bg-danger text-white text-center">
+        <h1>Editar client</h1>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nom" class="form-label">Nom:</label>
+                <input id="nom" placeholder="nom" class="form-control" formControlName="nom">
+            </div>
+            <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
+                {{formErrors['nom']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="cognoms" class="form-label">Cognoms:</label>
+                <input id="cognoms" placeholder="cognoms" class="form-control" formControlName="cognoms">
+            </div>
+            <div *ngIf="formErrors['cognoms'].length > 0" class="alert alert-danger">
+                {{formErrors['cognoms']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="nif" class="form-label">NIF:</label>
+                <input id="nif" placeholder="nif" class="form-control" formControlName="nif">
+            </div>
+            <div *ngIf="formErrors['nif'].length > 0" class="alert alert-danger">
+                {{formErrors['nif']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="email" class="form-label">Email:</label>
+                <input id="email" placeholder="Email" class="form-control" formControlName="email">
+            </div>
+            <div *ngIf="formErrors['email'].length > 0" class="alert alert-danger">
+                {{formErrors['email']}}
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label for="direccio" class="form-label">Direccio:</label>
+                <input id="direccio" placeholder="direccio" class="form-control" formControlName="direccio">
+            </div>
+            <div *ngIf="formErrors['direccio'].length > 0" class="alert alert-danger">
+                {{formErrors['direccio']}}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="movil" class="form-label">Movil:</label>
+                <input id="movil" placeholder="movil" class="form-control" formControlName="movil">
+            </div>
+            <div *ngIf="formErrors['movil'].length > 0" class="alert alert-danger">
+                {{formErrors['movil']}}
+            </div>
+            <br>
+
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-lg btn-success">Guardar</button>
+                </div>
+                <div class="col-md-6">
+                    <button [routerLink]="['../client-list']" class="btn btn-lg btn-danger">Cancelar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

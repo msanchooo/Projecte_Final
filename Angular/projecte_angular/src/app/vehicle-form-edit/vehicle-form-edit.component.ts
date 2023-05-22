@@ -23,8 +23,11 @@ export class VehicleFormEditComponent {
     matricula: '',
     marca: '',
     model: '',
-    km:0,
-    client: { id: 0, nom: '', cognoms: '', nif: '', user_id: '', tipu_id: 0, direccio: '',movil:0 }
+    km: 0,
+    client: {
+      id: 0, nom: '', cognoms: '', nif: '', user: { id: 0, email: '', password: '', rol: 0 }
+      , direccio: '', movil: 0
+    }
 
   };
   constructor(
@@ -39,12 +42,12 @@ export class VehicleFormEditComponent {
     this.id = this.ruta.snapshot.paramMap.get('id');
     this.getVehicle(this.id);
     this.myForm.valueChanges.subscribe(() => {
-      Util.onValueChanged(false, this.myForm,this.formErrors,this.validationMessages);
+      Util.onValueChanged(false, this.myForm, this.formErrors, this.validationMessages);
     });
 
   }
 
-  
+
 
   getVehicle(id: string | null) {
     this.vehicleService.getVehicle(id).subscribe(data => {
@@ -72,11 +75,11 @@ export class VehicleFormEditComponent {
   }
 
   errorMessage: string = '';
-  formErrors: any= {
+  formErrors: any = {
     matricula: '',
     marca: '',
     model: '',
-    km:0
+    km: 0
   };
 
 
@@ -99,11 +102,11 @@ export class VehicleFormEditComponent {
     }
   };
 
-  
+
 
   onSubmit(): void {
-    
-    Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
+
+    Util.onValueChanged(true, this.myForm, this.formErrors, this.validationMessages);
 
     const formData = new FormData();
     const matricula = this.myForm.get('matricula')?.value;
@@ -111,7 +114,7 @@ export class VehicleFormEditComponent {
     const model = this.myForm.get('model')?.value;
     const km = this.myForm.get('km')?.value;
     const client_id = this.vehicle.client.id;
-    
+
     if (matricula) formData.append('matricula', matricula);
     if (marca) formData.append('marca', marca);
     if (model) formData.append('model', model);
@@ -120,18 +123,18 @@ export class VehicleFormEditComponent {
 
     const ps = this.vehicleService.putVehicle(this.id, formData);
     ps.subscribe(
-      (resp) => { 
+      (resp) => {
         this.post = resp;
         if (resp.status == '200') {
           this.confirmacio = 'Vehicle actualizado correctamente';
           this.router.navigate(['vehicle-list']);
         } else {
-          this.confirmacio = 'ERROR ' + resp.status; 
+          this.confirmacio = 'ERROR ' + resp.status;
         }
       },
-      (error) => {  
+      (error) => {
         alert('Error: ' + error.message); // podríamos mostrar el error en html
-      });      
+      });
   }
 
 }
