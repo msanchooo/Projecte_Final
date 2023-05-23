@@ -2,7 +2,7 @@
 # Change password request
 
 Click on the button below to change password
-<x-mail::button :url='http://localhost:4200/response-password-reset?token=$token'>
+<x-mail::button :url='$url'>
 
 Reset Password
 </x-mail::button>

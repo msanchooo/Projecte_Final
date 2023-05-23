@@ -26,13 +26,14 @@ class ResetPasswordController extends BaseController
 
     public function send($email) {
         $token = $this->createToken($email);
+
         Mail::to($email)->send(new ResetPasswordMail($token));
     }
 
     public function createToken($email) {
         $oldToken = DB::table('password_resets')->where('email', $email)->first();
         if($oldToken){
-            return $oldToken;
+            return $oldToken->token;
         }
         $token = Str::random(60);
         // $token = strval($token);

@@ -10,9 +10,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class RequestResetComponent implements OnInit {
   loading = false;
   submitted = false;
+  error = '';
+
   requestResetForm!: FormGroup;
 
-  error = '';
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -48,8 +49,4 @@ export class RequestResetComponent implements OnInit {
       }
     );
   }
-
-  // handleResponse(res: any) {
-  //   this.requestResetForm.email = null;
-  // }
 }

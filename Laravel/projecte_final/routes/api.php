@@ -12,6 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ChangePasswordController;
+
 
 
 use App\Http\Controllers\ApiController;
@@ -137,3 +139,5 @@ Route::middleware('auth:sanctum')->post('/linea', [FacturaController::class, 'in
 //Reset Password
 
 Route::post('sendPasswordResetLink', [ResetPasswordController::class, 'sendEmail']);
+
+Route::post('resetPassword', [ChangePasswordController::class, 'process']);

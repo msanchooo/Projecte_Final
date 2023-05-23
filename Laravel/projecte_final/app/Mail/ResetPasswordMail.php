@@ -45,11 +45,13 @@ class ResetPasswordMail extends Mailable
      */
     public function content(): Content
     {
+        
         return new Content(
             markdown: 'Email.passwordReset',
             with: [
-                'token' => $this->token
-                // 'url' => http://localhost:4200/response-password-reset?token='.$this->token
+                //'token' => $this->token,
+                 'url' => 'http://localhost:4200/response-password-reset?token='.$this->token
+                //'url' => 'http://localhost:4200/response-password-reset'
             ]
         );
     }
