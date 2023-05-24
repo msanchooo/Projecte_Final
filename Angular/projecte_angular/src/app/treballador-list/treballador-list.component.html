@@ -5,8 +5,8 @@
     <!-- caixa de filtrat -->
     <div class="row section text-center">
       <div class="col-md-6">
-        <label>Filtrat per:</label>
-        <input type="text" [(ngModel)]="listFilter">
+        <label>Buscar:</label>
+        <input type="text" placeholder="Nombre, Apellidos, NIF, Sueldo, Cargo" [(ngModel)]="listFilter">
       </div>
       <div class="col-md-6">
         <button [routerLink]="['../treballador-form/']" class="btn btn-crear btn-success">Crear</button>
@@ -14,19 +14,19 @@
     </div>
     <!-- fi caixa filtrat -->
     <div *ngIf="treballadors.length==0">
-      <h4>No hi ha treballadors</h4>
+      <h4>No hay trabajadores</h4>
     </div>
     <div *ngIf="treballadors.length>0" class="table-responsive">
       <table class="table">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Nom</th>
-            <th>Cognoms</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
             <th>NIF</th>
-            <th>Email</th>
-            <th>Sou</th>
-            <th>Carrec</th>
+            <th>Correo</th>
+            <th>Sueldo</th>
+            <th>Cargo</th>
             <th></th>
             <th></th>
           </tr>

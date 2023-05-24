@@ -42,7 +42,7 @@ export class TreballadorListComponent {
   }
   
 
-  titolLlistat = 'Llistat de treballadors';
+  titolLlistat = 'Listado de trabajadores';
   treballadors:ITreballador[] = [];
   listFilter: string = '';
 

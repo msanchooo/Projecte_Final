@@ -42,7 +42,7 @@ export class VehicleListComponent implements OnInit {
     this.router.navigate(['vehicle-list']);
   }
 
-  titolLlistat = 'Llistat de vehicles';
+  titolLlistat = 'Listado de vehiculos';
   vehicles: IVehicle[] = [];
   listFilter: string = '';
 

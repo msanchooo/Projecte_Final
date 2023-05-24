@@ -22,9 +22,9 @@ export class ServeiFormComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      nom: ['Pastillas', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      preu: ['70', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
-      durada: [1, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
+      nom: ['', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      preu: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      durada: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
     });
     this.myForm.valueChanges.subscribe(() => {
       Util.onValueChanged(false, this.myForm,this.formErrors,this.validationMessages);

@@ -82,7 +82,7 @@ import { ClientFormEditComponent } from './client-form-edit/client-form-edit.com
 
 import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
-// import { PerfilViewComponent } from './perfil-view/perfil-view.component';
+import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 
 
 @NgModule({
@@ -125,13 +125,10 @@ import { ResponseResetComponent } from './auth/password/response-reset/response-
     FacturaDownloadComponent,
     LoginTokenComponent,
     RegisterComponent,
-
     PerfilViewComponent,
     ClientFormEditComponent,    
-
     RequestResetComponent,
     ResponseResetComponent,    
-    // PerfilViewComponent,    
 
   ],
 
@@ -156,6 +153,7 @@ import { ResponseResetComponent } from './auth/password/response-reset/response-
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    NgxNavbarModule,
   ],
 
   exports: [

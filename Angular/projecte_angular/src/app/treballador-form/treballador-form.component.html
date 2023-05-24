@@ -1,20 +1,20 @@
 <div class="card">
     <div class="card-header bg-danger text-white text-center">
-        <h1>Nou treballador</h1>
+        <h1>Crear trabajador</h1>
     </div>
     <div class="card-body">
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <div class="form-group">
-                <label for="nom" class="form-label">Nom:</label>
-                <input id="nom" placeholder="nom" class="form-control" formControlName="nom">
+                <label for="nom" class="form-label">Nombre:</label>
+                <input id="nom" placeholder="nombre" class="form-control" formControlName="nom">
             </div>
             <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
                 {{formErrors['nom']}}
             </div>
             <br>
             <div class="form-group">
-                <label for="cognoms" class="form-label">Cognoms:</label>
-                <input id="cognoms" placeholder="cognoms" class="form-control" formControlName="cognoms">
+                <label for="cognoms" class="form-label">Apellidos:</label>
+                <input id="cognoms" placeholder="apellidos" class="form-control" formControlName="cognoms">
             </div>
             <div *ngIf="formErrors['cognoms'].length > 0" class="alert alert-danger">
                 {{formErrors['cognoms']}}
@@ -29,8 +29,8 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="email" class="form-label">Email:</label>
-                <input id="email" placeholder="Email" class="form-control" formControlName="email">
+                <label for="email" class="form-label">Correo Electrónico:</label>
+                <input id="email" placeholder="correo electrónico" class="form-control" formControlName="email">
             </div>
             <div *ngIf="formErrors['email'].length > 0" class="alert alert-danger">
                 {{formErrors['email']}}
@@ -54,16 +54,16 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="sou" class="form-label">Sou:</label>
-                <input id="sou" placeholder="Sou" class="form-control" formControlName="sou">
+                <label for="sou" class="form-label">Sueldo:</label>
+                <input id="sou" placeholder="sueldo" class="form-control" formControlName="sou">
             </div>
             <div *ngIf="formErrors['sou'].length > 0" class="alert alert-danger">
                 {{formErrors['sou']}}
             </div>
             <br>
             <div class="form-group">
-                <label for="carrec" class="form-label">Carrec:</label>
-                <input id="carrec" placeholder="Carrec" class="form-control" formControlName="carrec">
+                <label for="carrec" class="form-label">Cargo:</label>
+                <input id="carrec" placeholder="cargo" class="form-control" formControlName="carrec">
             </div>
             <div *ngIf="formErrors['carrec'].length > 0" class="alert alert-danger">
                 {{formErrors['carrec']}}

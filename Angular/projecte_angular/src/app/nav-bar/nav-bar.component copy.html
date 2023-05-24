@@ -1,0 +1,118 @@
+<!-- navbar -->
+<div class="navbar px-3 py-5 text-bg-dark">
+  <div class="container">
+    <a href="/" class=" align-items-center   text-white">
+      <img src="../assets/img/logo.png" />
+    </a>
+
+
+    <div class="d-flex flex-wrap align-items-center justify-content-center ">
+      <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+        <li>
+          <a aria-current="page" [routerLink]="['body']" class="nav-link text-white">
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a aria-current="page" [routerLink]="['servicios']" class="nav-link text-white">
+            Servicios
+          </a>
+        </li>
+
+        <li>
+          <a aria-current="page" [routerLink]="['calendar']" class="nav-link text-white"> Calendario </a>
+
+        </li>
+        <li>
+          <a aria-current="page" [routerLink]="['tienda']" class="nav-link text-white"> Tienda </a>
+        </li>
+        <li>
+
+          <a aria-current="page" [routerLink]="['contacto']" class="nav-link text-white"> Cita Previa </a>
+        </li>
+
+      </ul>
+      <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
+
+      <!-- Verifica si esta loged -->
+
+      <section *ngIf="_isLoggedIn(); else loggedOut">
+        <!-- *ngIf="logged(); else loggedOut" -->
+        <!-- <section *ngIf="auth.user$ | async as user; else loggedOut"> -->
+        <!-- Client -->
+        <div class="btn-group">
+          <button class="btn btn-danger btn-primary">{{ username }}</button>
+          <button mat-button [matMenuTriggerFor]="loged"
+            class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split" mdbDropdownToggle
+            aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+
+          <mat-menu #loged="matMenu" class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['../perfil-view']">Perfil</a></li>
+            <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../client-list']"> Clientes</a></li>
+            <li><a class="dropdown-item" [routerLink]="['../vehicle-list']"> Vehiculos</a></li>
+            <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../servei-list']"> Servicios</a></li>
+            <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../cita-list']"> Citas</a></li>
+            <li *ngIf="rolUsuari == '1'"><a class="dropdown-item" [routerLink]="['../treballador-list']">
+                Treballador</a></li>
+            <li *ngIf="rolUsuari == '1' || rolUsuari == '2' "><a class="dropdown-item"
+                [routerLink]="['../factura-list']"> Facturas</a></li>
+
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <button type="button" (click)="_logout()" class="btn btn-light dropdown-item">
+                <!-- (click)="logOut()" -->
+                LogOut
+              </button>
+            </li>
+          </mat-menu>
+        </div>
+      </section>
+
+      <ng-template #loggedOut>
+        <button type="button" class="btn btn-danger" [routerLink]="['login-token']">
+          <!-- (click)="login()" -->
+          Login / Sign-up
+        </button>
+      </ng-template>
+
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity"
+        matBadgeColor="warn" matBadgeSize="large">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div class="p-3 divide-y divide-solid">
+          <span class="mr-16">{{ itemsQuantity }} Productos</span>
+          <a routerLink="/carrito">Mi Carrito</a>
+        </div>
+        <div *ngIf="cart.items.length" class="py-3">
+          <div *ngFor="let item of cart.items" class="flex justify-between font-light mb-2">
+            {{item.name}} x {{item.quantity}}
+            <span class="font-bold">{{ item.price | currency }}</span>
+          </div>
+
+          <div class="flex justify-between py-3 font-light">
+            Total:
+            <span class="font-bold">{{ getTotal(cart.items) | currency }}</span>
+          </div>
+        </div>
+
+
+        <div class="pt-3 flex justify-between">
+          <button (click)="onClearCart()" class="bg-rose-600 text-white rounded-full w-9 h-9">
+            <mat-icon>remove_shopping_cart</mat-icon>
+          </button>
+          <button routerLink="cart" class="bg-green-600 text-white w-9 h-9">
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+
+        </div>
+      </mat-menu>
+
+    </div>
+  </div>
+</div>

@@ -30,7 +30,7 @@ export class VehicleFormComponent implements OnInit {
       matricula: ['', [Validators.required, Validators.maxLength(25)]],
       marca: ['', [Validators.required, Validators.maxLength(25)]],
       model: ['', [Validators.required, Validators.maxLength(25)]],
-      km: [170000, [Validators.required]],
+      km: ['', [Validators.required]],
       client_id: [null, Validators.required]
     });
 

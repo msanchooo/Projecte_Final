@@ -6,8 +6,8 @@
   <!-- caixa de filtrat -->
   <div class="row section text-center">
     <div class="col-md-6">
-      <label>Filtrat per:</label>
-      <input type="text" [(ngModel)]="listFilter">
+      <label>Buscar: </label>
+      <input type="text" placeholder="Nombre, Apellidos, NIF" [(ngModel)]="listFilter">
     </div>
   </div>
   <!-- fi caixa filtrat -->
@@ -21,8 +21,8 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Nom</th>
-          <th>Cognoms</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
           <th>NIF</th>
           <th>user_id</th>
           <th *ngIf="rol==1"></th>

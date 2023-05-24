@@ -22,13 +22,13 @@ export class TreballadorFormComponent {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      nom: ['Juan', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      cognoms: ['Cuesta', [Validators.required, Validators.maxLength(25)]],
-      nif: ['1565176A', [Validators.required]],
-      sou: [1300, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
-      carrec: ['Ayudante', [Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]],
-      email: ['juancuesta@yahoo.es', [Validators.required, Validators.email]],
-      password: ['juancuesta', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
+      nom: ['', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      cognoms: ['', [Validators.required, Validators.maxLength(25)]],
+      nif: ['', [Validators.required]],
+      sou: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      carrec: ['', [Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
 
     });
     this.myForm.valueChanges.subscribe(() => {
@@ -42,7 +42,7 @@ export class TreballadorFormComponent {
     nom: '',
     cognoms: '',
     nif: '',
-    sou: 0,
+    sou: '',
     carrec: '',
     email: '',
     password: ''
