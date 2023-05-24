@@ -3,3 +3,16 @@
     color: white;
     margin: 0;
 }
+
+  
+  @media (max-width: 1012px) {
+    .responsive-image {
+      width: 80%; /* Modifica el ancho máximo para pantallas más pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .responsive-image {
+      width: 60%; /* Modifica el ancho máximo para pantallas aún más pequeñas */
+    }
+  }
