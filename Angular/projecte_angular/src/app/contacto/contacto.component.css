@@ -57,5 +57,17 @@
     background-color: #212529;
   }
 
+input{
+  background-color: rgb(37, 35, 35);
+}
 
+.material-icons{
+  font-family: 'Material Icons' !important;
+  color: rgb(255, 62, 62);
+  transform: scale(2);
+}
 
+select {
+  background-color: #ededed8b;
+  border-radius: 3%;
+}
