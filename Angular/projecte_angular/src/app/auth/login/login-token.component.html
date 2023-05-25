@@ -1,8 +1,7 @@
 <div class="col-md-6 offset-md-3 mt-5 mb-5">
-    <!-- <div class="alert alert-info">
-        email: test<br />
-        Password: test
-    </div> -->
+    <div *ngIf="success" class="alert alert-info">
+        {{success}}
+    </div>
     <div class="card">
         <h4 class="card-header py-3">Login</h4>
         <div class="card-body">

@@ -1,4 +1,7 @@
 <div class="col-md-6 offset-md-3 mt-5 mb-5">
+    <div *ngIf="success" class="alert alert-info">
+        {{success}}
+    </div>
     <div class="card">
         <h4 class="card-header py-3">Send email for reset password</h4>
         <div class="card-body">

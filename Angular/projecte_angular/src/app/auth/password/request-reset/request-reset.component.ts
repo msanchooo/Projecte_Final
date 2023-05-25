@@ -11,6 +11,7 @@ export class RequestResetComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
+  success = '';
 
   requestResetForm!: FormGroup;
 
@@ -30,9 +31,10 @@ export class RequestResetComponent implements OnInit {
     return this.requestResetForm.controls;
   }
   
-  onSubmit(data: any) {
+  onSubmit(_data: any) {
     this.submitted = true;
     this.error = '';
+    this.success = '';
 
     if (this.requestResetForm.invalid) {
       return;
@@ -41,12 +43,17 @@ export class RequestResetComponent implements OnInit {
     this.loading = true;
 
 
-    this.authenticationService.sendPasswordResetLink(this.requestResetForm.value).subscribe(
-      (data) => console.log(data),
-      (error) => (error: any) => {
-        this.error = error;
+    this.authenticationService.sendPasswordResetLink(this.requestResetForm.value).subscribe({
+      next: (data:any) => {
+        // console.log(data);
+        this.success = data.data;
         this.loading = false;
-      }
-    );
+        this.ngOnInit();
+      },
+      error: (error) => {
+        this.error = error.message;
+        this.loading = false;
+      },
+  });
   }
 }

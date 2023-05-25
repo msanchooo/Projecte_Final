@@ -186,7 +186,6 @@ class ClientController extends BaseController
             'nom' => $request->nom,
             'cognoms' => $request->cognoms,
             'nif' => $request->nif,
-            'tipu_id' => 1,
             'user_id' => $user->id,
             'direccio' => $request->direccio,
             'movil' => $request->movil
@@ -265,7 +264,6 @@ class ClientController extends BaseController
                 'nom' => ['required', 'max:15'],
                 'cognoms' => ['required', 'max:25'],
                 'nif' => ['required'],
-                'tipu_id' => ['required', 'integer', 'min:1', 'max:2'],
                 'user_id' => ['required']
             ]);
 
@@ -275,7 +273,6 @@ class ClientController extends BaseController
                 'nom' => $request->nom,
                 'cognoms' => $request->cognoms,
                 'nif' => $request->nif,
-                'tipu_id' => $request->tipu_id,
                 'user_id' => $request->user_id,
                 'direccio' => $request->direccio,
                 'movil' => $request->movil

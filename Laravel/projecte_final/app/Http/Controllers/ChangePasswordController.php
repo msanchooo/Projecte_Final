@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class ChangePasswordController extends Controller
@@ -25,7 +27,7 @@ class ChangePasswordController extends Controller
 
     private function changePassword($request){
         $user = User::whereEmail($request->email)->first();
-        $user->update(['password'=>$request->password]);
+        $user->update(['password'=>Hash::make($request->password)]);
         $this->getPasswordResetTableRow($request)->delete();
         return response()->json(['data' => 'Password Succesfully changed'], Response::HTTP_CREATED);
     }

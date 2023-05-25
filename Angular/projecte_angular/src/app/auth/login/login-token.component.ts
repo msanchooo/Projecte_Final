@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { ServeiUpdateService } from '../../servei-update/servei-update.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { DadesClientsService } from '../../datos/dades-clients.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({ templateUrl: 'login-token.component.html' })
@@ -16,6 +17,11 @@ export class LoginTokenComponent implements OnInit {
   _rol: any;
   _user: any;
 
+  private subscriptionName: Subscription;
+  changePassword: any;
+  success:any;
+
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,6 +32,12 @@ export class LoginTokenComponent implements OnInit {
     private clientService: DadesClientsService
 
   ) {
+    this.subscriptionName = this.service.getUpdate3().subscribe((message) => {
+      //message contains the data sent from service
+      this.changePassword = message;
+      this.success = this.changePassword._success;
+      console.log(message);
+    });
     // redirect to home if already logged in
     if (this.authenticationService.userValue) {
       this.router.navigate(['/']);
@@ -33,6 +45,7 @@ export class LoginTokenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.success = this.changePassword;
     this.loginForm = this.formBuilder.group({
       email: ['admin@gmail.com', Validators.required],
       password: ['123', Validators.required],
@@ -53,7 +66,6 @@ export class LoginTokenComponent implements OnInit {
   sendMessage2(user: any): void {
     // send message to subscribers via observable subject
     this.service.sendUpdate2(
-
       user
     );
   }
@@ -75,12 +87,9 @@ export class LoginTokenComponent implements OnInit {
       .subscribe({
         next: () => {
           const returnUrl = '/';
-          // this._rol = localStorage.getItem('user');
-          // console.log(this._rol);
+
           const user = this.authenticationService.userValue;
           this._rol = user?.rol;
-
-          console.log(this._rol)
           this._user = user?.username;
 
           if(this._rol !== null){
@@ -98,5 +107,10 @@ export class LoginTokenComponent implements OnInit {
           this.loading = false;
         },
       });
+  }
+
+  ngOnDestroy() {
+    // It's a good practice to unsubscribe to ensure no memory leaks
+    this.subscriptionName.unsubscribe();
   }
 }

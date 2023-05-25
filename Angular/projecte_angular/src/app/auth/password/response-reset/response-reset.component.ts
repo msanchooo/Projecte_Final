@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthenticationService } from '../../_services/authentication.service';
+import { ServeiUpdateService } from 'src/app/servei-update/servei-update.service';
 
 @Component({
   selector: 'app-response-reset',
@@ -12,6 +13,8 @@ export class ResponseResetComponent implements OnInit {
   loading = false;
   submitted = false;
   error: String = '';
+  success = '';
+
   resetPasswordForm!: FormGroup;
 
   resetToken: String = '';
@@ -25,9 +28,9 @@ export class ResponseResetComponent implements OnInit {
 
   ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
-      email: null,
-      password: null,
-      password_confirmation: null,
+      email: 'admin@gmail.com',
+      password: '1234',
+      password_confirmation: '1234',
     });
   }
 
@@ -35,12 +38,21 @@ export class ResponseResetComponent implements OnInit {
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private service: ServeiUpdateService
+
   ) {
     this.route.queryParams.subscribe((params) => {
       //this.resetPasswordForm.resetToken = params['token']
       this.resetToken = params['token'];
     });
+  }
+
+  sendMessage(msg: any): void {
+    // send message to subscribers via observable subject
+    this.service.sendUpdate3(
+      msg
+    );
   }
 
   get f() {
@@ -50,17 +62,18 @@ export class ResponseResetComponent implements OnInit {
   onSubmit(data: any) {
     this.submitted = true;
     this.error = '';
+    this.success = '';
     this.loading = true;
 
-    //data.push(this.resetToken);
-    data.token = this.resetToken;
-    // data['token'] = this.resetToken;
-
-    console.log(data);
+    data.resetToken = this.resetToken;
 
     this.authenticationService.changePassword(data).subscribe({
-      next: (data) => {
-        console.log(data);
+      next: (data:any) => {
+        this.success = data.data;
+        this.sendMessage('aaa');
+        console.log(this.success);
+        this.loading = false;
+        this.ngOnInit();
         this.router.navigate(['/login']);
       },
       error: (error) => {
