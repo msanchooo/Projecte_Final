@@ -6,6 +6,7 @@
         <h4 class="card-header py-3">Email de recuperación de contraseña</h4>
         <div class="card-body">
             <form [formGroup]="requestResetForm" (ngSubmit)="onSubmit(requestResetForm.value)">
+
                 <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
@@ -21,6 +22,8 @@
 
 
             </form>
-        </div>
+
+        </div> 
     </div>
-</div>
+</div> 
+
