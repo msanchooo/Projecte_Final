@@ -35,6 +35,7 @@ class ResetPasswordMail extends Mailable
     {
         return new Envelope(
             subject: 'Cambio contraseña Taller Tuku',
+            from: 'info.tallertuku@gmail.com'
         );
     }
 
