@@ -11,11 +11,11 @@ La aplicación web permitirá a los clientes del taller realizar las siguientes 
 
     - Registro de usuario: Los clientes podrán registrarse en la página web, creando una cuenta personalizada que les permitirá acceder a todas las funcionalidades y servicios ofrecidos.
 
-    - Gestión de vehículos: Los clientes podrán añadir información y detalles sobre sus vehículos, como marca, modelo, año, número de matrícula, entre otros. Esto facilitará la gestión y             organización de la información relacionada con los vehículos de cada cliente.
+    - Gestión de vehículos: Los clientes podrán añadir información y detalles sobre sus vehículos, como marca, modelo, año, número de matrícula, entre otros. Esto facilitará la gestión y       organización de la información relacionada con los vehículos de cada cliente.
 
     - Cita previa: Los clientes podrán solicitar una cita previa para el servicio de mantenimiento, reparación o cualquier otro servicio ofrecido por el taller.
 
-    - Compra en línea: La aplicación permitirá a los clientes realizar compras en línea. Podrán navegar por el catálogo de productos, seleccionar los artículos deseados y realizar el pago de         forma segura.
+    - Compra en línea: La aplicación permitirá a los clientes realizar compras en línea. Podrán navegar por el catálogo de productos, seleccionar los artículos deseados y realizar el pago de  forma segura.
 
     - Visualización de facturas: Los clientes podrán acceder y visualizar sus facturas generadas por los servicios o productos adquiridos en el taller. 
 
