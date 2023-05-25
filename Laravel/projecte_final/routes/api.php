@@ -51,7 +51,7 @@ Route::delete('/cita/{id}', [CitaController::class, 'deleteCita'])->name('cita_d
 
 //// Clients
 
-Route::middleware(['auth:sanctum','admin'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
+Route::middleware(['auth:sanctum'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
 
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
