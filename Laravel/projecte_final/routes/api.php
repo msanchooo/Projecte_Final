@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\EmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CitaController;
@@ -131,3 +132,9 @@ Route::middleware('auth:sanctum')->get('/factura/{id}', [FacturaController::clas
 Route::middleware('auth:sanctum')->post('/factura', [FacturaController::class, 'insertFactura']);
 
 Route::middleware('auth:sanctum')->post('/linea', [FacturaController::class, 'insertLineas']);
+
+
+//// Correo
+
+Route::middleware('auth:sanctum')->post('/EnviarCorreo', [EmailController::class,'index']);
+
