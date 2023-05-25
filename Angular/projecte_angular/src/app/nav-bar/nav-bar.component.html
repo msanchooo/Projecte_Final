@@ -34,7 +34,7 @@
                 </li>
                 <li *ngIf="_isLoggedIn(); else loggedOut">
                     <div class="btn-group">
-                        <button class="btn btn-danger btn-primary">{{ username }}</button>
+                        <button class="btn btn-danger btn-primary" routerLink="../perfil-view">{{ username }}</button>
                         <button mat-button [matMenuTriggerFor]="loggedMenu"
                             class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split" mdbDropdownToggle
                             aria-expanded="false">
