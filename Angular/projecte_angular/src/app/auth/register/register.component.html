@@ -1,10 +1,10 @@
 <div class="col-md-6 offset-md-3 mt-5 mb-5">
     <div class="card">
-        <h4 class="card-header bg-danger text-light py-3">Register</h4>
+        <h4 class="card-header bg-danger text-light py-3">Registro</h4>
         <div class="card-body">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
                 <div class="mb-3">
-                    <label class="form-label">Nom</label>
+                    <label class="form-label">Nombre</label>
                     <input type="text" formControlName="nom" class="form-control" />
                     <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
                         {{formErrors['nom']}}
@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Cognoms</label>
+                    <label class="form-label">Apellidos</label>
                     <input type="text" formControlName="cognoms" class="form-control" />
                     <div *ngIf="formErrors['cognoms'].length > 0" class="alert alert-danger">
                         {{formErrors['cognoms']}}
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Direccio</label>
+                    <label class="form-label">Dirección</label>
                     <input type="text" formControlName="direccio" class="form-control" />
                     <div *ngIf="formErrors['direccio'].length > 0" class="alert alert-danger">
                         {{formErrors['direccio']}}
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Movil</label>
+                    <label class="form-label">Telefono</label>
                     <input type="text" formControlName="movil" class="form-control" />
                     <div *ngIf="formErrors['movil'].length > 0" class="alert alert-danger">
                         {{formErrors['movil']}}
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">Correo electrónico</label>
                     <input type="text" formControlName="email" class="form-control" />
                     <div *ngIf="formErrors['email'].length > 0" class="alert alert-danger">
                         {{formErrors['email']}}
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Password</label>
+                    <label class="form-label">Contraseña</label>
                     <div class="input-group">
                         <input id="password" type="{{ mostrarContrasenya ? 'text' : 'password' }}"
                             placeholder="Contraseña" class="form-control" formControlName="password">
@@ -70,7 +70,7 @@
 
                 <button type="submit" [disabled]="loading" class="btn btn-primary btn-danger">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Register
+                    Registrar
                 </button>
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
             </form>

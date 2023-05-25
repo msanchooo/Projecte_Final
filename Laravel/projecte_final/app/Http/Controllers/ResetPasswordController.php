@@ -55,13 +55,13 @@ class ResetPasswordController extends BaseController
 
     public function failedResponse(){
         return response()->json([
-            'error' => 'Email doesnt found on our database'
+            'error' => 'El email no se ha encontrado en nuestra base de datos'
         ],Response::HTTP_NOT_FOUND);
     }
 
     public function successResponse(){
         return response()->json([
-            'data' => 'Reset email is send successfully, please check your inbox'
+            'data' => 'El email se ha enviado correctamente, en caso de no ver el correo revise la bandeja de SPAM'
         ],Response::HTTP_OK);
     }
 }

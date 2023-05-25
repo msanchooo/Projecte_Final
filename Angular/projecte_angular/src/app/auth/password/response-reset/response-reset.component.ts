@@ -19,18 +19,11 @@ export class ResponseResetComponent implements OnInit {
 
   resetToken: String = '';
 
-  // public resetPasswordForm = {
-  //   email: null,
-  //   password: null,
-  //   password_confirmation: null,
-  //   resetToken: null
-  // }
-
   ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
-      email: 'admin@gmail.com',
-      password: '1234',
-      password_confirmation: '1234',
+      email: null,
+      password: null,
+      password_confirmation: null,
     });
   }
 
@@ -72,7 +65,7 @@ export class ResponseResetComponent implements OnInit {
         this.success = data.data;
         this.loading = false;
         this.ngOnInit();
-        this.router.navigate(['/login-token/reset-password']);
+        this.router.navigate(['/login/reset-password']);
       },
       error: (error) => {
         this.error = error.message;

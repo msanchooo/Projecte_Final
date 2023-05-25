@@ -22,13 +22,13 @@ class ChangePasswordController extends Controller
     }
 
     private function tokenNotFoundResponse(){
-        return response()->json(['error' => 'Token or Email is incorrect'],Response::HTTP_UNPROCESSABLE_ENTITY);
+        return response()->json(['error' => 'Token o Email son incorrectos'],Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     private function changePassword($request){
         $user = User::whereEmail($request->email)->first();
         $user->update(['password'=>Hash::make($request->password)]);
         $this->getPasswordResetTableRow($request)->delete();
-        return response()->json(['data' => 'Password Succesfully changed'], Response::HTTP_CREATED);
+        return response()->json(['data' => 'Contraseña cambiada correctamente'], Response::HTTP_CREATED);
     }
 }
