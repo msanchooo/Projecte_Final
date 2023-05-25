@@ -85,7 +85,6 @@ export class TreballadorFormEditComponent {
     nom: {
       required: 'El nombre es obligatorio.',
       maxlength: 'El nombre no puede tener más de 15 caracteres.',
-      pattern:'El nombre no puede contener numeros'
     },
     cognoms: {
       required: 'Los apellidos son obligatorios.',
@@ -119,7 +118,9 @@ export class TreballadorFormEditComponent {
     
     Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
 
-
+    if (this.myForm.invalid) {
+      return;
+    }
     const formData = new FormData();
     const nom = this.myForm.get('nom')?.value;
     const cognoms = this.myForm.get('cognoms')?.value;

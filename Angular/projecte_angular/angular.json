@@ -28,11 +28,14 @@
               "src/custom-theme.scss",
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css",
-
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@splidejs/splide/dist/css/splide.min.css"
             ],
             "scripts": [
               "node_modules/html2canvas/dist/html2canvas.min.js",
+              "node_modules/@splidejs/splide/dist/js/splide.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
               
             ]
           },

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Cart, CartItem } from '../models/cart.models';
@@ -11,14 +11,17 @@ import { ServeiUpdateService } from '../servei-update/servei-update.service';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DadesClientsService } from '../datos/dades-clients.service';
+import { DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 
-export class NavBarComponent implements OnInit, OnDestroy {
+export class NavBarComponent implements OnInit, OnDestroy, DoCheck {
   http: any;
   private _cart: Cart = { items: [] };
   itemsQuantity = 0;
@@ -47,6 +50,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngDoCheck() {
+  }
 
   rol: any;
   rolUsuari: any;
@@ -67,6 +72,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    
 
     // this.rolUsuari = localStorage.getItem('rol');
     // this.username =  localStorage.getItem('username');

@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IClient } from '../interfaces/IClient';
@@ -25,6 +25,18 @@ export class DadesClientsService {
   public getClientByUserId(id: any): Observable<IClient> {
     return this._http.get<IClient>(`${environment.apiUrl}/api/client-user/${id}`);
 
+  }
+  public postClient(dada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+      }),
+    };
+    const options = { params: new HttpParams().set('observe', 'response') }
+
+    return this._http.post(environment.apiUrl + '/api/client-update', dada, {
+      observe: 'response', headers: new HttpHeaders({
+      })
+    });
   }
 
 }

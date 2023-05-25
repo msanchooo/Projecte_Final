@@ -1,85 +1,61 @@
-* {
-    font-family: "Anton", sans-serif;
-    max-width: 100%;
-    background-color: #212529;
-    color: white;
-    
-  }
-
-  h1 {
-    text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #1a1e23;
 }
-
-.option1 {
-    color: white;
-  }
-  
-  .option1:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    left: 0;
-    direction: rtl;
-    z-index: -1;
-    box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
-      7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
-    transition: all 0.3s ease;
-  }
-  .option1:hover {
-    color: rgb(194, 194, 194);
-  }
-  .option1:hover:after {
-    left: auto;
-    right: 0;
-    width: 100%;
-  }
-
-.row{
-    text-align: center;
-}
-
-
-
-
-
 .container {
-  position: relative;
-  width: 50%;
-}
-
-.image {
-  display: block;
-}
-
-
-
-
-.image-container {
-  position: relative;
-  display: inline-block;
-}
-
-.overlayy {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
   height: 100%;
+  
+}
+.slide {
   display: flex;
-  align-items: center;
   justify-content: center;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Cambia el color del fondo según tus necesidades */
-  transition: opacity 0.3s ease;
+  align-items: center;
 }
-
-.overlayy p {
-  color: #fff; /* Cambia el color del texto según tus necesidades */
-  font-size: 20px; /* Cambia el tamaño de fuente según tus necesidades */
+.gallery-container {
+  /* padding: 75px 0; */
+  /* margin: 0 auto; */
+  width: 100%;
 }
-
-.image-container:hover .overlayy {
-  opacity: 1;
+.gallery-container .gallery-wrap {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+.gallery-container .gallery-wrap .item {
+  flex: 1;
+  width: 100vw;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
+  transition: .8s ease;
+}
+.gallery-container .gallery-wrap .item:hover {
+  flex: 7;
+}
+.gallery-container .item:first-of-type {
+  background-image: url(../../assets/img/pack1.jpg);
+}
+.gallery-container .item:nth-of-type(2) {
+  background-image: url(../../assets/img/pack3.jpg);
+}
+.gallery-container .item:nth-of-type(3) {
+  background-image: url(../../assets/img/pack2.jpg);
+}
+.gallery-container .item:nth-of-type(4) {
+  background-image: url(../../assets/img/pack4.jpg);
+}
+.gallery-container .item:nth-of-type(5) {
+  background-image: url(../../assets/img/pack5.jpg);
+}
+h2{
+  background-color: rgba(255, 0, 0, 0.555);
+  padding: 10px;
+  border-radius: 10px;
 }

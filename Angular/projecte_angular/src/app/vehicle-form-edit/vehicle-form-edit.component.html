@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header bg-danger text-white text-center">
-      <h1>Editar vehicle</h1>
+      <h1>Editar vehiculo</h1>
     </div>
     <div class="card-body">
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
@@ -24,8 +24,8 @@
         <br>
   
         <div class="form-group">
-          <label for="model" class="form-label">Model:</label>
-          <input id="model" placeholder="Model" class="form-control" formControlName="model">
+          <label for="model" class="form-label">Modelo:</label>
+          <input id="model" placeholder="Modelo" class="form-control" formControlName="model">
         </div>
         <div *ngIf="formErrors['model'].length > 0" class="alert alert-danger">
           {{formErrors['model']}}

@@ -22,9 +22,9 @@ export class ServeiFormComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
-      nom: ['Pastillas', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      preu: ['70', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
-      durada: [1, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
+      nom: ['', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      preu: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      durada: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
     });
     this.myForm.valueChanges.subscribe(() => {
       Util.onValueChanged(false, this.myForm,this.formErrors,this.validationMessages);
@@ -52,15 +52,18 @@ export class ServeiFormComponent implements OnInit {
       pattern: 'El precio solo pueden contener numeros'
     },
     durada: {
-      required: 'La durada es obligatoria.',
-      maxlength: 'La durada no puede ser más larga que 25 caracteres.',
-      pattern: 'La duracion solo pueden contener letras'
+      required: 'La duradacion es obligatoria.',
+      maxlength: 'La duracion no puede ser más larga que 25 caracteres.',
+      pattern: 'La duracion solo pueden contener numeros'
     },
   };
 
   onSubmit(servei: any) {
 
     Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
+    if (this.myForm.invalid) {
+      return;
+    }
 
 
     console.log(servei);

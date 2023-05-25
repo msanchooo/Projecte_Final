@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\EmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CitaController;
@@ -54,7 +55,7 @@ Route::middleware(['auth:sanctum','admin'])->get('/clients', [ClientController::
 
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
-Route::middleware('auth:sanctum')->post('/client/{id}', [ClientController::class, 'updateClient'])->name('client_update');
+Route::middleware('auth:sanctum')->post('/client-update', [ClientController::class, 'updateClient'])->name('client_update');
 
 Route::post('/client', [ClientController::class, 'insertClient']);
 
@@ -141,3 +142,7 @@ Route::middleware('auth:sanctum')->post('/linea', [FacturaController::class, 'in
 Route::post('sendPasswordResetLink', [ResetPasswordController::class, 'sendEmail']);
 
 Route::post('resetPassword', [ChangePasswordController::class, 'process']);
+//// Correo
+
+Route::middleware('auth:sanctum')->post('/EnviarCorreo', [EmailController::class,'index']);
+

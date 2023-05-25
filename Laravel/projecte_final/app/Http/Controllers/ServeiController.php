@@ -102,7 +102,7 @@ class ServeiController extends BaseController
     {
 
         $request->validate([
-            'nom' => ['required', 'max:25','alpha'],
+            'nom' => ['required', 'max:25','regex:/^[a-zA-Z0-9\s]+$/'],
             'preu' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
             'durada' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/']
         ]);
@@ -157,7 +157,7 @@ class ServeiController extends BaseController
     {
 
         $request->validate([
-            'nom' => ['required', 'max:25','alpha'],
+            'nom' => ['required', 'max:25','regex:/^[a-zA-Z0-9\s]+$/'],
             'preu' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
             'durada' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/']
         ]);
