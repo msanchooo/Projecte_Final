@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DadesClientsService } from '../datos/dades-clients.service';
 import { IClient } from '../interfaces/IClient';
+import { AuthenticationService } from '../auth/_services/authentication.service';
 
 @Component({
   selector: 'app-client-list',
@@ -9,8 +10,8 @@ import { IClient } from '../interfaces/IClient';
 })
 export class ClientListComponent {
   router: any;
-
-  constructor(private clientService: DadesClientsService) { }
+  rol:any;
+  constructor(private clientService: DadesClientsService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     //fem servir event de creacio
@@ -19,6 +20,8 @@ export class ClientListComponent {
       // accedim al body de la resposta HTTP.
       if(resp.body) this.clients = resp.body;
     });
+    const user = this.authenticationService.userValue;
+    this.rol=user?.rol;
   }
 
   confirmarEliminacion(): boolean {
@@ -40,7 +43,7 @@ export class ClientListComponent {
     this.router.navigate(['client-list']);
   }
 
-  titolLlistat = 'Llistat de clients';
+  titolLlistat = 'Listado de clientes';
   clients:IClient[] = [];
   listFilter: string = '';
 

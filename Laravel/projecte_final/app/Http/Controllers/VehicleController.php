@@ -218,8 +218,6 @@ class VehicleController extends BaseController
                 'marca' => ['required', 'max:25'],
                 'model' => ['required', 'max:25'],
                 'client_id' => ['required'],
-                'km' => ['required']
-
             ]);
 
             $vehicle = Vehicle::find($request->id);

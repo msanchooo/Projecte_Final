@@ -46,7 +46,7 @@ export class ServeiListComponent {
 
 
 
-  titolLlistat = 'Llistat de serveis';
+  titolLlistat = 'Listado de servicios';
   serveis:IServei[] = [];
   listFilter: string = '';
 

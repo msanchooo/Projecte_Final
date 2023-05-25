@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum','admin'])->get('/clients', [ClientController::
 
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
-Route::middleware('auth:sanctum')->post('/client/{id}', [ClientController::class, 'updateClient'])->name('client_update');
+Route::middleware('auth:sanctum')->post('/client-update', [ClientController::class, 'updateClient'])->name('client_update');
 
 Route::post('/client', [ClientController::class, 'insertClient']);
 
