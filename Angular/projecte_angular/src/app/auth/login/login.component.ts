@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit {
     if(this.router.url == '/login/reset-password'){
       this.success = 'Contraseña cambiada correctamente'
     }
-    console.log(this.router.url);
-
+    
     this.loginForm = this.formBuilder.group({
       email: ['admin@gmail.com', Validators.required],
       password: ['123', Validators.required],
