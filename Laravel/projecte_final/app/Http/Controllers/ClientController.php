@@ -168,9 +168,13 @@ class ClientController extends BaseController
     {
 
         $request->validate([
-            'nom' => ['required', 'max:15'],
-            'cognoms' => ['required', 'max:25'],
+            'nom' => ['required', 'max:15','regex:/^[a-zA-Z0-9\s]+$/'],
+            'cognoms' => ['required', 'max:25','regex:/^[a-zA-Z0-9\s]+$/'],
             'nif' => ['required'],
+            'direccio' =>['required'],
+            'movil'=>['required','regex:/^[0-9]+$/'],
+            'email'=>['required','email']
+
         ]);
 
         $user = User::create([
@@ -254,7 +258,16 @@ class ClientController extends BaseController
     {
         $user = Auth::user();
         $client = Client::where('user_id', $request->user_id)->first();
+        
+        $request->validate([
+            'nom' => ['required', 'max:15','regex:/^[a-zA-Z0-9\s]+$/'],
+            'cognoms' => ['required', 'max:25','regex:/^[a-zA-Z0-9\s]+$/'],
+            'nif' => ['required'],
+            'direccio' =>['required'],
+            'movil'=>['required','regex:/^[0-9]+$/'],
+            'email'=>['required','email']
 
+        ]);
 
         if ($client->user_id == $user->id || $user->rol == 1 || $user->rol == 3) {
 

@@ -43,7 +43,7 @@ export class ClientListComponent {
     this.router.navigate(['client-list']);
   }
 
-  titolLlistat = 'Llistat de clients';
+  titolLlistat = 'Listado de clientes';
   clients:IClient[] = [];
   listFilter: string = '';
 

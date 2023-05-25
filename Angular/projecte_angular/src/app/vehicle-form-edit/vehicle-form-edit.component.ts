@@ -70,6 +70,8 @@ export class VehicleFormEditComponent {
       matricula: ['', [Validators.required, Validators.maxLength(25)]],
       marca: ['', [Validators.required, Validators.maxLength(25)]],
       model: ['', [Validators.required, Validators.maxLength(25)]],
+      km: ['', [Validators.required]],
+
 
     });
   }
@@ -79,7 +81,7 @@ export class VehicleFormEditComponent {
     matricula: '',
     marca: '',
     model: '',
-    km: 0
+    km: ''
   };
 
 
@@ -98,7 +100,7 @@ export class VehicleFormEditComponent {
       maxlength: 'El modelo no puede ser más largo que 25 caracteres.'
     },
     km: {
-      required: 'Els km es obligatorio.',
+      required: 'Los km son obligatorios.',
     }
   };
 
@@ -107,7 +109,9 @@ export class VehicleFormEditComponent {
   onSubmit(): void {
 
     Util.onValueChanged(true, this.myForm, this.formErrors, this.validationMessages);
-
+    if (this.myForm.invalid) {
+      return;
+    }
     const formData = new FormData();
     const matricula = this.myForm.get('matricula')?.value;
     const marca = this.myForm.get('marca')?.value;

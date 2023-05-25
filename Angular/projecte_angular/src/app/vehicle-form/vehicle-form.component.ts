@@ -30,7 +30,7 @@ export class VehicleFormComponent implements OnInit {
       matricula: ['', [Validators.required, Validators.maxLength(25)]],
       marca: ['', [Validators.required, Validators.maxLength(25)]],
       model: ['', [Validators.required, Validators.maxLength(25)]],
-      km: [170000, [Validators.required]],
+      km: ['', [Validators.required]],
       client_id: [null, Validators.required]
     });
 
@@ -95,7 +95,9 @@ export class VehicleFormComponent implements OnInit {
 
   onSubmit(vehicle: any) {
     Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
-
+    if (this.myForm.invalid) {
+      return;
+    }
     if(this.rol==2){
     vehicle.client_id=this.client.id;
     }

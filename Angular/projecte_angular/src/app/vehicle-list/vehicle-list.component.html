@@ -5,8 +5,8 @@
   <!-- caixa de filtrat -->
   <div class="row section text-center">
     <div class="col-md-6">
-      <label>Filtrat per:</label>
-      <input type="text" [(ngModel)]="listFilter">
+      <label>Buscar: </label>
+      <input type="text" placeholder="Matricula, Modelo, Cliente" [(ngModel)]="listFilter">
     </div>
     <div class="col-md-6">
       <button [routerLink]="['../vehicle-form/']" class="btn btn-crear btn-success">Crear</button>
@@ -14,7 +14,7 @@
   </div>
   <!-- fi caixa filtrat -->
   <div *ngIf="vehicles.length==0">
-    <h4>No hi ha vehicles</h4>
+    <h4>No hay vehiculos</h4>
   </div>
   <div *ngIf="vehicles.length>0" class="table-responsive">
     <table class="table">
@@ -23,9 +23,9 @@
           <th>Id</th>
           <th>Matricula</th>
           <th>Marca</th>
-          <th>Model</th>
+          <th>Modelo</th>
           <th>Km</th>
-          <th>Client</th>
+          <th>Cliente</th>
           <th *ngIf="rol == '1' || rol == '3' "></th>
           <th *ngIf="rol == '1' || rol == '3' "></th>
         </tr>

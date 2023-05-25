@@ -47,7 +47,7 @@ export class FacturaListComponent {
   //   this.router.navigate(['factura-list']);
   // }
 
-  titolLlistat = 'Llistat de facturas';
+  titolLlistat = 'Listado de facturas';
   facturas:IFactura[] = [];
   listFilter: string = '';
 

@@ -39,6 +39,7 @@ export class ClientFormEditComponent {
     nom: {
       required: 'El nombre es obligatorio.',
       maxlength: 'El nombre no puede tener más de 15 caracteres.',
+      pattern:'El nombre no puede contener numeros'
     },
     cognoms: {
       required: 'Los apellidos son obligatorios.',
@@ -49,8 +50,8 @@ export class ClientFormEditComponent {
       required: 'El NIF es obligatorio.'
     },
     movil: {
-      required: 'El movil es obligatorio.',
-      pattern:'El movil no puede contener letras'
+      required: 'El telefono es obligatorio.',
+      pattern:'El telefono no puede contener letras'
     },
     direccio: {
       required: 'La direccion es obligatoria.',
@@ -82,10 +83,10 @@ export class ClientFormEditComponent {
     this.myForm = this.formBuilder.group({
 
       nom: ['', [Validators.required, Validators.maxLength(15), Validators.pattern(/^[a-zA-Z ]+$/)]],
-      cognoms: ['', [Validators.required, Validators.maxLength(25)]],
+      cognoms: ['', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
       nif: ['', [Validators.required]],
       direccio: [, [Validators.required]],
-      movil: ['', [Validators.required]],
+      movil: ['', [Validators.required,Validators.pattern('^[0-9]+$')]],
       email: ['', [Validators.required, Validators.email]]
     });
   }
@@ -110,7 +111,9 @@ export class ClientFormEditComponent {
   onSubmit(): void {
     
     Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
-
+    if (this.myForm.invalid) {
+      return;
+    }
 
     const formData = new FormData();
     const nom = this.myForm.get('nom')?.value;

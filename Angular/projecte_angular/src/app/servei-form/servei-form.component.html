@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card-header bg-danger text-white text-center">
-    <h1>Nou servei</h1>
+    <h1>Crear servicio</h1>
   </div>
   <div class="card-body">
     <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
       <div class="form-group">
-        <label for="nom" class="form-label">Nom:</label>
-        <input id="nom" placeholder="Nom" class="form-control" formControlName="nom">
+        <label for="nom" class="form-label">Nombre:</label>
+        <input id="nom" placeholder="nombre" class="form-control" formControlName="nom">
       </div>
       <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
         {{formErrors['nom']}}
@@ -14,8 +14,8 @@
       <br>
 
       <div class="form-group">
-        <label for="preu" class="form-label">Preu:</label>
-        <input id="preu" placeholder="Preu" class="form-control" formControlName="preu">
+        <label for="preu" class="form-label">Precio:</label>
+        <input id="preu" placeholder="precio" class="form-control" formControlName="preu">
       </div>
       <div *ngIf="formErrors['preu'].length > 0" class="alert alert-danger">
         {{formErrors['preu']}}
@@ -23,8 +23,8 @@
       <br>
 
       <div class="form-group">
-        <label for="durada" class="form-label">Durada:</label>
-        <input id="durada" placeholder="Durada" class="form-control" formControlName="durada">
+        <label for="durada" class="form-label">Duración:</label>
+        <input id="durada" placeholder="duración" class="form-control" formControlName="durada">
       </div>
       <div *ngIf="formErrors['durada'].length > 0" class="alert alert-danger">
         {{formErrors['durada']}}

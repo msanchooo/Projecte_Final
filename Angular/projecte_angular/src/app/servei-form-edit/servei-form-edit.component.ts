@@ -80,15 +80,17 @@ export class ServeiFormEditComponent implements OnInit {
 
   createForm(): void {
     this.myForm = this.formBuilder.group({
-      nom: ['Pastillas Traseras', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      preu: ['70', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
-      durada: [1, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
+      nom: ['', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+      preu: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      durada: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]]
     });
   }
 
   onSubmit(): void {
     Util.onValueChanged(true, this.myForm, this.formErrors, this.validationMessages);
-
+    if (this.myForm.invalid) {
+      return;
+    }
     const formData = new FormData();
     const nom = this.myForm.get('nom')?.value;
     const preu = this.myForm.get('preu')?.value;

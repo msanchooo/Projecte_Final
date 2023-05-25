@@ -6,23 +6,23 @@
   <!-- caixa de filtrat -->
   <div class="row section text-center">
     <div class="col-md-6">
-      <label>Filtrat per:</label>
-      <input type="text" [(ngModel)]="listFilter">
+      <label>Buscar: </label>
+      <input type="text" placeholder="Nombre, Apellidos, NIF" [(ngModel)]="listFilter">
     </div>
   </div>
   <!-- fi caixa filtrat -->
 
 
   <div *ngIf="clients.length==0">
-    <h4>No hi ha clients</h4>
+    <h4>No hay clientes</h4>
   </div>
   <div *ngIf="clients.length>0" class="table-responsive">
     <table class="table">
       <thead>
         <tr>
           <th>Id</th>
-          <th>Nom</th>
-          <th>Cognoms</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
           <th>NIF</th>
           <th>user_id</th>
           <th *ngIf="rol==1"></th>

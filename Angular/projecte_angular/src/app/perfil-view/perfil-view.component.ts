@@ -121,6 +121,9 @@ export class PerfilViewComponent {
   }
 
   cambiarBoton() {
+    if (this.myForm.invalid) {
+      return;
+    }
     const buttonElement = this.elementRef.nativeElement.querySelector('.boton');
     const inputs = document.getElementsByTagName('input');
 

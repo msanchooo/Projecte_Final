@@ -6,8 +6,8 @@
   <!-- caixa de filtrat -->
   <div class="row section text-center">
     <div class="col-md-6">
-      <label>Filtrat per:</label>
-      <input type="text" [(ngModel)]="listFilter">
+      <label>Buscar:</label>
+      <input type="text" placeholder="Nombre del servicio" [(ngModel)]="listFilter">
     </div>
     <div class="col-md-6">
       <button  *ngIf="rol==1 || rol==3" [routerLink]="['../servei-form/']" class="btn btn-crear btn-success">Crear</button>
@@ -17,16 +17,16 @@
 
 
   <div *ngIf="serveis.length==0">
-    <h4>No hi ha serveis</h4>
+    <h4>No hay servicios</h4>
   </div>
   <div *ngIf="serveis.length>0" class="table-responsive">
     <table class="table">
       <thead>
         <tr>
           <th>Id</th>
-          <th>Nom</th>
-          <th>Preu</th>
-          <th>Durada</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Duración</th>
           <th *ngIf="rol==1 || rol==3"></th>
           <th *ngIf="rol==1 || rol==3"></th>
 

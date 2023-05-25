@@ -1,20 +1,20 @@
 <div class="card">
     <div class="card-header bg-danger text-white text-center">
-        <h1>Editar client</h1>
+        <h1>Editar cliente</h1>
     </div>
     <div class="card-body">
         <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="nom" class="form-label">Nom:</label>
-                <input id="nom" placeholder="nom" class="form-control" formControlName="nom">
+                <label for="nom" class="form-label">Nombre:</label>
+                <input id="nom" placeholder="nombre" class="form-control" formControlName="nom">
             </div>
             <div *ngIf="formErrors['nom'].length > 0" class="alert alert-danger">
                 {{formErrors['nom']}}
             </div>
             <br>
             <div class="form-group">
-                <label for="cognoms" class="form-label">Cognoms:</label>
-                <input id="cognoms" placeholder="cognoms" class="form-control" formControlName="cognoms">
+                <label for="cognoms" class="form-label">Apellidos:</label>
+                <input id="cognoms" placeholder="apellidos" class="form-control" formControlName="cognoms">
             </div>
             <div *ngIf="formErrors['cognoms'].length > 0" class="alert alert-danger">
                 {{formErrors['cognoms']}}
@@ -29,8 +29,8 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="email" class="form-label">Email:</label>
-                <input id="email" placeholder="Email" class="form-control" formControlName="email">
+                <label for="email" class="form-label">Correo Electrónico:</label>
+                <input id="email" placeholder="Correo Electrónico" class="form-control" formControlName="email">
             </div>
             <div *ngIf="formErrors['email'].length > 0" class="alert alert-danger">
                 {{formErrors['email']}}
@@ -38,16 +38,16 @@
             <br>
 
             <div class="form-group">
-                <label for="direccio" class="form-label">Direccio:</label>
-                <input id="direccio" placeholder="direccio" class="form-control" formControlName="direccio">
+                <label for="direccio" class="form-label">Dirección:</label>
+                <input id="direccio" placeholder="dirección" class="form-control" formControlName="direccio">
             </div>
             <div *ngIf="formErrors['direccio'].length > 0" class="alert alert-danger">
                 {{formErrors['direccio']}}
             </div>
             <br>
             <div class="form-group">
-                <label for="movil" class="form-label">Movil:</label>
-                <input id="movil" placeholder="movil" class="form-control" formControlName="movil">
+                <label for="movil" class="form-label">Teléfono:</label>
+                <input id="movil" placeholder="teléfono" class="form-control" formControlName="movil">
             </div>
             <div *ngIf="formErrors['movil'].length > 0" class="alert alert-danger">
                 {{formErrors['movil']}}

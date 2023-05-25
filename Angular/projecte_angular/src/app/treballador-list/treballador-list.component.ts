@@ -23,7 +23,7 @@ export class TreballadorListComponent {
   }
 
   confirmarEliminacion(): boolean {
-    return confirm("¿Está seguro de que desea eliminar este vehiculo?");
+    return confirm("¿Está seguro de que desea eliminar este trabajador?");
   }
 
   eliminarTreballador(id: any) {
@@ -42,7 +42,7 @@ export class TreballadorListComponent {
   }
   
 
-  titolLlistat = 'Llistat de treballadors';
+  titolLlistat = 'Listado de trabajadores';
   treballadors:ITreballador[] = [];
   listFilter: string = '';
 
