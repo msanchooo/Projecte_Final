@@ -70,11 +70,9 @@ export class ResponseResetComponent implements OnInit {
     this.authenticationService.changePassword(data).subscribe({
       next: (data:any) => {
         this.success = data.data;
-        this.sendMessage('aaa');
-        console.log(this.success);
         this.loading = false;
         this.ngOnInit();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login-token/reset-password']);
       },
       error: (error) => {
         this.error = error.message;

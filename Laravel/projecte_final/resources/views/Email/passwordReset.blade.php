@@ -1,12 +1,14 @@
 <x-mail::message>
-# Change password request
+# Cambio de contraseña
 
-Click on the button below to change password
+Clica en el botón para cambiar la contraseña
 <x-mail::button :url='$url'>
+
+En caso de no ver el correo revise la bandeja de SPAM.
 
 Reset Password
 </x-mail::button>
 
 Thanks,<br>
-{{ config('app.name') }}
+Taller Tuku
 </x-mail::message>

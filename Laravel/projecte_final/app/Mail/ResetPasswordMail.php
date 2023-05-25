@@ -34,7 +34,7 @@ class ResetPasswordMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Reset Password Mail',
+            subject: 'Cambio contraseña Taller Tuku',
         );
     }
 
@@ -49,9 +49,7 @@ class ResetPasswordMail extends Mailable
         return new Content(
             markdown: 'Email.passwordReset',
             with: [
-                //'token' => $this->token,
                  'url' => 'http://localhost:4200/response-password-reset?token='.$this->token
-                //'url' => 'http://localhost:4200/response-password-reset'
             ]
         );
     }

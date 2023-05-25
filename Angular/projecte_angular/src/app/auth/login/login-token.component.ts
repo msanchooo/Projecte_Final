@@ -16,9 +16,6 @@ export class LoginTokenComponent implements OnInit {
   error = '';
   _rol: any;
   _user: any;
-
-  private subscriptionName: Subscription;
-  changePassword: any;
   success:any;
 
 
@@ -32,20 +29,17 @@ export class LoginTokenComponent implements OnInit {
     private clientService: DadesClientsService
 
   ) {
-    this.subscriptionName = this.service.getUpdate3().subscribe((message) => {
-      //message contains the data sent from service
-      this.changePassword = message;
-      this.success = this.changePassword._success;
-      console.log(message);
-    });
-    // redirect to home if already logged in
     if (this.authenticationService.userValue) {
       this.router.navigate(['/']);
     }
   }
 
   ngOnInit() {
-    this.success = this.changePassword;
+    if(this.router.url == '/login-token/reset-password'){
+      this.success = 'Contraseña cambiada correctamente'
+    }
+    console.log(this.router.url);
+
     this.loginForm = this.formBuilder.group({
       email: ['admin@gmail.com', Validators.required],
       password: ['123', Validators.required],
@@ -107,10 +101,5 @@ export class LoginTokenComponent implements OnInit {
           this.loading = false;
         },
       });
-  }
-
-  ngOnDestroy() {
-    // It's a good practice to unsubscribe to ensure no memory leaks
-    this.subscriptionName.unsubscribe();
   }
 }
