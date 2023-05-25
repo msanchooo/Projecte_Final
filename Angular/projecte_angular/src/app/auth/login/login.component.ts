@@ -8,8 +8,8 @@ import { DadesClientsService } from '../../datos/dades-clients.service';
 import { Subscription } from 'rxjs';
 
 
-@Component({ templateUrl: 'login-token.component.html' })
-export class LoginTokenComponent implements OnInit {
+@Component({ templateUrl: 'login.component.html' })
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loading = false;
   submitted = false;
@@ -35,7 +35,7 @@ export class LoginTokenComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.router.url == '/login-token/reset-password'){
+    if(this.router.url == '/login/reset-password'){
       this.success = 'Contraseña cambiada correctamente'
     }
     console.log(this.router.url);

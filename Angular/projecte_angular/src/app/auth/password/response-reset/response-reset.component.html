@@ -3,7 +3,7 @@
         {{success}}
     </div> -->
     <div class="card">
-        <h4 class="card-header py-3">Change password</h4>
+        <h4 class="card-header py-3">Cambiar contraseña</h4>
         <div class="card-body">
             <form [formGroup]="resetPasswordForm" (ngSubmit)="onSubmit(resetPasswordForm.value)">
                 <div class="mb-3">
@@ -32,7 +32,7 @@
 
                 <button type="submit" [disabled]="loading" class="btn btn-primary btn-danger">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Send email
+                    Cambiar contraseña
                 </button>
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-2">{{error}}</div>
             </form>

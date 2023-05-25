@@ -71,7 +71,7 @@ import { FacturaFormComponent } from './factura-form/factura-form.component';
 import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
 
-import { LoginTokenComponent } from './auth/login/login-token.component';
+import { LoginComponent } from './auth/login/login.component';
 import { fakeBackendProvider } from './auth/_helpers/fake-backend';
 import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
@@ -82,7 +82,6 @@ import { ClientFormEditComponent } from './client-form-edit/client-form-edit.com
 
 import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
-import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 
 
 @NgModule({
@@ -123,7 +122,7 @@ import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
     FacturaFormComponent,
     BorrarComponent,
     FacturaDownloadComponent,
-    LoginTokenComponent,
+    LoginComponent,
     RegisterComponent,
     PerfilViewComponent,
     ClientFormEditComponent,    
@@ -153,7 +152,6 @@ import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    NgxNavbarModule,
   ],
 
   exports: [

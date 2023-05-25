@@ -52,7 +52,7 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.clear();
     this.userSubject.next(null);
-    this.router.navigate(['/login-token']);
+    this.router.navigate(['/login']);
   }
 
   isLoggedIn() {
