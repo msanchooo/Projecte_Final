@@ -109,7 +109,9 @@ export class VehicleFormEditComponent {
   onSubmit(): void {
 
     Util.onValueChanged(true, this.myForm, this.formErrors, this.validationMessages);
-
+    if (this.myForm.invalid) {
+      return;
+    }
     const formData = new FormData();
     const matricula = this.myForm.get('matricula')?.value;
     const marca = this.myForm.get('marca')?.value;

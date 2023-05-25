@@ -53,6 +53,7 @@ export class NavBarComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   ngDoCheck() {
+    console.count('checked');
   }
 
   rol: any;

@@ -52,15 +52,18 @@ export class ServeiFormComponent implements OnInit {
       pattern: 'El precio solo pueden contener numeros'
     },
     durada: {
-      required: 'La durada es obligatoria.',
-      maxlength: 'La durada no puede ser más larga que 25 caracteres.',
-      pattern: 'La duracion solo pueden contener letras'
+      required: 'La duradacion es obligatoria.',
+      maxlength: 'La duracion no puede ser más larga que 25 caracteres.',
+      pattern: 'La duracion solo pueden contener numeros'
     },
   };
 
   onSubmit(servei: any) {
 
     Util.onValueChanged(true, this.myForm,this.formErrors,this.validationMessages);
+    if (this.myForm.invalid) {
+      return;
+    }
 
 
     console.log(servei);

@@ -23,9 +23,9 @@ export class TreballadorFormComponent {
     this.myForm = this.formBuilder.group({
 
       nom: ['', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
-      cognoms: ['', [Validators.required, Validators.maxLength(25)]],
+      cognoms: ['', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
       nif: ['', [Validators.required]],
-      sou: ['', [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+      sou: [, [Validators.required,Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
       carrec: ['', [Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
@@ -88,7 +88,9 @@ export class TreballadorFormComponent {
 
   onSubmit(treballador: any) {
     Util.onValueChanged(true,this.myForm,this.formErrors,this.validationMessages);
-
+    if (this.myForm.invalid) {
+      return;
+    }
     console.log(treballador);
 
     this.treballadorService.postTreballador(treballador).subscribe({
