@@ -4,7 +4,8 @@
                 <h3>Información de contacto</h3>
                 <p>
                     <span class="spans">Dirección:</span><br>
-                    C/ Sant Josep, nº 12, Barcelona, España
+                    C/ Sant Josep, nº 12, Barcelona 08001, España<br>
+                    Código Postal 08001
                 </p>
                 <p>
                     <span class="spans">Teléfono:</span><br>
@@ -12,7 +13,7 @@
                 </p>
                 <p>
                     <span class="spans">Email:</span><br>
-                    info@tallertuku.com
+                    info.tallertuku@gmail.com
                 </p>
                 <p>
                     <span class="spans">Horario:</span><br> 
@@ -35,7 +36,7 @@
                         &nbsp; <label for="validationForm" class="form-label">Selecciona un vehiculo : </label> &nbsp;
                         <select formControlName="vehicle" id="vehicle" name="vehicle">
                             <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
-                                {{vehicle.marca}} {{vehicle.model}}
+                                {{vehicle.marca}} {{vehicle.model}} {{vehicle.matricula}}
                             </option>
                         </select>
                         &nbsp; <span style="color: rgb(235, 57, 57);" *ngIf="vehicle && vehicle.invalid && vehicle.touched">Selecciona un vehiculo.</span>
@@ -60,6 +61,7 @@
                     </div>
                     <div class="col-md-12">
                         <textarea placeholder="Información adicional..." type="text" class="form-control inputs" formControlName="mensaje" rows="2" spellcheck="false" id="mensaje"></textarea>
+                        <span style="color: rgb(235, 57, 57);" *ngIf="mensaje && mensaje.invalid && mensaje.touched">Introduce un mensaje adicional.</span>
                     </div>
                     <div class="col-12">
                         <input class="btn btn-primary bg-danger border-danger" type="submit" value="Enviar" style="margin-left: 90%" name="enviar">
