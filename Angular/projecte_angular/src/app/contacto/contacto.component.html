@@ -1,15 +1,11 @@
-
-
 <div class="container">
-
-
-        
         <div class="row">
             <div class="col-lg-6 col-sm-12 contact-info" style="width: 200px;">
                 <h3>Información de contacto</h3>
                 <p>
                     <span class="spans">Dirección:</span><br>
-                    C/ Sant Josep, nº 12, Barcelona, España
+                    C/ Sant Josep, nº 12, Barcelona 08001, España<br>
+                    Código Postal 08001
                 </p>
                 <p>
                     <span class="spans">Teléfono:</span><br>
@@ -17,7 +13,7 @@
                 </p>
                 <p>
                     <span class="spans">Email:</span><br>
-                    info@tallertuku.com
+                    info.tallertuku@gmail.com
                 </p>
                 <p>
                     <span class="spans">Horario:</span><br> 
@@ -30,54 +26,48 @@
             </div>
 
             <div class="col-lg-6 col-sm-12 contact-form">
-                <form class="row g-3" action="https://mailthis.to/albert1" method="POST" [formGroup]="contactForm" (ngSubmit)="submitForm()"
-                enctype="multipart/form-data">
+                <form class="row g-3" [formGroup]="contactForm" enctype="multipart/form-data" (ngSubmit)="EnviarEmail()" onsubmit="reset(); return false;"   
+                action="https://formspree.io/f/xayzvrpd"
+                method="POST">
                     <div class="col-md-12" >
-                        <label for="validationForm" class="form-label">Tus Datos</label>
-                        <input placeholder="Nombre" type="text" class="form-control inputs" formControlName="nombre">
-                        <span style="color: rgb(235, 57, 57);" *ngIf="nombre && nombre.invalid && nombre.touched">Introduce un nombre.</span>
-                    </div>
-                    <div class="col-md-12">
-                        <input placeholder="Apellidos" type="text" class="form-control inputs" formControlName="apellidos" >
-                        <span style="color: rgb(235, 57, 57);" *ngIf="apellidos && apellidos.invalid && apellidos.touched">Introduce un apellido.</span>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <span class="input-group-text bg-danger text-light" id="inputGroupPrepend2">+34</span>
-                            <input placeholder="Teléfono" type="text" class="form-control inputs"
-                                aria-describedby="inputGroupPrepend2" formControlName="telefono">
-                        </div>
-                        <span style="color: rgb(235, 57, 57);" *ngIf="telefono && telefono.invalid && telefono.touched">Introduce un número válido.</span> 
-                    </div>
-                    <div class="col-md-6">
-                        <input placeholder="Población" type="text" class="form-control inputs" formControlName="poblacion">
-                        <span style="color: rgb(235, 57, 57);" *ngIf="poblacion && poblacion.invalid && poblacion.touched">Introduce una población.</span>
-                        <br> &nbsp;
-                    </div>
-                    <div class="col-md-6">
-                        <input placeholder="Código Postal" type="text" class="form-control inputs" formControlName="codigopostal">
-                        <span style="color: rgb(235, 57, 57);" *ngIf="codigopostal && codigopostal.invalid && codigopostal.touched">Introduce un código postal válido.</span>
+                        <label for="validationForm" class="form-label">Datos del Vehiculo</label>
                     </div>
                     <div class="col-md-12" >
-                        <label for="validationForm" class="form-label">Selecciona un vehiculo : </label> &nbsp;
-                        <select formControlName="vehicle_id" id="vehicle">
+                        &nbsp; <label for="validationForm" class="form-label">Selecciona un vehiculo : </label> &nbsp;
+                        <select formControlName="vehicle" id="vehicle" name="vehicle">
                             <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
-                                {{vehicle.marca}} {{vehicle.model}}
+                                {{vehicle.marca}} {{vehicle.model}} {{vehicle.matricula}}
                             </option>
                         </select>
-                        <span style="color: rgb(235, 57, 57);" *ngIf="nombre && nombre.invalid && nombre.touched">Selecciona un vehiculo.</span>
+                        &nbsp; <span style="color: rgb(235, 57, 57);" *ngIf="vehicle && vehicle.invalid && vehicle.touched">Selecciona un vehiculo.</span>
+                        <br>
+                            &nbsp; <span>¿No tienes ningun vehiculo registrado? Añade uno haciendo click
+                                    <a class="iconoco" [routerLink]="['../vehicle-list']">
+                                        <button mat-icon-button>
+                                            <mat-icon>directions_car</mat-icon>
+                                            </button>
+                                    </a>
+                                    </span>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="dataN">Fecha de la cita : </label> &nbsp;
+                        <input type="date" formControlName="fecha" name="fecha" id="fecha">  &nbsp;
+                        <span style="color: rgb(235, 57, 57);" *ngIf="fecha && fecha.invalid && fecha.touched">Indica la fecha de la cita.</span> 
                     </div>
                     <div class="col-md-12">
                         <label class="form-label">Mensaje</label>
-                        <input placeholder="Motivo de la cita" type="text" class="form-control inputs" formControlName="motivo">
-                        <span style="color: rgb(235, 57, 57);" *ngIf="motivo && motivo.invalid && motivo.touched">Introduce un motivo de cita. (Ej. Revisión, cambio neumáticos...)</span>
+                        <input placeholder="Motivo de la cita" type="text" class="form-control inputs" formControlName="motivo" id="motivo">
+                        <span style="color: rgb(235, 57, 57);" *ngIf="motivo && motivo.invalid && motivo.touched">Introduce un motivo de la cita. (Ej. Revisión, cambio neumáticos...)</span>
                     </div>
                     <div class="col-md-12">
-                        <textarea placeholder="Información adicional..." type="text" class="form-control inputs" formControlName="mensaje" rows="2" spellcheck="false"></textarea>
+                        <textarea placeholder="Información adicional..." type="text" class="form-control inputs" formControlName="mensaje" rows="2" spellcheck="false" id="mensaje"></textarea>
+                        <span style="color: rgb(235, 57, 57);" *ngIf="mensaje && mensaje.invalid && mensaje.touched">Introduce un mensaje adicional.</span>
                     </div>
                     <div class="col-12">
-                        <input class="btn btn-primary bg-danger border-danger" type="submit" value="Enviar" style="margin-left: 90%">
+                        <input class="btn btn-primary bg-danger border-danger" type="submit" value="Enviar" style="margin-left: 90%" name="enviar">
                     </div>
                 </form>
             </div>
         </div>
+
+

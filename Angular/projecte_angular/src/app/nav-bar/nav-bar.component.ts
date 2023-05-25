@@ -38,8 +38,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
       //message contains the data sent from service
       this.rol = message;
       this.rolUsuari = this.rol._rol;
-
-      console.log(message);
     });
 
     this.subscriptionName2 = this.service.getUpdate2().subscribe((message) => {

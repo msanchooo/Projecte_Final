@@ -62,8 +62,12 @@ export class AuthenticationService {
     return false;
   }
 
-  sendPasswordReset(data: any){
+  sendPasswordResetLink(data: any){
     return this.http.post(`${environment.apiUrl}/api/sendPasswordResetLink`,  data)
+  }
+
+  changePassword(data: any){
+    return this.http.post(`${environment.apiUrl}/api/resetPassword`,  data)
   }
 
 

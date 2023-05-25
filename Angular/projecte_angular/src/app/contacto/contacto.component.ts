@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ContactService } from 'src/services/contact.service';
 import { IVehicle } from '../interfaces/IVehicle';
 import { DadesVehiclesService } from '../datos/dades-vehicles.service';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -13,10 +16,32 @@ import { DadesVehiclesService } from '../datos/dades-vehicles.service';
 
 export class ContactoComponent implements OnInit{
 
+  FormContacto: any = FormGroup;
+  UrlEmail: string = environment.apiUrl;
 
   constructor(
-    private vehicleService: DadesVehiclesService
-  ) { }
+    private vehicleService: DadesVehiclesService,
+    private http: HttpClient,
+    public fb: FormBuilder,
+  ) { 
+  //   this.FormContacto = this.fb.group({
+  //   motivo: [''],
+  //   mensaje: [''],
+  //   fecha: [''],
+  //   vehicle: ['']
+  // });
+}
+
+  EnviarEmail(){
+    // var formData: any = new FormData();
+    // formData.append('motivo',this.FormContacto.get('motivo').value);
+    // this.http
+    //      .post(this.UrlEmail, formData)
+    //      .subscribe(
+    //        (response) => console.log(response),
+    //        (error) => console.log(error)
+    //      )
+} 
   
   ngOnInit(): void {
     this.vehicleService.getDades().subscribe(resp => {
@@ -24,58 +49,35 @@ export class ContactoComponent implements OnInit{
     });
   }
 
-  contactForm= new FormGroup({
-    nombre:new FormControl('',[Validators.required]),
-    apellidos: new FormControl('',[Validators.required]),
-    poblacion: new FormControl('',[Validators.required]),
-    telefono: new FormControl('',[Validators.minLength(9), Validators.maxLength(9),Validators.required]),
-    codigopostal: new FormControl('',[Validators.minLength(5), Validators.maxLength(5),Validators.required]),
-    motivo: new FormControl('',[Validators.required]),
-    mensaje: new FormControl('',[Validators.required]),
-  })
+   contactForm = new FormGroup({
+     motivo: new FormControl('',[Validators.required]),
+     mensaje: new FormControl('',[Validators.required]),
+     fecha: new FormControl('',[Validators.required]),
+     vehicle: new FormControl('',[Validators.required])
+   })
 
   vehicles: IVehicle[]=[];
 
-  submitForm()
-  {
-    console.warn(this.contactForm.value);
-  }
 
+ get vehicle()
+ {
+   return this.contactForm.get('vehicle');
+ }
 
-get nombre()
-{
-  return this.contactForm.get('nombre');
-}
+ get motivo()
+ {
+   return this.contactForm.get('motivo');
+ }
 
-get apellidos()
-{
-  return this.contactForm.get('apellidos');
-}
+ get mensaje()
+ {
+   return this.contactForm.get('mensaje');
+ }
 
-get telefono()
-{
-  return this.contactForm.get('telefono');
-}
-
-get codigopostal()
-{
-  return this.contactForm.get('codigopostal');
-}
-
-get poblacion()
-{
-  return this.contactForm.get('poblacion');
-}
-
-get motivo()
-{
-  return this.contactForm.get('motivo');
-}
-
-get mensaje()
-{
-  return this.contactForm.get('mensaje');
-}
+ get fecha()
+ {
+   return this.contactForm.get('fecha');
+ }
 
 }
   

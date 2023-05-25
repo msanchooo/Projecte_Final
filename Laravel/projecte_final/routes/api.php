@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\EmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CitaController;
@@ -11,6 +12,9 @@ use App\Http\Controllers\TreballadorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ChangePasswordController;
+
 
 
 use App\Http\Controllers\ApiController;
@@ -131,3 +135,14 @@ Route::middleware('auth:sanctum')->get('/factura/{id}', [FacturaController::clas
 Route::middleware('auth:sanctum')->post('/factura', [FacturaController::class, 'insertFactura']);
 
 Route::middleware('auth:sanctum')->post('/linea', [FacturaController::class, 'insertLineas']);
+
+
+//Reset Password
+
+Route::post('sendPasswordResetLink', [ResetPasswordController::class, 'sendEmail']);
+
+Route::post('resetPassword', [ChangePasswordController::class, 'process']);
+//// Correo
+
+Route::middleware('auth:sanctum')->post('/EnviarCorreo', [EmailController::class,'index']);
+

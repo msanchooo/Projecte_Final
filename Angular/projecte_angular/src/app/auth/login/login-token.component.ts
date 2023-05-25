@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { ServeiUpdateService } from '../../servei-update/servei-update.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { DadesClientsService } from '../../datos/dades-clients.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({ templateUrl: 'login-token.component.html' })
@@ -15,6 +16,8 @@ export class LoginTokenComponent implements OnInit {
   error = '';
   _rol: any;
   _user: any;
+  success:any;
+
 
 
   constructor(
@@ -26,13 +29,17 @@ export class LoginTokenComponent implements OnInit {
     private clientService: DadesClientsService
 
   ) {
-    // redirect to home if already logged in
     if (this.authenticationService.userValue) {
       this.router.navigate(['/']);
     }
   }
 
   ngOnInit() {
+    if(this.router.url == '/login-token/reset-password'){
+      this.success = 'Contraseña cambiada correctamente'
+    }
+    console.log(this.router.url);
+
     this.loginForm = this.formBuilder.group({
       email: ['admin@gmail.com', Validators.required],
       password: ['123', Validators.required],
@@ -53,7 +60,6 @@ export class LoginTokenComponent implements OnInit {
   sendMessage2(user: any): void {
     // send message to subscribers via observable subject
     this.service.sendUpdate2(
-
       user
     );
   }
@@ -75,12 +81,9 @@ export class LoginTokenComponent implements OnInit {
       .subscribe({
         next: () => {
           const returnUrl = '/';
-          // this._rol = localStorage.getItem('user');
-          // console.log(this._rol);
+
           const user = this.authenticationService.userValue;
           this._rol = user?.rol;
-
-          console.log(this._rol)
           this._user = user?.username;
 
           if(this._rol !== null){

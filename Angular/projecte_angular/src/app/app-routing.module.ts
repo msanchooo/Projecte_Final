@@ -64,6 +64,7 @@ const routes: Routes = [
   {path:'factura-download/:id', component: FacturaDownloadComponent},
   {path:'perfil-view', component: PerfilViewComponent},
   { path: 'login-token', component: LoginTokenComponent },
+  { path: 'login-token/reset-password', component: LoginTokenComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'request-password-reset', component: RequestResetComponent },
   { path: 'response-password-reset', component: ResponseResetComponent },

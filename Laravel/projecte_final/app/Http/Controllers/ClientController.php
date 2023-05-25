@@ -274,7 +274,9 @@ class ClientController extends BaseController
             $request->validate([
                 'nom' => ['required', 'max:15'],
                 'cognoms' => ['required', 'max:25'],
-                'nif' => ['required']
+                'nif' => ['required'],
+                'user_id' => ['required']
+
             ]);
 
 
@@ -282,6 +284,7 @@ class ClientController extends BaseController
                 'nom' => $request->nom,
                 'cognoms' => $request->cognoms,
                 'nif' => $request->nif,
+                'user_id' => $request->user_id,
                 'direccio' => $request->direccio,
                 'movil' => $request->movil
             ]);
