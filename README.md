@@ -33,7 +33,21 @@ Además, la aplicación proporcionará a los mecánicos del taller las siguiente
 
     - Crear y visualizar facturas: Los mecánicos podrán generar facturas para los servicios realizados. Podrán ingresar los detalles de los servicios, las piezas utilizadas, los costos asociados, y generar la factura correspondiente. También podrán acceder a un listado de las facturas generadas para su visualización.
 
-    - Estas funcionalidades brindarán a los mecánicos las herramientas necesarias para gestionar eficientemente la información de los vehículos y clientes, acceder al historial de reparaciones, conocer los servicios ofrecidos y generar facturas de manera ágil y precisa.
+Estas funcionalidades brindarán a los mecánicos las herramientas necesarias para gestionar eficientemente la información de los vehículos y clientes, acceder al historial de reparaciones, conocer los servicios ofrecidos y generar facturas de manera ágil y precisa.
+
+  ### Administrador
+  
+El perfil de administrador posee todas las funcionalidades del trabajador, permitiéndole realizar tareas adicionales para gestionar y supervisar el sistema. Estas funcionalidades incluyen:
+
+    - Crear y eliminar vehículos: El administrador tiene el poder de agregar nuevos vehículos al sistema, lo que implica registrar los detalles relevantes de cada uno, como el modelo, la marca, el año, el número de identificación y cualquier otra información necesaria. Asimismo, puede eliminar vehículos del sistema cuando ya no estén disponibles o sean obsoletos.
+
+    - Añadir y eliminar servicios: Como administrador, tienes la capacidad de agregar nuevos servicios al sistema. Esto implica definir los detalles del servicio, como su nombre, descripción, precio y cualquier otro parámetro necesario. Además, puedes eliminar servicios que ya no sean necesarios o estén obsoletos.
+
+    - Añadir, editar y eliminar trabajadores: El administrador tiene el control total sobre el equipo de trabajadores. Puede añadir nuevos miembros al sistema, proporcionando su información personal y asignándoles los roles y responsabilidades adecuados. También tiene la capacidad de editar la información de los trabajadores existentes, como el nombre, la dirección de correo electrónico o la información de contacto. Si un trabajador deja de formar parte del sistema o ya no es necesario, el administrador puede eliminar su perfil del sistema.
+
+    - Eliminar clientes: En ciertas circunstancias, puede ser necesario eliminar a un cliente del sistema. Como administrador, tienes la capacidad de eliminar perfiles de clientes, lo que implica eliminar toda la información relacionada con ellos del sistema. Esto puede ser útil en casos como la eliminación de cuentas duplicadas o cuando un cliente solicita que se elimine su información personal.
+
+Estas funcionalidades adicionales del perfil de administrador te brindan un mayor control y capacidad para administrar eficientemente el sistema, asegurando su buen funcionamiento y permitiéndote tomar decisiones clave para el éxito del proyecto.
 
 ## Tecnologías
 

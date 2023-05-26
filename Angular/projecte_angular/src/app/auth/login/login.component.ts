@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          const returnUrl = '/';
+          const returnUrl = '/body';
 
           const user = this.authenticationService.userValue;
           this._rol = user?.rol;
