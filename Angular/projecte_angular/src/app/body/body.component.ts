@@ -7,8 +7,9 @@ import Splide from '@splidejs/splide';
 })
 export class BodyComponent {
 
+
   ngAfterViewInit() {
-    var splide= new Splide('.splide', {
+     new Splide('.splide', {
       type: 'loop', // Configura el tipo de carrusel como "slide"
       perPage: 1, // Muestra una sola diapositiva a la vez
       pagination: false, // Desactiva la paginación si no la necesitas

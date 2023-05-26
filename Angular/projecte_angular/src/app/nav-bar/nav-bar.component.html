@@ -34,14 +34,15 @@
                 </li>
                 <li *ngIf="_isLoggedIn(); else loggedOut">
                     <div class="btn-group">
-                        <button class="btn btn-danger btn-primary" routerLink="../perfil-view">{{ username }}</button>
+                        <button *ngIf="rolUsuari == '1' || rolUsuari == '2'" class="btn btn-danger btn-primary" routerLink="../perfil-view">{{ username }}</button>
+                        <button *ngIf="rolUsuari == '3'" class="btn btn-danger btn-primary" routerLink="">{{ username }}</button>
                         <button mat-button [matMenuTriggerFor]="loggedMenu"
                             class="btn btn-danger btn-primary dropdown-toggle dropdown-toggle-split" mdbDropdownToggle
                             aria-expanded="false">
                         </button>
 
                         <mat-menu #loggedMenu="matMenu" class="dropdown-menu">
-                            <a class="dropdown-item" routerLink="../perfil-view">Perfil</a>
+                            <a *ngIf="rolUsuari == '1' || rolUsuari == '2'" class="dropdown-item" routerLink="../perfil-view">Perfil</a>
                             <a *ngIf="rolUsuari == '1' || rolUsuari == '3'" class="dropdown-item"
                                 routerLink="../client-list">Clientes</a>
                             <a class="dropdown-item" routerLink="../vehicle-list">Vehiculos</a>

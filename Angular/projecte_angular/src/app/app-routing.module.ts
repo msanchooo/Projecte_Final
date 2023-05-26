@@ -37,7 +37,7 @@ import { ResponseResetComponent } from './auth/password/response-reset/response-
 
 const routes: Routes = [
 
-  {path:'body', component: BodyComponent,},
+  {path:'body', component: BodyComponent, canActivate: [AuthGuard] },
   {path:'servicios', component: ServiciosComponent},
   {path:'pack1', component: Pack1Component},
   {path:'pack2', component: Pack2Component},
@@ -68,8 +68,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'request-password-reset', component: RequestResetComponent },
   { path: 'response-password-reset', component: ResponseResetComponent },
+  //{ path: '', component: BodyComponent, canActivate: [AuthGuard] },
 
-  { path: '', component: BodyComponent, canActivate: [AuthGuard] },
+  { path: '', component: BodyComponent},
   { path: '**', redirectTo: '' },
 
   // { path: '', redirectTo: 'inicio', pathMatch: 'full'},
