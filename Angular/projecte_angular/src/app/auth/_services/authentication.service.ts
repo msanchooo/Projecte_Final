@@ -52,7 +52,7 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.clear();
     this.userSubject.next(null);
-    this.router.navigate(['/login-token']);
+    this.router.navigate(['/login']);
   }
 
   isLoggedIn() {
@@ -62,8 +62,12 @@ export class AuthenticationService {
     return false;
   }
 
-  sendPasswordReset(data: any){
+  sendPasswordResetLink(data: any){
     return this.http.post(`${environment.apiUrl}/api/sendPasswordResetLink`,  data)
+  }
+
+  changePassword(data: any){
+    return this.http.post(`${environment.apiUrl}/api/resetPassword`,  data)
   }
 
 

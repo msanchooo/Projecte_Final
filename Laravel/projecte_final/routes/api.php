@@ -12,6 +12,9 @@ use App\Http\Controllers\TreballadorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ChangePasswordController;
+
 
 
 use App\Http\Controllers\ApiController;
@@ -48,7 +51,7 @@ Route::delete('/cita/{id}', [CitaController::class, 'deleteCita'])->name('cita_d
 
 //// Clients
 
-Route::middleware(['auth:sanctum','admin'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
+Route::middleware(['auth:sanctum'])->get('/clients', [ClientController::class, 'getClients'])->name('clients_list');
 
 Route::middleware('auth:sanctum')->get('/client/{id}', [ClientController::class, 'getClient'])->name('client_cerca');
 
@@ -134,6 +137,11 @@ Route::middleware('auth:sanctum')->post('/factura', [FacturaController::class, '
 Route::middleware('auth:sanctum')->post('/linea', [FacturaController::class, 'insertLineas']);
 
 
+//Reset Password
+
+Route::post('sendPasswordResetLink', [ResetPasswordController::class, 'sendEmail']);
+
+Route::post('resetPassword', [ChangePasswordController::class, 'process']);
 //// Correo
 
 Route::middleware('auth:sanctum')->post('/EnviarCorreo', [EmailController::class,'index']);

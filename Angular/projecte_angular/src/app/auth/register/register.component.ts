@@ -28,13 +28,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-       nom: ['albert', [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
-       cognoms: ['perez aaa', [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
-       nif: ['12365478F',[Validators.required]],
-       direccio: ['c/bcgf',Validators.required],
-       movil: ['987456321',[Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
-       email: ['albert@gmail.com', [Validators.required, Validators.email]],
-       password: ['123',[Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+       nom: [null, [Validators.required, Validators.maxLength(15),Validators.pattern(/^[a-zA-Z ]+$/)]],
+       cognoms: [null, [Validators.required, Validators.maxLength(25),Validators.pattern(/^[a-zA-Z ]+$/)]],
+       nif: [null,[Validators.required]],
+       direccio: [null,Validators.required],
+       movil: [null,[Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]],
+       email: [null, [Validators.required, Validators.email]],
+       password: [null,[Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
     });
     this.registerForm.valueChanges.subscribe(() => {
       Util.onValueChanged(false, this.registerForm,this.formErrors,this.validationMessages);
@@ -99,7 +99,7 @@ export class RegisterComponent implements OnInit {
       .register(credencials)
       .subscribe({
         next: (credencials) => {
-          const returnUrl = '/login-token';
+          const returnUrl = '/login';
           this.router.navigate([returnUrl]);
         },
         error: (error) => {

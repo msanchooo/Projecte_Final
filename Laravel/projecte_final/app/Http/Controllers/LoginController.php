@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Treballador;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,9 +27,21 @@ class LoginController extends BaseController
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $request->user()->createToken('token1');
-            $client = Client::where('user_id', $user->id)->first();
 
             //return $user;
+            if($user->rol==3){
+                $treballador = Treballador::where('user_id', $user->id)->first();
+                return response()->json([
+                    'id' => $user->id,
+                    'email'=> $user->email,
+                    'rol' => $user->rol,
+                    'token' => $token->plainTextToken,
+                    'username' => $treballador->nom
+    
+                ], 200);
+            }
+
+            $client = Client::where('user_id', $user->id)->first();
             return response()->json([
                 'id' => $user->id,
                 'email'=> $user->email,

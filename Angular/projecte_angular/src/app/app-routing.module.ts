@@ -25,7 +25,7 @@ import { FacturaListComponent } from './factura-list/factura-list.component';
 import { FacturaFormComponent } from './factura-form/factura-form.component';
 import { BorrarComponent } from './borrar/borrar.component';
 import { FacturaDownloadComponent } from './factura-download/factura-download.component';
-import { LoginTokenComponent } from './auth/login/login-token.component';
+import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
 import { PerfilViewComponent } from './perfil-view/perfil-view.component';
@@ -63,7 +63,8 @@ const routes: Routes = [
   {path:'borrar', component: BorrarComponent},
   {path:'factura-download/:id', component: FacturaDownloadComponent},
   {path:'perfil-view', component: PerfilViewComponent},
-  { path: 'login-token', component: LoginTokenComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'login/reset-password', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'request-password-reset', component: RequestResetComponent },
   { path: 'response-password-reset', component: ResponseResetComponent },
