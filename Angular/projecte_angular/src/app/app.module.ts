@@ -82,7 +82,7 @@ import { ClientFormEditComponent } from './client-form-edit/client-form-edit.com
 
 import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
-import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
+
 
 
 @NgModule({
@@ -153,7 +153,7 @@ import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    NgxNavbarModule,
+
   ],
 
   exports: [
