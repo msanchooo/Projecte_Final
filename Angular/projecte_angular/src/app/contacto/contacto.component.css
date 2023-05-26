@@ -71,3 +71,18 @@ select {
   background-color: #ededed8b;
   border-radius: 3%;
 }
+
+@media (max-width: 988px) {
+  
+  .contact-info {
+    display: none;
+  }
+
+
+}
+
+@media (max-width: 988px){
+     .contact-form{
+    margin-left: 10px;
+  } 
+}
