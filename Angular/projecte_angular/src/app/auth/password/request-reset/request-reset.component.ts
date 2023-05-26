@@ -52,6 +52,7 @@ export class RequestResetComponent implements OnInit {
       },
       error: (error) => {
         this.error = error.message;
+        console.log(this.error);
         this.loading = false;
       },
   });
