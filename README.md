@@ -75,7 +75,10 @@ Para instalar y ejecutar la aplicación web, se deben seguir los siguientes paso
     - tailwindcss
     - Bootstrap
     
+    
+### Manual de usuario
 
+https://drive.google.com/file/d/1JTJWUpKEvbHrOps7aB_C7C4-i-x_T9cr/view?usp=sharing
 
 ### Autores
 
