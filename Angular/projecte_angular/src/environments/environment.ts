@@ -1,8 +1,8 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost/Projecte_Final/Laravel/projecte_final/public/index.php',
-    UrlEmail: 'http://localhost/api/EnviarCorreo'
+    apiUrl: 'https://projectefinal-production.up.railway.app',
+    UrlEmail: 'https://projectefinal-production.up.railway.app/api/EnviarCorreo'
     // produccion : UrlEmail: 'dominio/laravelBackend'
      //apiUrl: 'http://localhost:4200'
   };

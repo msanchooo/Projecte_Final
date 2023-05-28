@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       Util.onValueChanged(false, this.registerForm,this.formErrors,this.validationMessages);
     });
   }
-  errorMessage: string = '';
+  
   formErrors: any = {
     nom: '',
     cognoms: '',
@@ -89,13 +89,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(credencials: any) {
-    console.log(credencials);
+    Util.onValueChanged(false, this.registerForm,this.formErrors,this.validationMessages);
     this.submitted = true;
-
     this.error = '';
+
+     if (this.registerForm.invalid) {
+       return;
+     }
+    
+    
     this.loading = true;
     this.authenticationService
-      // .login(this.f['email'].value, this.f['password'].value)
       .register(credencials)
       .subscribe({
         next: (credencials) => {
@@ -103,6 +107,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate([returnUrl]);
         },
         error: (error) => {
+          this.error = error.message;
           this.loading = false;
         },
       });

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ServeiUpdateService } from 'src/app/servei-update/servei-update.service';
 
@@ -21,8 +21,8 @@ export class ResponseResetComponent implements OnInit {
 
   ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
-      email: null,
-      password: null,
+      email: [null, [Validators.required, Validators.email]],
+      password: [null,[Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       password_confirmation: null,
     });
   }
