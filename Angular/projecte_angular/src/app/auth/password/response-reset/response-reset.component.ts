@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { ServeiUpdateService } from 'src/app/servei-update/servei-update.service';
+import { Util } from 'src/app/utilidades/util';
 
 @Component({
   selector: 'app-response-reset',
@@ -21,9 +22,12 @@ export class ResponseResetComponent implements OnInit {
 
   ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
-      email: null,
-      password: null,
-      password_confirmation: null,
+      email: [null, Validators.required],
+      password: [null,[Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+      password_confirmation: [null,[Validators.required]],
+    });
+    this.resetPasswordForm.valueChanges.subscribe(() => {
+      Util.onValueChanged(false, this.resetPasswordForm,this.formErrors,this.validationMessages);
     });
   }
 
@@ -41,6 +45,26 @@ export class ResponseResetComponent implements OnInit {
     });
   }
 
+  formErrors: any = {
+    email: '',
+    password: '',
+    password_confirmation: ''
+  };
+  validationMessages: any = {
+    email: {
+      required: 'El correo electrónico es obligatorio.',
+      email: 'El correo electrónico no es válido.'
+    },
+    password: {
+      required: 'La contraseña es obligatoria.',
+      minlength: 'La contraseña debe tener al menos 6 caracteres.',
+      maxlength: 'La contraseña no puede tener más de 15 caracteres.'
+    },
+    password_confirmation: {
+      required: 'La contraseña es obligatoria.',
+    }
+  };
+
   sendMessage(msg: any): void {
     // send message to subscribers via observable subject
     this.service.sendUpdate3(
@@ -53,9 +77,15 @@ export class ResponseResetComponent implements OnInit {
   }
 
   onSubmit(data: any) {
+    Util.onValueChanged(true,this.resetPasswordForm,this.formErrors,this.validationMessages);
+
     this.submitted = true;
     this.error = '';
     this.success = '';
+
+    if (this.resetPasswordForm.invalid) {
+      return;
+    }
     this.loading = true;
 
     data.resetToken = this.resetToken;

@@ -16,9 +16,13 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
                 <div class="mb-3">
                     <label class="form-label">Correo electrónico</label>
-                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
-                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                    <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                    <!-- <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                         <div *ngIf="f['email'].errors['required']">Correo electrónico es obligatorio</div>
+                    </div> -->
+
+                    <div *ngIf="formErrors['email'].length > 0" class="invalid-feedback">
+                        {{formErrors['email']}}
                     </div>
                 </div>
                 <div class="mb-3">

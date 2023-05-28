@@ -3,15 +3,15 @@
         {{success}}
     </div>
     <div class="card">
-        <h4 class="card-header py-3 bg-danger text-light">Email de recuperación de contraseña</h4>
+        <h4 class="card-header py-3 bg-danger text-light">Correo electrónico de recuperación de contraseña</h4>
         <div class="card-body">
             <form [formGroup]="requestResetForm" (ngSubmit)="onSubmit(requestResetForm.value)">
 
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">Correo electrónico </label>
                     <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
-                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                        <div *ngIf="f['email'].errors['required']">Email es obligatorio</div>
+                    <div *ngIf="formErrors['email'].length > 0" class="invalid-feedback">
+                        {{formErrors['email']}}
                     </div>
                 </div>
                 <button [disabled]="loading" class="btn btn-primary btn-danger">
@@ -19,8 +19,6 @@
                     Enviar
                 </button>
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-2">{{error}}</div>
-
-
             </form>
 
         </div> 

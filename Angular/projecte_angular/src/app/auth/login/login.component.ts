@@ -6,6 +6,7 @@ import { ServeiUpdateService } from '../../servei-update/servei-update.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { DadesClientsService } from '../../datos/dades-clients.service';
 import { Subscription } from 'rxjs';
+import { Util } from 'src/app/utilidades/util';
 
 
 @Component({ templateUrl: 'login.component.html' })
@@ -40,10 +41,27 @@ export class LoginComponent implements OnInit {
     }
     
     this.loginForm = this.formBuilder.group({
-      email: [null, Validators.required],
-      password: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null,[Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     });
   }
+
+  formErrors: any = {
+    email: '',
+    password: ''
+  };
+
+  validationMessages: any = {
+    email: {
+      required: 'El correo electrónico es obligatorio.',
+      email: 'El correo electrónico no es válido.'
+    },
+    password: {
+      required: 'La contraseña es obligatoria.',
+      minlength: 'La contraseña debe tener al menos 6 caracteres.',
+      maxlength: 'La contraseña no puede tener más de 15 caracteres.'
+    }
+  };
 
   // convenience getter for easy access to form fields
   get f() {
@@ -64,6 +82,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(credencials: any) {
+    Util.onValueChanged(false, this.loginForm,this.formErrors,this.validationMessages);
+
     this.submitted = true;
 
     // stop here if form is invalid
@@ -96,7 +116,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([returnUrl]);
         },
         error: (error) => {
-          this.error = error;
+          this.error = error.message;
           this.loading = false;
         },
       });

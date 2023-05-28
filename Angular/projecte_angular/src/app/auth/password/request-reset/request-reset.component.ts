@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../_services/authentication.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Util } from 'src/app/utilidades/util';
 
 @Component({
   selector: 'app-request-reset',
@@ -21,9 +22,19 @@ export class RequestResetComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
+  formErrors: any = {
+    email: '',
+  };
+  validationMessages: any = {
+    email: {
+      required: 'El correo electrónico es obligatorio.',
+      email: 'El correo electrónico no es válido.'
+    }
+  };
+
   ngOnInit(): void {
     this.requestResetForm = this.formBuilder.group({
-      email: null,
+      email: [null, Validators.required],
     });
   }
 
@@ -32,6 +43,8 @@ export class RequestResetComponent implements OnInit {
   }
   
   onSubmit(_data: any) {
+    Util.onValueChanged(true,this.requestResetForm,this.formErrors,this.validationMessages);
+
     this.submitted = true;
     this.error = '';
     this.success = '';
@@ -39,9 +52,7 @@ export class RequestResetComponent implements OnInit {
     if (this.requestResetForm.invalid) {
       return;
     }
-    
     this.loading = true;
-
 
     this.authenticationService.sendPasswordResetLink(this.requestResetForm.value).subscribe({
       next: (data:any) => {
@@ -51,8 +62,7 @@ export class RequestResetComponent implements OnInit {
         this.ngOnInit();
       },
       error: (error) => {
-        this.error = error.message;
-        console.log(this.error);
+        this.error = error;
         this.loading = false;
       },
   });
