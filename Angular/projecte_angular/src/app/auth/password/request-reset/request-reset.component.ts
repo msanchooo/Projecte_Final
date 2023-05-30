@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../_services/authentication.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-request-reset',
@@ -23,7 +23,7 @@ export class RequestResetComponent implements OnInit {
 
   ngOnInit(): void {
     this.requestResetForm = this.formBuilder.group({
-      email: null,
+      email: [null, [Validators.required, Validators.email]]
     });
   }
 
@@ -33,25 +33,24 @@ export class RequestResetComponent implements OnInit {
   
   onSubmit(_data: any) {
     this.submitted = true;
-    this.error = '';
-    this.success = '';
 
     if (this.requestResetForm.invalid) {
       return;
     }
-    
-    this.loading = true;
 
+    this.error = '';
+    this.success = '';
+    this.loading = true;
 
     this.authenticationService.sendPasswordResetLink(this.requestResetForm.value).subscribe({
       next: (data:any) => {
-        // console.log(data);
         this.success = data.data;
         this.loading = false;
-        this.ngOnInit();
+        //this.ngOnInit(); para reiniciar el mail pero aparece que es obligatorio
       },
       error: (error) => {
-        this.error = error.message;
+        //Da un not found y deberia dar que no se ha encontrado
+        this.error = error;
         this.loading = false;
       },
   });

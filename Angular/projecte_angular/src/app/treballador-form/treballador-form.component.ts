@@ -91,8 +91,7 @@ export class TreballadorFormComponent {
     if (this.myForm.invalid) {
       return;
     }
-    console.log(treballador);
-
+    
     this.treballadorService.postTreballador(treballador).subscribe({
       next: (data) => {
         this.router.navigate(['treballador-list'])

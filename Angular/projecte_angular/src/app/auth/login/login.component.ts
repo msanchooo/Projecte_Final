@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
     }
     
     this.loginForm = this.formBuilder.group({
-      email: ['admin@gmail.com', Validators.required],
-      password: ['123', Validators.required],
+      email: [null, Validators.required],
+      password: [null, Validators.required],
     });
   }
 

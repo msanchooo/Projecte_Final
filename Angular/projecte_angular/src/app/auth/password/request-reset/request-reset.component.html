@@ -3,7 +3,7 @@
         {{success}}
     </div>
     <div class="card">
-        <h4 class="card-header py-3">Email de recuperación de contraseña</h4>
+        <h4 class="card-header py-3 bg-danger text-light">Email de recuperación de contraseña</h4>
         <div class="card-body">
             <form [formGroup]="requestResetForm" (ngSubmit)="onSubmit(requestResetForm.value)">
 
@@ -12,6 +12,7 @@
                     <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
                     <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                         <div *ngIf="f['email'].errors['required']">Email es obligatorio</div>
+                        <div *ngIf="f['email'].errors['email']">Email no es valido</div>
                     </div>
                 </div>
                 <button [disabled]="loading" class="btn btn-primary btn-danger">
